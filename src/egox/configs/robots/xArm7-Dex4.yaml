@@ -1,0 +1,36 @@
+# Stable dataset/policy ID; it must match this filename.
+embodiment: xArm7-Dex4
+
+# Each signal combines its data definition and model settings.
+tokenizer:
+  pooling: {nhead: 8, dim_head: 64, dropout: 0.1}
+  Image:
+    defaults: {weights: DEFAULT, resnet_model: resnet18, dtype: uint8, layout: HWC, color_space: RGB}
+    main_image: {split_dual: true, token_num: 128}  # Main camera observation.
+  proprioceptions:
+    defaults: {widths: [512, 512], tanh_end: false, ln: true, token_num: 4, dtype: float32}
+    right_eef_to_body_pose_proprio: {shape: [6]}  # Observed right end-effector-to-body pose vector.
+    right_eef_link_proprio: {shape: [15]}  # Observed right end-effector link vector; may include padded channels.
+    robot_joint_pos_proprio: {shape: [7], token_num: 1}  # Observed robot joint positions.
+    right_eef_joint_pos_proprio: {shape: [16], token_num: 1}  # Observed right end-effector joint positions.
+
+# Action targets and decoders; training chunk_size sets the horizon.
+action:
+  defaults: {crossattn_modality_dropout: 0.1, crossattn_heads: 8, crossattn_dim_head: 32, loss_weight: 1.0, dtype: float32}
+  right_eef_to_body_pose: {shape: [6]}  # Target right end-effector-to-body pose vector.
+  right_eef_link_pose: {shape: [15]}  # Target right end-effector link vector; may include padded channels.
+
+# MXT+ embodiment dreaming; remove this block for plain MXT.
+dreaming:
+  embodiment_tokenizer:
+    norm_upper_bound: 100.0
+    norm_upper_bound_weight: 1.0e-5
+    modalities: [main_image, robot_joint_pos_proprio, right_eef_joint_pos_proprio]
+    token_num: 8
+  head:
+    crossattn_modality_dropout: 0.1
+    crossattn_heads: 8
+    crossattn_dim_head: 32
+    dream_offsets: [20, 40, 60]  # future frames whose embodiment tokens are dreamed
+    loss_weight: 0.3
+    dream_mag_beta: 0.01

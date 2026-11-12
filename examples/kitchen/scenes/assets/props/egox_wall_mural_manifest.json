@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "method": "built-in image_gen",
+  "asset": "egox_wall_mural.png",
+  "text": "EgoX",
+  "prompt": "Use case: stylized-concept.\nAsset type: finished flat mural artwork / color texture to mount on a rectangular interior wall panel in an Isaac Sim kitchen lounge. This is the artwork itself, straight-on, not a room mockup.\nPrimary request: art-style lettering of the exact word \"EgoX\" as a handsome contemporary wall drawing.\nText (verbatim): \"EgoX\" \u2014 uppercase E, lowercase g, lowercase o, uppercase X. Only this one word, no subtitle, no other text.\nComposition: wide landscape 2:1 ratio. The large word dominates the center, taking roughly 75 percent of the width and 55 percent of the height. Leave a generous clear margin on all sides so every letter reads at a distance.\nStyle: confident hand-painted typographic mural with thick expressive brush lettering, carefully designed letterforms, subtle brush texture, a dynamic but clearly readable X, a few restrained sweeping strokes and geometric accents integrated around the word. Sophisticated studio/cafe wall art.\nPalette: deep charcoal and dark teal lettering, warm burnt-orange/coral accents, on a warm off-white lightly textured painted background; coordinated with a kitchen containing orange pendant lamps, pale oak cabinets, dark teal appliance wall, and blue plates.\nConstraints: exact spelling, exceptional legibility, flat 2D art filling the image, no frame, no furniture, no people, no perspective distortion, no photoreal room, no logos other than the requested word, no watermark. Do not add small copy. Output one wide image.",
+  "target": "Inside face of the framed blank panel on the dining-area wall of the separate kitchen twin.",
+  "source_asset_modified": false,
+  "image_sha256": "222a8a7721005a6037f4c92917299c4c2507050bdd4957c022260a648fff2307"
+}

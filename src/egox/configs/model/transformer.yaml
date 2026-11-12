@@ -1,0 +1,14 @@
+# Number of decoder queries per action field (independent of the action horizon).
+output_len:
+  body_pose: 24
+  left_eef_to_body_pose: 24
+  right_eef_to_body_pose: 24
+  left_eef_link_pose: 30
+  right_eef_link_pose: 30
+  velocity_commands: 30
+hidden_dim: 512  # latent width of every tokenizer, action head and dream head
+dropout: 0.1
+nheads: 8  # trunk head dimension is hidden_dim / nheads; tokenizer dim_head is separate
+dim_feedforward: 1024
+enc_layers: 6
+dec_layers: 6

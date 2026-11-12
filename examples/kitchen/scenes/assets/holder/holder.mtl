@@ -1,0 +1,30 @@
+# Wavefront fallback; USD includes the glaze's clear coat response
+newmtl GlazedIvory
+Kd 0.79 0.74 0.62
+Ks 0.04 0.04 0.04
+Ns 39.3223
+Pr 0.22
+Pm 0
+Ni 1.46
+d 1
+illum 2
+
+newmtl InteriorGlaze
+Kd 0.85 0.81 0.7
+Ks 0.04 0.04 0.04
+Ns 27.5858
+Pr 0.26
+Pm 0
+Ni 1.46
+d 1
+illum 2
+
+newmtl WarmStoneFoot
+Kd 0.33 0.22 0.14
+Ks 0.04 0.04 0.04
+Ns 3.0391
+Pr 0.63
+Pm 0
+Ni 1.46
+d 1
+illum 2

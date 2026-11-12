@@ -1,0 +1,518 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a3"
+    }
+    defaultPrim = "scene_scene_001"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "scene_scene_001"
+{
+    def Scope "Materials"
+    {
+        def Material "kitchen_floors_floor_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_floors_floor_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_north_wall_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_north_wall_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_window_1_window_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_window_1_window_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_north_wall_exterior_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_north_wall_exterior_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_south_wall_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_south_wall_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_south_wall_exterior_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_south_wall_exterior_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_east_wall_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_east_wall_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_east_wall_exterior_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_east_wall_exterior_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_west_wall_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_west_wall_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_west_wall_exterior_wall_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_west_wall_exterior_wall_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_refrigerator_model6_override_E_body_15_combined_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_refrigerator_model6_override_E_body_15_combined_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_refrigerator_model6_override_E_door2_1_combined_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_refrigerator_model6_override_E_door2_1_combined_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_refrigerator_model6_override_E_door1_9_combined_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_refrigerator_model6_override_E_door1_9_combined_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_kitchen_worktable_1788857254_kitchen_worktable_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_kitchen_worktable_1788857254_kitchen_worktable_tex>
+        )
+        {
+        }
+
+        def Material "tn__kitchen_kitchen_sink_station_1788858511_kitchen_sink_station_s095_095_095_tex_ts2b1g1" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/tn__kitchen_kitchen_sink_station_1788858511_kitchen_sink_station_s095_095_095_tex_ts2b1g1>
+        )
+        {
+        }
+
+        def Material "kitchen_kitchen_base_counter_run_1788859464_kitchen_base_counter_run_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_kitchen_base_counter_run_1788859464_kitchen_base_counter_run_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_abstract_art_1788860585_abstract_art_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_abstract_art_1788860585_abstract_art_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_herb_illustration_1788860688_herb_illustration_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_herb_illustration_1788860688_herb_illustration_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_print_1788860408_print_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_print_1788860408_print_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_wall_mirror_1788860456_wall_mirror_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_wall_mirror_1788860456_wall_mirror_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_wall_clock_1788860501_wall_clock_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_wall_clock_1788860501_wall_clock_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_pendant_light_1788861031_pendant_light_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_pendant_light_1788861031_pendant_light_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_ceiling_track_light_1788861082_ceiling_track_light_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_ceiling_track_light_1788861082_ceiling_track_light_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_refrigerator_jar_1788861486_refrigerator_jar_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_refrigerator_jar_1788861486_refrigerator_jar_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_butter_spread_1788861572_butter_spread_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_butter_spread_1788861572_butter_spread_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_dinner_plate_1788862215_dinner_plate_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_dinner_plate_1788862215_dinner_plate_tex>
+        )
+        {
+        }
+
+        def Material "kitchen_rustic_bread_slice_1788862407_rustic_bread_slice_tex" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/kitchen_rustic_bread_slice_1788862407_rustic_bread_slice_tex>
+        )
+        {
+        }
+
+        def Material "tn__kitchen_butter_spreader_1788862455_butter_spreader_s03_03_03_tex_aZ2v0z0" (
+            prepend references = @MaterialsLibrary.usdc@</Materials/tn__kitchen_butter_spreader_1788862455_butter_spreader_s03_03_03_tex_aZ2v0z0>
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "room_geometry_kitchen"
+        {
+            over "room_geometry_kitchen_room_geometry_body_link"
+            {
+                over "room_geometry_kitchen_room_geometry_body_link_floor_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_floors_floor_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_north_wall_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_north_wall_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_window_1_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_window_1_window_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_north_wall_exterior_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_north_wall_exterior_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_south_wall_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_south_wall_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_south_wall_exterior_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_south_wall_exterior_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_east_wall_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_east_wall_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_east_wall_exterior_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_east_wall_exterior_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_west_wall_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_west_wall_wall_tex>
+                }
+
+                over "room_geometry_kitchen_room_geometry_body_link_west_wall_exterior_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_west_wall_exterior_wall_tex>
+                }
+            }
+        }
+
+        over "kitchen_refrigerator_0"
+        {
+            over "kitchen_refrigerator_0_E_body_15"
+            {
+                over "kitchen_refrigerator_0_E_body_15_P_8549e8ffedb20ab7_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_refrigerator_model6_override_E_body_15_combined_tex>
+                }
+            }
+
+            over "kitchen_refrigerator_0_E_door2_1"
+            {
+                over "kitchen_refrigerator_0_E_door2_1_P_b259ae9d9b3c1e50_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_refrigerator_model6_override_E_door2_1_combined_tex>
+                }
+            }
+
+            over "kitchen_refrigerator_0_E_door1_9"
+            {
+                over "kitchen_refrigerator_0_E_door1_9_P_3af6fb013da10ab7_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_refrigerator_model6_override_E_door1_9_combined_tex>
+                }
+            }
+        }
+
+        over "kitchen_kitchen_worktable_0"
+        {
+            over "kitchen_kitchen_worktable_0_base_link"
+            {
+                over "kitchen_kitchen_worktable_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_kitchen_worktable_1788857254_kitchen_worktable_tex>
+                }
+            }
+        }
+
+        over "kitchen_kitchen_sink_station_0"
+        {
+            over "kitchen_kitchen_sink_station_0_base_link"
+            {
+                over "kitchen_kitchen_sink_station_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/tn__kitchen_kitchen_sink_station_1788858511_kitchen_sink_station_s095_095_095_tex_ts2b1g1>
+                }
+            }
+        }
+
+        over "kitchen_kitchen_base_counter_run_0"
+        {
+            over "kitchen_kitchen_base_counter_run_0_base_link"
+            {
+                over "kitchen_kitchen_base_counter_run_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_kitchen_base_counter_run_1788859464_kitchen_base_counter_run_tex>
+                }
+            }
+        }
+
+        over "kitchen_abstract_art_0"
+        {
+            over "kitchen_abstract_art_0_base_link"
+            {
+                over "kitchen_abstract_art_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_abstract_art_1788860585_abstract_art_tex>
+                }
+            }
+        }
+
+        over "kitchen_herb_illustration_0"
+        {
+            over "kitchen_herb_illustration_0_base_link"
+            {
+                over "kitchen_herb_illustration_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_herb_illustration_1788860688_herb_illustration_tex>
+                }
+            }
+        }
+
+        over "kitchen_print_0"
+        {
+            over "kitchen_print_0_base_link"
+            {
+                over "kitchen_print_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_print_1788860408_print_tex>
+                }
+            }
+        }
+
+        over "kitchen_wall_mirror_0"
+        {
+            over "kitchen_wall_mirror_0_base_link"
+            {
+                over "kitchen_wall_mirror_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_wall_mirror_1788860456_wall_mirror_tex>
+                }
+            }
+        }
+
+        over "kitchen_wall_clock_0"
+        {
+            over "kitchen_wall_clock_0_base_link"
+            {
+                over "kitchen_wall_clock_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_wall_clock_1788860501_wall_clock_tex>
+                }
+            }
+        }
+
+        over "kitchen_pendant_light_0"
+        {
+            over "kitchen_pendant_light_0_base_link"
+            {
+                over "kitchen_pendant_light_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_pendant_light_1788861031_pendant_light_tex>
+                }
+            }
+        }
+
+        over "kitchen_pendant_light_1"
+        {
+            over "kitchen_pendant_light_1_base_link"
+            {
+                over "kitchen_pendant_light_1_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_pendant_light_1788861031_pendant_light_tex>
+                }
+            }
+        }
+
+        over "kitchen_pendant_light_2"
+        {
+            over "kitchen_pendant_light_2_base_link"
+            {
+                over "kitchen_pendant_light_2_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_pendant_light_1788861031_pendant_light_tex>
+                }
+            }
+        }
+
+        over "kitchen_ceiling_track_light_0"
+        {
+            over "kitchen_ceiling_track_light_0_base_link"
+            {
+                over "kitchen_ceiling_track_light_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_ceiling_track_light_1788861082_ceiling_track_light_tex>
+                }
+            }
+        }
+
+        over "kitchen_refrigerator_jar_0_s0_0"
+        {
+            over "kitchen_refrigerator_jar_0_s0_0_base_link"
+            {
+                over "kitchen_refrigerator_jar_0_s0_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_refrigerator_jar_1788861486_refrigerator_jar_tex>
+                }
+            }
+        }
+
+        over "kitchen_butter_spread_0_s0_1"
+        {
+            over "kitchen_butter_spread_0_s0_1_base_link"
+            {
+                over "kitchen_butter_spread_0_s0_1_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_butter_spread_1788861572_butter_spread_tex>
+                }
+            }
+        }
+
+        over "kitchen_dinner_plate_0_s1_0"
+        {
+            over "kitchen_dinner_plate_0_s1_0_base_link"
+            {
+                over "kitchen_dinner_plate_0_s1_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_dinner_plate_1788862215_dinner_plate_tex>
+                }
+            }
+        }
+
+        over "kitchen_rustic_bread_slice_0_s1_1"
+        {
+            over "kitchen_rustic_bread_slice_0_s1_1_base_link"
+            {
+                over "kitchen_rustic_bread_slice_0_s1_1_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/kitchen_rustic_bread_slice_1788862407_rustic_bread_slice_tex>
+                }
+            }
+        }
+
+        over "kitchen_butter_spreader_0"
+        {
+            over "kitchen_butter_spreader_0_base_link"
+            {
+                over "kitchen_butter_spreader_0_base_link_visual_visual" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </scene_scene_001/Materials/tn__kitchen_butter_spreader_1788862455_butter_spreader_s03_03_03_tex_aZ2v0z0>
+                }
+            }
+        }
+    }
+}
+

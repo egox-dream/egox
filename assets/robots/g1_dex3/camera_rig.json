@@ -1,0 +1,106 @@
+{
+  "name": "g1_kitchen_d435_offset",
+  "source": "feat/pico-g1-sim camera_profiles/g1_kitchen_d435_offset.json (rig of the G1-Sim-Dex3 dataset)",
+  "outputs": {
+    "main": [
+      "saved_left",
+      "saved_right"
+    ],
+    "left_wrist": [
+      "left_wrist"
+    ],
+    "right_wrist": [
+      "right_wrist"
+    ]
+  },
+  "cameras": {
+    "saved_left": {
+      "parent": "torso_link",
+      "translation_m": [
+        0.0776235,
+        0.03418615090732167,
+        0.44487
+      ],
+      "rotation_quat_wxyz_ros": [
+        -0.33359651386391387,
+        0.6272221111427622,
+        -0.6178173540767733,
+        0.33705712606772603
+      ],
+      "intrinsics": {
+        "width": 640,
+        "height": 480,
+        "fx": 291.42458330953866,
+        "fy": 291.42458330953866,
+        "cx": 319.5,
+        "cy": 239.5
+      }
+    },
+    "saved_right": {
+      "parent": "torso_link",
+      "translation_m": [
+        0.0776235,
+        -0.03874586547867514,
+        0.44487
+      ],
+      "rotation_quat_wxyz_ros": [
+        -0.3395145841511178,
+        0.6246114512329177,
+        -0.6150575867103439,
+        0.3410198633033704
+      ],
+      "intrinsics": {
+        "width": 640,
+        "height": 480,
+        "fx": 291.42458330953866,
+        "fy": 291.42458330953866,
+        "cx": 319.5,
+        "cy": 239.5
+      }
+    },
+    "left_wrist": {
+      "parent": "left_wrist_yaw_link",
+      "translation_m": [
+        -0.08,
+        -0.08,
+        -0.065
+      ],
+      "rotation_quat_wxyz_ros": [
+        0.11007931479405621,
+        0.5738799373613501,
+        -0.08320400844140591,
+        0.8072307321502857
+      ],
+      "intrinsics": {
+        "width": 640,
+        "height": 480,
+        "fx": 384.0,
+        "fy": 384.0,
+        "cx": 319.5,
+        "cy": 239.5
+      }
+    },
+    "right_wrist": {
+      "parent": "right_wrist_yaw_link",
+      "translation_m": [
+        -0.08,
+        0.08,
+        -0.065
+      ],
+      "rotation_quat_wxyz_ros": [
+        0.8072307321502857,
+        -0.08320400844140591,
+        0.5738799373613501,
+        0.11007931479405621
+      ],
+      "intrinsics": {
+        "width": 640,
+        "height": 480,
+        "fx": 384.0,
+        "fy": 384.0,
+        "cx": 319.5,
+        "cy": 239.5
+      }
+    }
+  }
+}

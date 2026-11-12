@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    defaultPrim = "Looks"
+    customLayerData = { string purpose = "Appearance only; contains no geometry or physics." }
+)
+
+def Scope "Looks"
+{
+    def Material "Blade"
+    {
+        token outputs:surface.connect = </Looks/Blade/Shader.outputs:surface>
+        def Shader "Shader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.2158605, 0.12213877, 0.5332764)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            float inputs:clearcoat = 0.0
+            float inputs:opacity = 1.0
+            float inputs:ior = 1.47
+            token outputs:surface
+        }
+    }
+    def Material "Handle"
+    {
+        token outputs:surface.connect = </Looks/Handle/Shader.outputs:surface>
+        def Shader "Shader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.00856813, 0.00856813, 0.00972122)
+            float inputs:roughness = 0.55
+            float inputs:metallic = 0.0
+            float inputs:clearcoat = 0.0
+            float inputs:opacity = 1.0
+            float inputs:ior = 1.47
+            token outputs:surface
+        }
+    }
+}

@@ -1,0 +1,540 @@
+#usda 1.0
+
+over "World"
+{
+    over "SceneSmith"
+    {
+        over "Props"
+        {
+            over "Bread" (
+                prepend apiSchemas = ["PhysxContactReportAPI", "PhysxRigidBodyAPI"]
+            )
+            {
+                float physxContactReport:threshold = 0
+                bool physxRigidBody:enableCCD = 1
+                bool physxRigidBody:enableSpeculativeCCD = 1
+                int physxRigidBody:solverPositionIterationCount = 128
+                int physxRigidBody:solverVelocityIterationCount = 8
+
+                over "Crust" (
+                    delete apiSchemas = ["PhysicsCollisionAPI"]
+                    prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+                )
+                {
+                    float3[] extent = [(-0.054, -0.045, 0), (0.054, 0.052, 0.013)]
+                    rel material:binding = </World/SceneSmith/EgoXEpisodeBreadLooks_d2d7cd5dfb41499e83f49e3c5cf74963/Crust>
+                    point3f[] points = [(-0.040427405, -0.041444838, 0), (0.046502504, -0.045, 0), (0.051648576, -0.035669845, 0), (0.054, -0.0047654584, 0), (0.048849825, 0.027965073, 0), (0.0396495, 0.0415187, 0), (0.025489938, 0.04961383, 0), (-0.0072270166, 0.052, 0), (-0.037482403, 0.04700649, 0), (-0.048437882, 0.038534548, 0), (-0.054, 0.025707494, 0), (-0.053136636, -0.004103654, 0), (-0.046308942, -0.032465678, 0), (-0.040427405, -0.041444838, 0.013), (0.046502504, -0.045, 0.013), (0.051648576, -0.035669845, 0.013), (0.054, -0.0047654584, 0.013), (0.048849825, 0.027965073, 0.013), (0.0396495, 0.0415187, 0.013), (0.025489938, 0.04961383, 0.013), (-0.0072270166, 0.052, 0.013), (-0.037482403, 0.04700649, 0.013), (-0.048437882, 0.038534548, 0.013), (-0.054, 0.025707494, 0.013), (-0.053136636, -0.004103654, 0.013), (-0.046308942, -0.032465678, 0.013)]
+                    float3 xformOp:scale:egoxAppearance = (0.77011156, 0.8854627, 0.95826185)
+                    double3 xformOp:translate:egoxAppearance = (0, 0.0004008804756262865, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance"]
+                }
+
+                over "Top" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.0513, -0.04275, 0.0131), (0.0513, 0.0494, 0.0131)]
+                    rel material:binding = </World/SceneSmith/EgoXEpisodeBreadLooks_d2d7cd5dfb41499e83f49e3c5cf74963/Crumb>
+                    point3f[] points = [(0, 0, 0.0131), (-0.038406037, -0.039372593, 0.0131), (0.04417738, -0.04275, 0.0131), (0.049066145, -0.033886354, 0.0131), (0.0513, -0.0045271856, 0.0131), (0.046407335, 0.026566818, 0.0131), (0.037667025, 0.039442763, 0.0131), (0.024215441, 0.047133137, 0.0131), (-0.006865666, 0.0494, 0.0131), (-0.035608284, 0.04465617, 0.0131), (-0.04601599, 0.03660782, 0.0131), (-0.0513, 0.02442212, 0.0131), (-0.050479807, -0.0038984714, 0.0131), (-0.043993495, -0.030842394, 0.0131)]
+                    float3 xformOp:scale:egoxAppearance = (0.77011156, 0.8854627, 0.95826185)
+                    double3 xformOp:translate:egoxAppearance = (0, 0.00038083645184497215, 0.000004173816493915128)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance"]
+                }
+
+                over "Bottom" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.0513, -0.04275, -0.0001), (0.0513, 0.0494, -0.0001)]
+                    rel material:binding = </World/SceneSmith/EgoXEpisodeBreadLooks_d2d7cd5dfb41499e83f49e3c5cf74963/Crumb>
+                    point3f[] points = [(0, 0, -0.0001), (-0.038406037, -0.039372593, -0.0001), (0.04417738, -0.04275, -0.0001), (0.049066145, -0.033886354, -0.0001), (0.0513, -0.0045271856, -0.0001), (0.046407335, 0.026566818, -0.0001), (0.037667025, 0.039442763, -0.0001), (0.024215441, 0.047133137, -0.0001), (-0.006865666, 0.0494, -0.0001), (-0.035608284, 0.04465617, -0.0001), (-0.04601599, 0.03660782, -0.0001), (-0.0513, 0.02442212, -0.0001), (-0.050479807, -0.0038984714, -0.0001), (-0.043993495, -0.030842394, -0.0001)]
+                    float3 xformOp:scale:egoxAppearance = (0.77011156, 0.8854627, 0.95826185)
+                    double3 xformOp:translate:egoxAppearance = (0, 0.00038083645184497215, -0.000004173816493915128)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance"]
+                }
+            }
+
+            over "OpenMilkCan"
+            {
+                over "Shell"
+                {
+                    float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                    uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                }
+
+                over "Bottom"
+                {
+                    float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                    uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance", "xformOp:translate"]
+                }
+
+                over "Collision"
+                {
+                    over "Wall_00"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_01"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_02"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_03"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_04"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_05"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_06"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_07"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_08"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_09"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_10"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_11"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_12"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_13"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_14"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_15"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_16"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_17"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_18"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_19"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_20"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_21"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_22"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+
+                    over "Wall_23"
+                    {
+                        float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                        uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                    }
+                }
+
+                over "Label"
+                {
+                    float3 xformOp:scale:egoxAppearance = (1.099486, 1.099486, 1.1086264)
+                    uniform token[] xformOpOrder = ["xformOp:scale:egoxAppearance"]
+                }
+            }
+
+            over "Spreader" (
+                prepend apiSchemas = ["PhysxContactReportAPI", "PhysxRigidBodyAPI"]
+            )
+            {
+                float physxContactReport:threshold = 0
+                bool physxRigidBody:enableCCD = 1
+                bool physxRigidBody:enableSpeculativeCCD = 1
+
+                over "Handle"
+                {
+                    float3 xformOp:scale:egoxAppearance = (1.2041756, 1.2041756, 1.2041756)
+                    double3 xformOp:translate:egoxAppearance = (0.005716915082396936, -0, -0)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance"]
+                }
+
+                over "Rivet0"
+                {
+                    float3 xformOp:scale:egoxAppearance = (1.2041756, 1.2041756, 1.2041756)
+                    double3 xformOp:translate:egoxAppearance = (0.005716915082396936, -0, -0)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance", "xformOp:translate"]
+                }
+
+                over "Rivet1"
+                {
+                    float3 xformOp:scale:egoxAppearance = (1.2041756, 1.2041756, 1.2041756)
+                    double3 xformOp:translate:egoxAppearance = (0.005716915082396936, -0, -0)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance", "xformOp:translate"]
+                }
+
+                over "Blade" (
+                    delete apiSchemas = ["PhysicsCollisionAPI"]
+                    prepend apiSchemas = ["PhysicsCollisionAPI"]
+                )
+                {
+                    custom string egox:bladeProfile = '{"bevel_length_m": 0.03378826703454664, "kind": "distal_underside_bevel", "schema_version": 1, "tip_thickness_m": 0.0008}'
+                    float3[] extent = [(-0.148706, -0.014, -0.0015), (-0.022, 0.014, 0.0015)]
+                    int[] faceVertexCounts = [5, 5, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [4, 3, 2, 1, 0, 5, 6, 7, 8, 9, 0, 1, 6, 5, 1, 2, 7, 6, 2, 3, 8, 7, 3, 4, 9, 8, 4, 0, 5, 9]
+                    normal3f[] normals = [(0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-0, 1, 0), (-0, 1, 0), (-0, 1, 0), (-0, 1, 0), (-0, 1, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (-0.06497377, 0, -0.99788696), (-0.06497377, 0, -0.99788696), (-0.06497377, 0, -0.99788696), (-0.06497377, 0, -0.99788696), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0)] (
+                        interpolation = "faceVarying"
+                    )
+                    point3f[] points = [(-0.148706, -0.014, 0.0015), (-0.022, -0.014, 0.0015), (-0.022, -0.014, -0.0015), (-0.11491773, -0.014, -0.0015), (-0.148706, -0.014, 0.0007), (-0.148706, 0.014, 0.0015), (-0.022, 0.014, 0.0015), (-0.022, 0.014, -0.0015), (-0.11491773, 0.014, -0.0015), (-0.148706, 0.014, 0.0007)]
+                    texCoord2f[] primvars:st = [(-2.086722e-8, -1.5433345e-8), (1, -1.5433345e-8), (1, -1.5433345e-8), (0.26666668, -1.5433345e-8), (-2.086722e-8, -1.5433345e-8), (-2.086722e-8, 1), (1, 1), (1, 1), (0.26666668, 1), (-2.086722e-8, 1)] (
+                        interpolation = "vertex"
+                    )
+                    int[] primvars:st:indices = None
+                    float3 xformOp:scale:egoxAppearance = (1, 1, 1)
+                    double3 xformOp:translate:egoxAppearance = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate:egoxAppearance", "xformOp:scale:egoxAppearance"]
+                }
+            }
+
+            over "Plate" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </World/SceneSmith/EgoXEpisodePlateLooks_5283c9bd28de4555a336fc65f945e8bd/Plate> (
+                    bindMaterialAs = "strongerThanDescendants"
+                )
+
+                over "Geometry"
+                {
+                    over "kitchen_dinner_plate_0_s1_0" (
+                        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+                    )
+                    {
+                        point3f physics:centerOfMass = (0.000046341884, -0.00051388, 0.009658)
+                        float3 physics:diagonalInertia = (0.0026238689, 0.0026736716, 0.00526126)
+                        quatf physics:principalAxes = (0.7908762, 0.000044611825, 0.00009196422, -0.61197615)
+                        int physxRigidBody:solverPositionIterationCount = 32
+                        int physxRigidBody:solverVelocityIterationCount = 4
+
+                        over "kitchen_dinner_plate_0_s1_0_base_link"
+                        {
+                            float3 xformOp:scale:egoxAppearance = (1.0298196, 1.0298196, 1)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:egoxAppearance"]
+
+                            over "kitchen_dinner_plate_0_s1_0_base_link_visual_visual" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </World/SceneSmith/EgoXEpisodePlateLooks_5283c9bd28de4555a336fc65f945e8bd/Plate> (
+                                    bindMaterialAs = "strongerThanDescendants"
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def "EgoXEpisodeBreadLooks_d2d7cd5dfb41499e83f49e3c5cf74963"
+        {
+            def Material "Crumb"
+            {
+                token outputs:surface.connect = </World/SceneSmith/EgoXEpisodeBreadLooks_d2d7cd5dfb41499e83f49e3c5cf74963/Crumb/Shader.outputs:surface>
+
+                def Shader "Shader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (0.30854955, 0.19641218, 0.09306868)
+                    float inputs:metallic = 0
+                    float inputs:roughness = 0.9
+                    token outputs:surface
+                }
+            }
+
+            def Material "Crust"
+            {
+                token outputs:surface.connect = </World/SceneSmith/EgoXEpisodeBreadLooks_d2d7cd5dfb41499e83f49e3c5cf74963/Crust/Shader.outputs:surface>
+
+                def Shader "Shader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (0.1587786, 0.06658777, 0.021954194)
+                    float inputs:metallic = 0
+                    float inputs:roughness = 0.85
+                    token outputs:surface
+                }
+            }
+        }
+
+        def "EgoXEpisodePlateLooks_5283c9bd28de4555a336fc65f945e8bd"
+        {
+            def Material "Plate"
+            {
+                token outputs:surface.connect = </World/SceneSmith/EgoXEpisodePlateLooks_5283c9bd28de4555a336fc65f945e8bd/Plate/Shader.outputs:surface>
+
+                def Shader "Shader"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (0.1577773, 0.19040354, 0.22302978)
+                    float inputs:metallic = 0
+                    float inputs:roughness = 0.25
+                    token outputs:surface
+                }
+            }
+        }
+
+        over "Furniture"
+        {
+            over Xform "TaskCounter"
+            {
+                float3 xformOp:scale:egoxEpisodeHeight = (1, 1, 1.019285)
+                double3 xformOp:translate:egoxEpisodeAisle = (0, 0.02826606494880246, 0)
+                uniform token[] xformOpOrder = ["xformOp:scale:egoxEpisodeHeight", "xformOp:translate:egoxEpisodeAisle"]
+            }
+
+            over Xform "IslandBlender"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9920227953473741, 0.12605861141223912, 0, 0), (-0.12605861141223912, 0.9920227953473741, 0, 0), (0, 0, 1, 0), (-0.041284780149842604, 0.2786532869341443, 0.016392217899185324, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+
+            over "NestedBowls"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9918130206224314, -0.1276985987542874, 0, 0), (0.1276985987542874, 0.9918130206224314, 0, 0), (0, 0, 1, 0), (-0.7562506323448943, 0.7105342546902532, 0.8693922178991853, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+
+            over Xform "UtensilPile"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9564958385670163, -0.291745969644793, 0, 0), (0.291745969644793, 0.9564958385670163, 0, 0), (0, 0, 1, 0), (-0.17584343151855142, -0.1928995766360227, 0.016392217899185324, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+
+            over "OppositeCounter"
+            {
+                over Xform "Soap"
+                {
+                    matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.8896622401405456, 0.45661920510213566, 0, 0), (-0.45661920510213566, 0.8896622401405456, 0, 0), (0, 0, 1, 0), (-0.6813071220338589, -0.20189424235126419, 0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                }
+
+                over Xform "Kettle"
+                {
+                    matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9398725251312905, 0.34152545513231036, 0, 0), (-0.34152545513231036, 0.9398725251312905, 0, 0), (0, 0, 1, 0), (-0.661110127086306, 0.25974593940049684, 0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                }
+
+                over "ShelfContents"
+                {
+                    over "Container0"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9887797645451533, -0.14938064541978424, 0, 0), (0.14938064541978424, 0.9887797645451533, 0, 0), (0, 0, 1, 0), (-1.5520386136987459, -1.8178984634013264, 1.7049999999999998, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container1"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9778292057080747, 0.20940402208247033, 0, 0), (-0.20940402208247033, 0.9778292057080747, 0, 0), (0, 0, 1, 0), (-1.3783561635687875, -1.808792332926033, 1.72, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container2"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.8970917464761576, 0.4418443146679126, 0, 0), (-0.4418443146679126, 0.8970917464761576, 0, 0), (0, 0, 1, 0), (-1.1054176033852305, -1.8339673657181204, 1.7049999999999998, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container3"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9956898529387505, 0.09274544061467095, 0, 0), (-0.09274544061467095, 0.9956898529387505, 0, 0), (0, 0, 1, 0), (-0.8552538180777417, -1.8254762163575715, 1.72, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container4"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.8842603553340345, 0.4669942440593108, 0, 0), (-0.4669942440593108, 0.8842603553340345, 0, 0), (0, 0, 1, 0), (-0.7129144650870007, -1.8396678195523264, 1.7049999999999998, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container5"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.8824900033317719, -0.4703311535710657, 0, 0), (0.4703311535710657, 0.8824900033317719, 0, 0), (0, 0, 1, 0), (-0.42318934326726, -1.8449647644740041, 1.72, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container6"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.7468530320142801, -0.6649891341751959, 0, 0), (0.6649891341751959, 0.7468530320142801, 0, 0), (0, 0, 1, 0), (-0.24473629144705722, -1.8057247290524452, 1.7049999999999998, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+
+                    over "Container7"
+                    {
+                        matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.7306680562604687, -0.6827328844874462, 0, 0), (0.6827328844874462, 0.7306680562604687, 0, 0), (0, 0, 1, 0), (-0.00557616629308022, -1.8316570128312955, 1.72, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+                    }
+                }
+            }
+
+            over Xform "DiningTable0"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9858471726034933, -0.16764650986435112, 0, 0), (0.16764650986435112, 0.9858471726034933, 0, 0), (0, 0, 1, 0), (-0.6781038301322899, 0.038462931614401175, 0, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+
+            over Xform "DiningTable1"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (0.9994041373587628, -0.03451623140186628, 0, 0), (0.03451623140186628, 0.9994041373587628, 0, 0), (0, 0, 1, 0), (-0.11014134252745778, -0.03724580613351369, 0, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+
+            over "Bin_0"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.495, 0.31826606494880244, 0.018, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+
+            over "Bin_1"
+            {
+                matrix4d xformOp:transform:egoxEpisodeLayout = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0.9049999999999999, 0.31826606494880244, 0.018, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform:egoxEpisodeLayout"]
+            }
+        }
+
+        over "Lighting"
+        {
+            over "Ceiling"
+            {
+                float inputs:colorTemperature = 5754.2734
+                bool inputs:enableColorTemperature = 1
+                float inputs:intensity = 1757.6666
+            }
+
+            over "Window"
+            {
+                float inputs:colorTemperature = 5754.2734
+                bool inputs:enableColorTemperature = 1
+                float inputs:intensity = 780.5133
+            }
+
+            over "ApplianceFill"
+            {
+                float inputs:colorTemperature = 5754.2734
+                bool inputs:enableColorTemperature = 1
+                float inputs:intensity = 980.85004
+            }
+        }
+
+        over "Room"
+        {
+            over "Pendant0"
+            {
+                over "Bulb"
+                {
+                    float inputs:intensity = 32.550602
+                }
+            }
+
+            over "Pendant1"
+            {
+                over "Bulb"
+                {
+                    float inputs:intensity = 32.550602
+                }
+            }
+        }
+    }
+
+    over "Light"
+    {
+        float inputs:colorTemperature = 5754.2734
+        bool inputs:enableColorTemperature = 1
+        float inputs:intensity = 1799.0193
+    }
+}
+
+over "physicsScene" (
+    prepend apiSchemas = ["PhysxSceneAPI"]
+)
+{
+    bool physxScene:enableCCD = 1
+}
+

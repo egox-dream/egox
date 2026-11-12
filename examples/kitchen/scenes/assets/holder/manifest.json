@@ -1,0 +1,78 @@
+{
+  "asset_usd": "holder.usda",
+  "default_prim": "/Holder",
+  "format": "egox_single_spreader_holder",
+  "generated_files": {
+    "holder.mtl": "2420eefb4a5b713787d5546325ace4060ba2f371ad2e23a5a07b1c40e3905bd2",
+    "holder.obj": "b87fc5be12bd9e53dc716715d310e7d3ade5beebb34b887c911836e22038fa31",
+    "holder.usda": "92ca5e50288a7440b77c5a67700148ac6b70189958229c367ffae25ed0743f04"
+  },
+  "geometry": {
+    "base_thickness_m": 0.016,
+    "body_outer_size_xy_m": [
+      0.082,
+      0.082
+    ],
+    "center_of_mass_xyz_m": [
+      1.3919214553045139e-18,
+      2.263118078315507e-18,
+      0.06667033021635023
+    ],
+    "collider_count": 22,
+    "collision_representation": "individual convex wall prisms and two base pieces",
+    "color_rgb": [
+      0.79,
+      0.74,
+      0.62
+    ],
+    "contact_offset_m": 0.001,
+    "diagonal_inertia_kg_m2": [
+      0.0014027301973871535,
+      0.0014027301973871537,
+      0.0006969609215107392
+    ],
+    "height_m": 0.15,
+    "inner_corner_radius_m": 0.01,
+    "inner_size_xy_m": [
+      0.06,
+      0.06
+    ],
+    "interior_depth_m": 0.134,
+    "interior_floor_z_m": 0.016,
+    "kind": "single_spreader_ceramic_holder_v3",
+    "mass_kg": 0.48,
+    "open_top": true,
+    "origin": "exterior_base_center",
+    "outer_size_xy_m": [
+      0.086,
+      0.086
+    ],
+    "position_xyz_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "prim_path": "/Holder",
+    "rest_offset_m": 0.0,
+    "up_axis": "+Z",
+    "version": 3,
+    "visual_material_names": [
+      "GlazedIvory",
+      "InteriorGlaze",
+      "WarmStoneFoot"
+    ],
+    "visual_triangle_count": 2584,
+    "visual_vertex_count": 1294,
+    "volume_m3": 0.0004564012631745408,
+    "wall_outer_corner_radius_m": 0.02,
+    "wall_outer_size_xy_m": [
+      0.08,
+      0.08
+    ],
+    "wall_thickness_m": 0.01,
+    "wall_top_z_m": 0.1485,
+    "yaw_rad": 0.0
+  },
+  "modeling": "procedural watertight triangle mesh with three material subsets",
+  "version": 1
+}

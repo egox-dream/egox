@@ -1,0 +1,346 @@
+#usda 1.0
+(
+    defaultPrim = "KitchenTwin"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @../bread/kitchen_workarea_diverse.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "KitchenTwin"
+{
+    over "Furniture"
+    {
+        over "DiningTable0"
+        {
+            over "Stool0"
+            {
+                def Cylinder "SeatConnector0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-1.53, 2.08, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476731128662294
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.9944351109546816, 0.10535089036429653, 0, -0)
+                    double3 xformOp:translate = (-1.53, 2.0574999833106995, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-1.3099999999999998, 2.08, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476731128662294
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.9944351109546816, 0.10535089036429653, 0, -0)
+                    double3 xformOp:translate = (-1.3099999999999998, 2.0574999833106995, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector2" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-1.53, 2.3, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-1.3099999999999998, 2.3, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+            }
+
+            over "Stool1"
+            {
+                def Cylinder "SeatConnector0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-0.6900000000000001, 2.08, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476731128662294
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.9944351109546816, 0.10535089036429653, 0, -0)
+                    double3 xformOp:translate = (-0.6900000000000001, 2.0574999833106995, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-0.4700000000000001, 2.08, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476731128662294
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.9944351109546816, 0.10535089036429653, 0, -0)
+                    double3 xformOp:translate = (-0.4700000000000001, 2.0574999833106995, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector2" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-0.6900000000000001, 2.3, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (-0.4700000000000001, 2.3, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+            }
+        }
+
+        over "DiningTable1"
+        {
+            over "Stool0"
+            {
+                def Cylinder "SeatConnector0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (0.62, 2.18, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476730629105764
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.99443511667251, 0.10535083639217757, 0, -0)
+                    double3 xformOp:translate = (0.62, 2.1574999952316283, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (0.84, 2.18, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476730629105764
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.99443511667251, 0.10535083639217757, 0, -0)
+                    double3 xformOp:translate = (0.84, 2.1574999952316283, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector2" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (0.62, 2.4, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (0.84, 2.4, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+            }
+
+            over "Stool1"
+            {
+                def Cylinder "SeatConnector0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.4599999999999997, 2.18, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport0" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476730629105764
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.99443511667251, 0.10535083639217757, 0, -0)
+                    double3 xformOp:translate = (1.4599999999999997, 2.1574999952316283, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.68, 2.18, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "BackSupport1" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.21476730629105764
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (0.99443511667251, 0.10535083639217757, 0, -0)
+                    double3 xformOp:translate = (1.68, 2.1574999952316283, 0.7549999940395355)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector2" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.4599999999999997, 2.4, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+
+                def Cylinder "SeatConnector3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    uniform token axis = "Z"
+                    double height = 0.030000000000000027
+                    rel material:binding = </KitchenTwin/Looks/Steel>
+                    double radius = 0.01
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:translate = (1.68, 2.4, 0.665)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+                }
+            }
+        }
+    }
+}

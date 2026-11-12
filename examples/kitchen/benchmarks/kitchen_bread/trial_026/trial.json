@@ -1,0 +1,496 @@
+{
+  "task": "kitchen_bread",
+  "id": "trial_026",
+  "group": "id",
+  "scene_usd": "../../../scenes/bread/kitchen_workarea_diverse.usda",
+  "overlay": "overlay.usda",
+  "state": "state.npz",
+  "scene_position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "scene_yaw": 0.0,
+  "robot_spawn_position": [
+    2.12,
+    -0.71,
+    0.8
+  ],
+  "robot_yaw": -1.5707963267948966,
+  "camera_rig": {
+    "name": "g1_kitchen_d435_offset",
+    "outputs": {
+      "left_wrist": [
+        "left_wrist"
+      ],
+      "main": [
+        "saved_left",
+        "saved_right"
+      ],
+      "right_wrist": [
+        "right_wrist"
+      ]
+    },
+    "cameras": {
+      "left_wrist": {
+        "parent": "left_wrist_yaw_link",
+        "translation_m": [
+          -0.08,
+          -0.08,
+          -0.065
+        ],
+        "rotation_quat_wxyz_ros": [
+          0.11007931479405621,
+          0.5738799373613501,
+          -0.08320400844140591,
+          0.8072307321502857
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 384.0,
+          "fy": 384.0,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "right_wrist": {
+        "parent": "right_wrist_yaw_link",
+        "translation_m": [
+          -0.08,
+          0.08,
+          -0.065
+        ],
+        "rotation_quat_wxyz_ros": [
+          0.8072307321502857,
+          -0.08320400844140591,
+          0.5738799373613501,
+          0.11007931479405621
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 384.0,
+          "fy": 384.0,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "saved_left": {
+        "parent": "torso_link",
+        "translation_m": [
+          0.0776235,
+          0.03418615090732167,
+          0.44487
+        ],
+        "rotation_quat_wxyz_ros": [
+          -0.33359651386391387,
+          0.6272221111427622,
+          -0.6178173540767733,
+          0.33705712606772603
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 291.42458330953866,
+          "fy": 291.42458330953866,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "saved_right": {
+        "parent": "torso_link",
+        "translation_m": [
+          0.0776235,
+          -0.03874586547867514,
+          0.44487
+        ],
+        "rotation_quat_wxyz_ros": [
+          -0.3395145841511178,
+          0.6246114512329177,
+          -0.6150575867103439,
+          0.3410198633033704
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 291.42458330953866,
+          "fy": 291.42458330953866,
+          "height": 480,
+          "width": 640
+        }
+      }
+    }
+  },
+  "render_settings": {
+    "/rtx/reflections/enabled": true,
+    "/rtx/sceneDb/ambientLightIntensity": 1.0,
+    "/rtx/post/histogram/enabled": false
+  },
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw_joint",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_joint",
+    "right_knee_joint",
+    "left_shoulder_pitch_joint",
+    "right_shoulder_pitch_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_roll_joint",
+    "right_shoulder_roll_joint",
+    "left_ankle_roll_joint",
+    "right_ankle_roll_joint",
+    "left_shoulder_yaw_joint",
+    "right_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_elbow_joint",
+    "left_wrist_roll_joint",
+    "right_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "right_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_wrist_yaw_joint",
+    "left_hand_index_0_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_thumb_0_joint",
+    "right_hand_index_0_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_thumb_0_joint",
+    "left_hand_index_1_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_thumb_1_joint",
+    "right_hand_index_1_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "right_hand_thumb_2_joint"
+  ],
+  "rigid_bodies": [
+    "/World/SceneSmith/Props/Apple",
+    "/World/SceneSmith/Props/Banana",
+    "/World/SceneSmith/Props/Bowl",
+    "/World/SceneSmith/Props/Bread",
+    "/World/SceneSmith/Props/CuttingBoard",
+    "/World/SceneSmith/Props/MugLeft",
+    "/World/SceneSmith/Props/MugRight",
+    "/World/SceneSmith/Props/OpenMilkCan",
+    "/World/SceneSmith/Props/Orange",
+    "/World/SceneSmith/Props/Plate/Geometry/kitchen_dinner_plate_0_s1_0",
+    "/World/SceneSmith/Props/Saucepan",
+    "/World/SceneSmith/Props/SecondPlate/Geometry/kitchen_dinner_plate_0_s1_0",
+    "/World/SceneSmith/Props/Spreader",
+    "/World/SceneSmith/Props/StorageJar/Geometry/kitchen_refrigerator_jar_0_s0_0"
+  ],
+  "articulations": [
+    "/World/SceneSmith/Props/Refrigerator"
+  ],
+  "lbc_substep_phase": 0,
+  "sensor": null,
+  "scoring": {
+    "scene_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scene_yaw": 0.0,
+    "hand": {
+      "active_tip_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "wrist_to_egox_rotation": {
+        "left": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "right": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        ]
+      },
+      "eef_origin_in_wrist_m": [
+        0.05,
+        0.0,
+        0.0
+      ]
+    },
+    "can": {
+      "diameter_m": 0.09411572776517965,
+      "height_m": 0.10065596054514661,
+      "bottom_thickness_m": 0.0037745985204429974
+    },
+    "spreader": {
+      "handle_anchor_xyz_m": [
+        -0.028,
+        0.0,
+        0.0
+      ],
+      "handle_size_m": [
+        0.18388137622251408,
+        0.04658328197637023,
+        0.04167977861043653
+      ]
+    },
+    "bar_translation_scene_m": [
+      0.0,
+      0.03452752806104457,
+      0.0
+    ],
+    "table_xy_bounds_m": [
+      -1.9,
+      0.0,
+      1.9,
+      0.9
+    ],
+    "table_height_m": 0.8447813296939023
+  },
+  "coating": {
+    "config": {
+      "blade_resolution": [
+        32,
+        96
+      ],
+      "bread_resolution": [
+        128,
+        128
+      ],
+      "can_inner_radius_m": 0.042658625864766,
+      "can_mouth_z_m": 0.10065596054514661,
+      "can_fill_z_m": 0.07045917238160262,
+      "can_bottom_z_m": 0.0037745985204429974,
+      "immersion_dwell_s": 0.1,
+      "loading_rate_m_s": 0.01,
+      "blade_max_thickness_m": 0.0005,
+      "bread_max_thickness_m": 0.001,
+      "transfer_rate_s": 6.0,
+      "surface_tolerance_m": 0.002,
+      "contact_brush_radius_m": 0.01,
+      "min_downward_face_cos": 0.25,
+      "max_step_distance_m": 0.05,
+      "max_sweep_distance_m": 0.03,
+      "max_sweep_samples": 16
+    },
+    "blade_bounds_xyz": [
+      [
+        -0.1617744497131563,
+        -0.014,
+        -0.0015
+      ],
+      [
+        -0.022,
+        0.014,
+        0.0015
+      ]
+    ],
+    "blade_profile": {
+      "schema_version": 1,
+      "kind": "distal_underside_bevel",
+      "bevel_length_m": 0.03727318659017501,
+      "tip_thickness_m": 0.0008
+    },
+    "bread_outline_xy": [
+      [
+        -0.033957234073127424,
+        -0.031338914053707416
+      ],
+      [
+        0.044222805431049304,
+        -0.03597792698316464
+      ],
+      [
+        0.04905278598869565,
+        -0.029686728241768278
+      ],
+      [
+        0.05224071776934312,
+        -0.005024271061050218
+      ],
+      [
+        0.04843853303127994,
+        0.023857593871934955
+      ],
+      [
+        0.039659225910619676,
+        0.0353504013672071
+      ],
+      [
+        0.025431035979736172,
+        0.04192412985130475
+      ],
+      [
+        -0.009697013401580249,
+        0.04262792698316464
+      ],
+      [
+        -0.040019747317627676,
+        0.037362804673022026
+      ],
+      [
+        -0.048910222055858,
+        0.03027754673617178
+      ],
+      [
+        -0.05224071776934312,
+        0.02004497995914092
+      ],
+      [
+        -0.04780056332938588,
+        -0.004143711201738538
+      ],
+      [
+        -0.03927486262432871,
+        -0.02538459071842974
+      ]
+    ],
+    "bread_contact_outline_xy": [
+      [
+        -0.0549902292308875,
+        0.021099978904358864
+      ],
+      [
+        -0.05031638245198514,
+        -0.004361801264987935
+      ],
+      [
+        -0.041341960657188113,
+        -0.026720621808873413
+      ],
+      [
+        -0.0357444569190815,
+        -0.03298833058284991
+      ],
+      [
+        0.04655032150636769,
+        -0.037871502087541725
+      ],
+      [
+        0.051634511567048055,
+        -0.03124918762291398
+      ],
+      [
+        0.0549902292308875,
+        -0.005288706380052861
+      ],
+      [
+        0.05098792950661047,
+        0.02511325670729995
+      ],
+      [
+        0.041746553590125975,
+        0.03721094880758642
+      ],
+      [
+        0.026769511557617025,
+        0.04413066300137343
+      ],
+      [
+        -0.01020738252797921,
+        0.04487150208754173
+      ],
+      [
+        -0.042126049808029135,
+        0.03932926807686529
+      ],
+      [
+        -0.05148444426932421,
+        0.03187110182754924
+      ]
+    ],
+    "bread_top_z": 0.014196227812974143,
+    "visual_surfaces": [
+      {
+        "source": "blade",
+        "side": 0,
+        "base": {
+          "color": [
+            0.5299999713897705,
+            0.5699999928474426,
+            0.6000000238418579
+          ],
+          "roughness": 0.23999999463558197,
+          "metallic": 0.8999999761581421
+        }
+      },
+      {
+        "source": "blade",
+        "side": 1,
+        "base": {
+          "color": [
+            0.5299999713897705,
+            0.5699999928474426,
+            0.6000000238418579
+          ],
+          "roughness": 0.23999999463558197,
+          "metallic": 0.8999999761581421
+        }
+      },
+      {
+        "source": "bread",
+        "side": 0,
+        "base": {
+          "color": [
+            0.535647151152416,
+            0.4184031098346907,
+            0.27658083002293715
+          ],
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0
+        }
+      }
+    ],
+    "appearance": {
+      "color": [
+        0.3400284385175365,
+        0.21774638061264828,
+        0.1297449586867715
+      ],
+      "roughness": 0.2
+    }
+  }
+}

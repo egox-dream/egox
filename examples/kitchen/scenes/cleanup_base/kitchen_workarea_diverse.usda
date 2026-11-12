@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    defaultPrim = "KitchenTwin"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "KitchenTwin" (
+    prepend references = @../bread_supported/kitchen_workarea_diverse.usda@</KitchenTwin>
+)
+{
+    over "Props"
+    {
+        def Xform "UtensilHolder" (
+            prepend references = @../assets/holder/holder.usda@</Holder>
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:translate = (0.45, 0.26, 0.851)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+        }
+
+        over "Bread" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI"]
+        )
+        {
+            bool physics:kinematicEnabled = 0
+            bool physxRigidBody:disableGravity = 1
+            token visibility = "invisible"
+
+            over "Crust"
+            {
+                bool physics:collisionEnabled = 0
+            }
+        }
+    }
+}

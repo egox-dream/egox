@@ -1,0 +1,89 @@
+{
+  "bread": {
+    "disabled_colliders": [
+      "/KitchenTwin/Props/Bread/Crust"
+    ],
+    "gravity_disabled": true,
+    "kinematic": false,
+    "prim_path": "/KitchenTwin/Props/Bread",
+    "prims_preserved_for_reset": true,
+    "visible": false
+  },
+  "format": "egox_kitchen_spreader_container",
+  "generated_files": {
+    "kitchen_workarea_diverse.usda": "54c21384c545bb0822ada775946a58972343e5625badb1a0753754bf232078aa"
+  },
+  "holder": {
+    "asset_reference": "../assets/holder/holder.usda",
+    "asset_root_prim": "/Holder",
+    "asset_sha256": "92ca5e50288a7440b77c5a67700148ac6b70189958229c367ffae25ed0743f04",
+    "base_thickness_m": 0.016,
+    "body_outer_size_xy_m": [
+      0.082,
+      0.082
+    ],
+    "collider_count": 22,
+    "color_rgb": [
+      0.79,
+      0.74,
+      0.62
+    ],
+    "contact_offset_m": 0.001,
+    "height_m": 0.15,
+    "inner_corner_radius_m": 0.01,
+    "inner_size_xy_m": [
+      0.06,
+      0.06
+    ],
+    "interior_depth_m": 0.134,
+    "interior_floor_z_m": 0.016,
+    "kind": "single_spreader_ceramic_holder_v3",
+    "mass_kg": 0.48,
+    "open_top": true,
+    "origin": "exterior_base_center",
+    "outer_size_xy_m": [
+      0.086,
+      0.086
+    ],
+    "position_xyz_m": [
+      0.45,
+      0.26,
+      0.851
+    ],
+    "prim_path": "/KitchenTwin/Props/UtensilHolder",
+    "rest_offset_m": 0.0,
+    "up_axis": "+Z",
+    "version": 3,
+    "wall_outer_corner_radius_m": 0.02,
+    "wall_outer_size_xy_m": [
+      0.08,
+      0.08
+    ],
+    "wall_thickness_m": 0.01,
+    "wall_top_z_m": 0.1485,
+    "yaw_rad": 0.0
+  },
+  "scene_usd": "kitchen_workarea_diverse.usda",
+  "source_asset_count": 33,
+  "source_inputs": {
+    "../assets/room/mujoco/usd/Payload/Contents.usda": "9b1b466056b34c1d0ca5f38eef50757dd1d022b555bf0f04a893d406f7de12c0",
+    "../assets/room/mujoco/usd/Payload/Geometry.usda": "98e63a6e95f6a810dd9bf814dad064807faa1c1b21a26c2c3bd8eb4adc437b65",
+    "../assets/room/mujoco/usd/Payload/GeometryLibrary.usdc": "f6da7f05d113cccade31e8341cae00a0a55c28093455e6c61e9e9292213031bb",
+    "../assets/room/mujoco/usd/Payload/Materials.usda": "8057e05ca94dfeae03cde54d48f9e05c7a2acc063651c2d80a711604838bf355",
+    "../assets/room/mujoco/usd/Payload/MaterialsLibrary.usdc": "52b3c6ad9170af61a74ef05601ad1f2bd55e464a23a9ce99aab59acbbe0f796b",
+    "../assets/room/mujoco/usd/Payload/Physics.usda": "166428306141f4ddd07c9a8cb50bdca27d57f339348cd9b1eeb07fa237e848b6",
+    "../assets/room/mujoco/usd/scene_scene_001.usda": "6e358a98c3fee70b04327066467fded9ca2aeb97233bbb54e94b1d60c7d35f48",
+    "../assets/holder/holder.usda": "92ca5e50288a7440b77c5a67700148ac6b70189958229c367ffae25ed0743f04",
+    "../bread/kitchen_workarea.usda": "59e74320d1b5e4481052e3fd55bc1e5216b144e9143bf379b5263e4d53725c15",
+    "../bread/kitchen_workarea_diverse.usda": "da034cc3a8195ef42cd888a0deab7153ed7f5fecaacd67d255a09f3a895955e8",
+    "../assets/props/coffee_mug.usdc": "2ce6616b99e5b4584139bf7aa4fc8edb6d1c74b1e6610b06c0a9fc49e3ebd64f",
+    "../bread_supported/kitchen_workarea_diverse.usda": "2402ae5ab6424c5b6ee98ddb490f3ae8cae623ff869226ac60d2a6fc6f63573c"
+  },
+  "source_layer_count": 12,
+  "source_layers_unchanged": true,
+  "source_prim_count": 1634,
+  "source_references_validated": true,
+  "source_root_prim": "/KitchenTwin",
+  "source_scene": "../bread_supported/kitchen_workarea_diverse.usda",
+  "version": 1
+}

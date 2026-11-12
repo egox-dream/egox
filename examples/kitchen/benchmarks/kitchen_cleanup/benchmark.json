@@ -1,0 +1,226 @@
+{
+ "task": "kitchen_cleanup",
+ "embodiment": "G1-Sim-Dex3",
+ "description": "Pick up the spreader and put it blade-first into the utensil holder.",
+ "source": {
+  "benchmark_id": "spreader_50_v2_container_opening_64mm_v1",
+  "sha256": "db2ea05594119edd9ad135d3540393617dd8e49c9ab067874a58e075d517a705"
+ },
+ "protocol": {
+  "duration_s": 45.0,
+  "action_hz": 30,
+  "wbc_hz": 50,
+  "physics_hz": 200,
+  "inference_interval": 45,
+  "continue_after_success": true,
+  "fall": "pelvis below 0.45 m or tilt above 60 deg ends the trial; earned points are kept"
+ },
+ "metric": "spreader_four_stage_v1",
+ "counts": {
+  "cross_task_ood": 6,
+  "id": 32,
+  "real_inspired_ood": 12
+ },
+ "trials": [
+  {
+   "id": "trial_001",
+   "group": "id"
+  },
+  {
+   "id": "trial_002",
+   "group": "id"
+  },
+  {
+   "id": "trial_003",
+   "group": "id"
+  },
+  {
+   "id": "trial_004",
+   "group": "id"
+  },
+  {
+   "id": "trial_005",
+   "group": "id"
+  },
+  {
+   "id": "trial_006",
+   "group": "id"
+  },
+  {
+   "id": "trial_007",
+   "group": "id"
+  },
+  {
+   "id": "trial_008",
+   "group": "id"
+  },
+  {
+   "id": "trial_009",
+   "group": "id"
+  },
+  {
+   "id": "trial_010",
+   "group": "id"
+  },
+  {
+   "id": "trial_011",
+   "group": "id"
+  },
+  {
+   "id": "trial_012",
+   "group": "id"
+  },
+  {
+   "id": "trial_013",
+   "group": "id"
+  },
+  {
+   "id": "trial_014",
+   "group": "id"
+  },
+  {
+   "id": "trial_015",
+   "group": "id"
+  },
+  {
+   "id": "trial_016",
+   "group": "id"
+  },
+  {
+   "id": "trial_017",
+   "group": "id"
+  },
+  {
+   "id": "trial_018",
+   "group": "id"
+  },
+  {
+   "id": "trial_019",
+   "group": "id"
+  },
+  {
+   "id": "trial_020",
+   "group": "id"
+  },
+  {
+   "id": "trial_021",
+   "group": "id"
+  },
+  {
+   "id": "trial_022",
+   "group": "id"
+  },
+  {
+   "id": "trial_023",
+   "group": "id"
+  },
+  {
+   "id": "trial_024",
+   "group": "id"
+  },
+  {
+   "id": "trial_025",
+   "group": "id"
+  },
+  {
+   "id": "trial_026",
+   "group": "id"
+  },
+  {
+   "id": "trial_027",
+   "group": "id"
+  },
+  {
+   "id": "trial_028",
+   "group": "id"
+  },
+  {
+   "id": "trial_029",
+   "group": "id"
+  },
+  {
+   "id": "trial_030",
+   "group": "id"
+  },
+  {
+   "id": "trial_031",
+   "group": "id"
+  },
+  {
+   "id": "trial_032",
+   "group": "id"
+  },
+  {
+   "id": "trial_033",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_034",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_035",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_036",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_037",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_038",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_039",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_040",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_041",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_042",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_043",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_044",
+   "group": "real_inspired_ood"
+  },
+  {
+   "id": "trial_045",
+   "group": "cross_task_ood"
+  },
+  {
+   "id": "trial_046",
+   "group": "cross_task_ood"
+  },
+  {
+   "id": "trial_047",
+   "group": "cross_task_ood"
+  },
+  {
+   "id": "trial_048",
+   "group": "cross_task_ood"
+  },
+  {
+   "id": "trial_049",
+   "group": "cross_task_ood"
+  },
+  {
+   "id": "trial_050",
+   "group": "cross_task_ood"
+  }
+ ]
+}

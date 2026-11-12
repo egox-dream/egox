@@ -1,0 +1,93 @@
+{
+  "format": "egox_local_coffee_mug",
+  "version": 1,
+  "source_sha256": {
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug.gltf": "b815753d07d9269d6e0e34711166f94e24e72ee8e3f5fca59fa8a47c21e8a061",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug.sdf": "286ad5770c7a22bfa3391a51593c01fb7626d464ca9fc6c7429539832e1d860e",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/gltf_buffer_0.bin": "f3cd928af45128d1f2972f69517fb6f3a2d58269632c1ae6be9aadc35415523a",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/gltf_buffer_1.bin": "406c3ef3928a0d1e293a14b897b1156518303c4a04777bfbb3a38b014b223a07",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/gltf_buffer_2.bin": "96935b88ac6b2de979176bd02a3de20a201f12b1fe1a3604a2af0778db75a51a",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/gltf_buffer_3.bin": "23efb2e066fe8f58c225254e4435d1bf4d680ad2351f99b7daae07a06d042251",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_0.obj": "2fcc309441b3a47ba83f41fb8b3a304f21a22aec629356a7bc831e279d1c3bc5",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_1.obj": "0afdd4c2e7f770ec4a34b620ef2f90d3bdf294df90cc2947e878c46c0d97dcb5",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_10.obj": "58cc958030addffeb480118f4dfce69f97708d4e2ca4a2eba3cef03217192dac",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_11.obj": "d28ae92f887fd65cc42fe5201db396be112ca8125153f9e9d1b9fbe961aa5f46",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_12.obj": "03af2ec474759223944e55c4c9d04052a36f7d18c719e02a2bafd185229aafc2",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_13.obj": "4d28c4e519e7f7c216c957452b0ca43df36d918ccd2f3dbc58667bfda8e04aba",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_14.obj": "56446f3ab4b55a7ce08fad8dfdb51d883e9b919374dde5a34a5a165a4b4fc65f",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_15.obj": "9a312985fed71e991cb40a1689ce28d77b05ab26a25835486c83da059e58ad35",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_16.obj": "d98d21ba1b772048c7269f7d81ec00ad53680a11c9617fa680dd337ce83a1830",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_17.obj": "5dbd1b44cbdf728bb72d04d51b6549a585e2c15e9f2e47a7532d34acd4bdd468",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_18.obj": "c8e975a967cc369198224bcfb482b5a7d4f2b06cf3683d4d122113aeb6e7f002",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_19.obj": "ae6d88830a6d02c4268ec8811c9d1aab5c5e253251bdec887160906737063d59",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_2.obj": "52e3a0ec3fd9a1821c32edc2b591fd2b8206db4c7be8516c76761f6177bcb8e5",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_3.obj": "6eb19643d7a74ce274e2a6e1d0dac76c0c57f2fa97d31a2cf9aca78aecb95cc8",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_4.obj": "1f65465af1103efc3c5ae947ebdc6c2ce597693b1a1f9bcb2c41fbc2bdeee354",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_5.obj": "ea8639942aabe80b693c8f83f6e763c4952599a53fd1c491b190049a8c226321",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_6.obj": "79b3a0dd55dbf33e799c9716103dbdac15c082570e0f8574d1f8fb92abb39324",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_7.obj": "a6dcb0116a702fc35c809746e0e6614ef6927f0549fc0d285ea44c730ab2c425",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_8.obj": "bbfa45a0947346a2c6426cabdd79983f2586bae94499754f6768b0e33680d734",
+    "provenance://scenesmith/tests/test_data/realistic_scene/generated_assets/manipulands/sdf/coffee_mug_1762992163/coffee_mug_collision_9.obj": "5b4b8a6b009a9373225a417447c0c01c0a14badaaf9b92edb4263423fe600821"
+  },
+  "source_integrity_verified": true,
+  "native_up_axis": "Y",
+  "output_up_axis": "Z",
+  "mass_kg": 0.35,
+  "native_collision_up_axis": "Z",
+  "visual_dimensions_m": [
+    0.07517296075820923,
+    0.10487761348485947,
+    0.07999999821186066
+  ],
+  "visual_bounds_m": [
+    [
+      -0.037586480379104614,
+      -0.05243880674242973,
+      0.0
+    ],
+    [
+      0.037586480379104614,
+      0.05243880674242973,
+      0.07999999821186066
+    ]
+  ],
+  "collision_bounds_m": [
+    [
+      -0.03815425932407379,
+      -0.05296095833182335,
+      -0.0005292799905873835
+    ],
+    [
+      0.03815164044499397,
+      0.05299181863665581,
+      0.08053532242774963
+    ]
+  ],
+  "collision_pieces": 20,
+  "void_probe_points_m": {
+    "cup_center_z_04": [
+      0,
+      0.012,
+      0.04
+    ],
+    "cup_center_z_06": [
+      0,
+      0.012,
+      0.06
+    ],
+    "handle_hole_center": [
+      0,
+      -0.04,
+      0.035
+    ]
+  },
+  "void_probe_inside_collider": {
+    "cup_center_z_04": false,
+    "cup_center_z_06": false,
+    "handle_hole_center": false
+  },
+  "generated_files": {
+    "coffee_mug.usdc": "2ce6616b99e5b4584139bf7aa4fc8edb6d1c74b1e6610b06c0a9fc49e3ebd64f",
+    "coffee_mug_texture.png": "96935b88ac6b2de979176bd02a3de20a201f12b1fe1a3604a2af0778db75a51a"
+  }
+}

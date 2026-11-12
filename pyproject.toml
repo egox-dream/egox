@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "egox"
+version = "1.0.0"
+description = "MXT / MXT+ cross-embodiment policy training for EgoX"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BSD-3-Clause"}
+dependencies = ["numpy", "pyyaml"]
+
+[project.optional-dependencies]
+control = ["cyclonedds==11.0.1"]
+collection = ["cyclonedds==11.0.1", "h5py==3.14.0", "opencv-python-headless", "av"]
+training = ["torch", "torchvision", "h5py==3.14.0", "opencv-python-headless", "einops", "tqdm", "matplotlib", "wandb"]
+inference = ["torch", "torchvision", "opencv-python-headless", "einops", "scipy", "cyclonedds==11.0.1", "pynput"]
+simulation = ["pin==2.7.0", "scipy", "cyclonedds==11.0.1", "opencv-python-headless==4.11.0.86", "numpy==1.26.0", "h5py==3.14.0"]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"egox.configs" = ["model/*.yaml", "robots/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

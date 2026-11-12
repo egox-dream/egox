@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*egg-info/
+*.pem
+*.log
+*.mp4
+*.hdf5
+ckpt/
+wandb/
+datasets/
+build/
+/assets/robots/g1_dex3/usd/
+/IsaacLab/
+/results/

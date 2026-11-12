@@ -1,0 +1,741 @@
+{
+  "format": "egox_kitchen_chair_supports",
+  "version": 1,
+  "description": "Two back supports and four leg-to-seat connectors per chair; visual geometry only.",
+  "source_inputs": {
+    "../bread/kitchen_workarea.usda": "59e74320d1b5e4481052e3fd55bc1e5216b144e9143bf379b5263e4d53725c15",
+    "../bread/kitchen_workarea_diverse.usda": "da034cc3a8195ef42cd888a0deab7153ed7f5fecaacd67d255a09f3a895955e8",
+    "../bread/manifest.json": "01c65a1b46e4a685e6852f325d976043a5fb04dd609c1a2142ea0d1f444531c9"
+  },
+  "source_layers_unchanged": true,
+  "chairs": [
+    "/KitchenTwin/Furniture/DiningTable0/Stool0",
+    "/KitchenTwin/Furniture/DiningTable0/Stool1",
+    "/KitchenTwin/Furniture/DiningTable1/Stool0",
+    "/KitchenTwin/Furniture/DiningTable1/Stool1"
+  ],
+  "supports_per_chair": 2,
+  "seat_connectors_per_chair": 4,
+  "baseline_assets": [
+    {
+      "name": "Refrigerator",
+      "kind": "procedural_french_door_refrigerator",
+      "dimensions_m": [
+        0.91,
+        0.78,
+        2.02
+      ],
+      "position": [
+        2.12,
+        -1.58,
+        0
+      ],
+      "front_axis": "+Y",
+      "articulated": true,
+      "dofs": 3,
+      "handle_clearance_m": 0.04,
+      "task_can_bin": "RightDoor/Bin0",
+      "task_can_support_local_xyz": [
+        -0.2305,
+        0.251,
+        0.7568888888888889
+      ],
+      "dimensions_are_visual_estimates": true
+    },
+    {
+      "name": "SecondaryRefrigerator",
+      "kind": "procedural_french_door_refrigerator",
+      "dimensions_m": [
+        0.91,
+        0.78,
+        2.02
+      ],
+      "position": [
+        3.1,
+        -1.58,
+        0
+      ],
+      "front_axis": "+Y",
+      "articulated": false,
+      "dofs": 0,
+      "handle_clearance_m": 0.04,
+      "task_can_bin": "RightDoor/Bin0",
+      "task_can_support_local_xyz": [
+        -0.2305,
+        0.251,
+        0.7568888888888889
+      ],
+      "dimensions_are_visual_estimates": true
+    },
+    {
+      "name": "North/north_wall_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_north_wall_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          1.1538461538461537,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.2,
+          -0.45,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "North/north_wall_exterior_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_north_wall_exterior_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          1.1538461538461537,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.2,
+          -0.45,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "North/window_1_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_window_1_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          1.1538461538461537,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.2,
+          -0.45,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "EgoXMural",
+      "kind": "decorative_mural",
+      "text": "EgoX",
+      "texture": "../assets/props/egox_wall_mural.png",
+      "position": [
+        -0.44142038461538485,
+        4.318000000111759,
+        1.833333333333333
+      ],
+      "dimensions_m": [
+        2.6518460988264816,
+        0.0,
+        1.3313333863152401
+      ],
+      "collision": "none"
+    },
+    {
+      "name": "West/south_wall_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_south_wall_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          2.1862853408003084e-16,
+          -0.9846153846153847,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          2.220446049250313e-16,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.25,
+          4.3,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "West/south_wall_exterior_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_south_wall_exterior_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          2.1862853408003084e-16,
+          -0.9846153846153847,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          2.220446049250313e-16,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.25,
+          4.3,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "South/east_wall_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_east_wall_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          2.220446049250313e-16,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5625,
+          3.469446951953614e-16,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.2,
+          4.35,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "South/east_wall_exterior_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_east_wall_exterior_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          2.220446049250313e-16,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.5625,
+          3.469446951953614e-16,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          -3.2,
+          4.35,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "East/west_wall_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_west_wall_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -1.6328623988631378e-16,
+          -1.3333333333333335,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          4.35,
+          4.3,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "East/west_wall_exterior_visual_visual",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/room_geometry_kitchen/room_geometry_kitchen_room_geometry_body_link/room_geometry_kitchen_room_geometry_body_link_west_wall_exterior_visual_visual",
+      "collision": "static_triangle_mesh",
+      "source_to_room_matrix": [
+        [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -1.6328623988631378e-16,
+          -1.3333333333333335,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.111111111111111,
+          0.0
+        ],
+        [
+          4.35,
+          4.3,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Decor/AbstractArt/Mesh_0",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/kitchen_abstract_art_0/kitchen_abstract_art_0_base_link/kitchen_abstract_art_0_base_link_visual_visual",
+      "collision": "visual_only",
+      "source_to_room_matrix": [
+        [
+          2.220446049250313e-16,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          -1.0,
+          2.220446049250313e-16,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          4.337730754688381,
+          -2.144526090330602,
+          0.039050975313039915,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Decor/HerbIllustration/Mesh_0",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/kitchen_herb_illustration_0/kitchen_herb_illustration_0_base_link/kitchen_herb_illustration_0_base_link_visual_visual",
+      "collision": "visual_only",
+      "source_to_room_matrix": [
+        [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -1.2246467991473532e-16,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          3.264502265555783,
+          3.2229442275776106,
+          0.08523194359717046,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Decor/Print/Mesh_0",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/kitchen_print_0/kitchen_print_0_base_link/kitchen_print_0_base_link_visual_visual",
+      "collision": "visual_only",
+      "source_to_room_matrix": [
+        [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -1.2246467991473532e-16,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          3.2641733048910577,
+          3.363089975284466,
+          0.07369815993532125,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Decor/Mirror/Mesh_0",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/kitchen_wall_mirror_0/kitchen_wall_mirror_0_base_link/kitchen_wall_mirror_0_base_link_visual_visual",
+      "collision": "visual_only",
+      "source_to_room_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -3.241055045195496,
+          -2.7972211668624682,
+          -0.027367677763340037,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Decor/Clock/Mesh_0",
+      "kind": "room_reference",
+      "source": "../assets/room/mujoco/usd/scene_scene_001.usda",
+      "source_prim": "/scene_scene_001/Geometry/kitchen_wall_clock_0/kitchen_wall_clock_0_base_link/kitchen_wall_clock_0_base_link_visual_visual",
+      "collision": "visual_only",
+      "source_to_room_matrix": [
+        [
+          -1.0,
+          1.2246467991473532e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -1.2246467991473532e-16,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          6.167569368474874,
+          2.7089468095451585,
+          0.7224287758056351,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Plate",
+      "source_prim": "kitchen_dinner_plate_0_s1_0",
+      "position": [
+        0.7,
+        0.19,
+        0.852
+      ],
+      "dimensions_m": [
+        0.26181091990704153,
+        0.26182490063797204,
+        0.02580057626128207
+      ]
+    },
+    {
+      "name": "Bread",
+      "kind": "procedural_sandwich_bread",
+      "position": [
+        0.7,
+        0.19,
+        0.862
+      ],
+      "mass_kg": 0.035,
+      "dimensions_m": [
+        0.108,
+        0.097,
+        0.013
+      ]
+    },
+    {
+      "name": "Spreader",
+      "kind": "enlarged_black_handle_spreader",
+      "position": [
+        0.812583302491977,
+        0.125,
+        0.8922879583711408
+      ],
+      "mass_kg": 0.1,
+      "dimensions_m": [
+        0.244,
+        0.038,
+        0.034
+      ],
+      "handle_size_m": [
+        0.15,
+        0.038,
+        0.034
+      ],
+      "blade_size_m": [
+        0.1,
+        0.028,
+        0.003
+      ],
+      "blade_center_z_m": 0.0,
+      "max_depenetration_velocity_m_s": 0.2,
+      "placement": {
+        "mode": "plate_right_rim",
+        "position_xyz_m": [
+          0.812583302491977,
+          0.125,
+          0.8922879583711408
+        ],
+        "quaternion_xyzw": [
+          0.02827537112255757,
+          0.1055251216322507,
+          -0.25726990009649847,
+          0.9601443384183016
+        ],
+        "yaw_deg": -30.0,
+        "pitch_deg": 12.543894841345228,
+        "plate_xy_m": [
+          0.7,
+          0.19
+        ],
+        "yaw_jitter_deg": 0.0,
+        "rim_offset_m": 0.0,
+        "plate_z_shift_m": 0.0,
+        "support": {
+          "handle_surface_z_m": 0.8504999999999999,
+          "contact_part": "handle",
+          "contact_bottom_z_m": 0.8783,
+          "contact_x_m": -0.012,
+          "contact_local_z_m": -0.016999999999999998,
+          "plate_rim_height_m": 0.0278,
+          "clearance_m": 0.0005,
+          "plate_contact_is_intended": true,
+          "handle_heel_xyz_m": [
+            0.9004467564738916,
+            0.05810620365430175,
+            0.8504999999999999
+          ]
+        }
+      },
+      "handle_collision": "chamfered_convex_hull",
+      "surface_clearance_m": 0.002
+    },
+    {
+      "name": "OpenMilkCan",
+      "kind": "procedural_open_vessel",
+      "position": [
+        1.8895000000000002,
+        -1.3290000000000002,
+        0.7568888888888889
+      ],
+      "mass_kg": 0.2,
+      "outer_diameter_m": 0.0875,
+      "height_m": 0.1,
+      "wall_thickness_m": 0.00375,
+      "max_depenetration_velocity_m_s": 0.2,
+      "support": "refrigerator_right_door_bin"
+    }
+  ],
+  "diverse_assets": [
+    {
+      "name": "MugLeft",
+      "source": "../assets/props/coffee_mug.usdc",
+      "position": [
+        -0.3,
+        0.53,
+        0.853
+      ],
+      "mass_kg": 0.35
+    },
+    {
+      "name": "MugRight",
+      "source": "../assets/props/coffee_mug.usdc",
+      "position": [
+        1.55,
+        0.2,
+        0.853
+      ],
+      "mass_kg": 0.35
+    },
+    {
+      "name": "Bowl",
+      "kind": "procedural_open_vessel",
+      "position": [
+        -1.48,
+        0.19,
+        0.853
+      ],
+      "mass_kg": 0.32,
+      "outer_diameter_m": 0.2,
+      "height_m": 0.06,
+      "wall_thickness_m": 0.003
+    },
+    {
+      "name": "Saucepan",
+      "kind": "procedural_open_vessel",
+      "position": [
+        -1.64,
+        -1.5499999999999998,
+        0.903
+      ],
+      "mass_kg": 0.8,
+      "outer_diameter_m": 0.22,
+      "height_m": 0.09,
+      "wall_thickness_m": 0.003
+    },
+    {
+      "name": "SecondPlate",
+      "source_prim": "kitchen_dinner_plate_0_s1_0",
+      "position": [
+        -1.02,
+        0.64,
+        0.853
+      ],
+      "dimensions_m": [
+        0.2042125100370218,
+        0.20422341500674746,
+        0.020124448745639567
+      ]
+    },
+    {
+      "name": "StorageJar",
+      "source_prim": "kitchen_refrigerator_jar_0_s0_0",
+      "position": [
+        0.42,
+        -1.5499999999999998,
+        0.903
+      ],
+      "dimensions_m": [
+        0.09868993813934562,
+        0.0974834940179532,
+        0.0781386705721614
+      ]
+    }
+  ],
+  "generated_files": {
+    "kitchen_workarea.usda": "77bf971fe61ed764f7addd40c7f17bfe204895a61b2224e61a3f56885f904bc6",
+    "kitchen_workarea_diverse.usda": "2402ae5ab6424c5b6ee98ddb490f3ae8cae623ff869226ac60d2a6fc6f63573c"
+  }
+}

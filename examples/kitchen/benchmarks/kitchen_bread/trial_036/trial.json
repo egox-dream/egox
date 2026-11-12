@@ -1,0 +1,605 @@
+{
+  "task": "kitchen_bread",
+  "id": "trial_036",
+  "group": "cross_task_ood",
+  "scene_usd": "../../../scenes/bread/kitchen_workarea_diverse.usda",
+  "overlay": "overlay.usda",
+  "state": "state.npz",
+  "scene_position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "scene_yaw": 0.0,
+  "robot_spawn_position": [
+    2.1145469742758314,
+    -0.7063433996166016,
+    0.8
+  ],
+  "robot_yaw": -1.688396393515427,
+  "camera_rig": {
+    "name": "g1_kitchen_d435_offset",
+    "outputs": {
+      "left_wrist": [
+        "left_wrist"
+      ],
+      "main": [
+        "saved_left",
+        "saved_right"
+      ],
+      "right_wrist": [
+        "right_wrist"
+      ]
+    },
+    "cameras": {
+      "left_wrist": {
+        "parent": "left_wrist_yaw_link",
+        "translation_m": [
+          -0.08125664768701243,
+          -0.08252838856814049,
+          -0.06344134375505188
+        ],
+        "rotation_quat_wxyz_ros": [
+          0.14943655138412676,
+          0.5880578415279513,
+          -0.06628898864966264,
+          0.792125281828393
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 391.57537144858713,
+          "fy": 391.57537144858713,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "right_wrist": {
+        "parent": "right_wrist_yaw_link",
+        "translation_m": [
+          -0.08127578190235918,
+          0.08262160362630079,
+          -0.06882053194799409
+        ],
+        "rotation_quat_wxyz_ros": [
+          0.8110462436188729,
+          -0.08790113545539123,
+          0.5703583685424173,
+          0.09575339435759514
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 354.1996391181547,
+          "fy": 354.1996391181547,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "saved_left": {
+        "parent": "torso_link",
+        "translation_m": [
+          0.08779358159280391,
+          0.028899328278408666,
+          0.44956617845373226
+        ],
+        "rotation_quat_wxyz_ros": [
+          -0.35221847096186104,
+          0.6528637373079613,
+          -0.5824070744946052,
+          0.3324350896042795
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 281.15498015784186,
+          "fy": 281.15498015784186,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "saved_right": {
+        "parent": "torso_link",
+        "translation_m": [
+          0.09446658687744756,
+          -0.043720604907024875,
+          0.4505123912953244
+        ],
+        "rotation_quat_wxyz_ros": [
+          -0.35829461262364565,
+          0.6501180295074316,
+          -0.5796769214211934,
+          0.33607467183037404
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 281.15498015784186,
+          "fy": 281.15498015784186,
+          "height": 480,
+          "width": 640
+        }
+      }
+    }
+  },
+  "render_settings": {
+    "/rtx/reflections/enabled": true,
+    "/rtx/sceneDb/ambientLightIntensity": 0.7158544076162906,
+    "/rtx/post/histogram/enabled": false
+  },
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw_joint",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_joint",
+    "right_knee_joint",
+    "left_shoulder_pitch_joint",
+    "right_shoulder_pitch_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_roll_joint",
+    "right_shoulder_roll_joint",
+    "left_ankle_roll_joint",
+    "right_ankle_roll_joint",
+    "left_shoulder_yaw_joint",
+    "right_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_elbow_joint",
+    "left_wrist_roll_joint",
+    "right_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "right_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_wrist_yaw_joint",
+    "left_hand_index_0_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_thumb_0_joint",
+    "right_hand_index_0_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_thumb_0_joint",
+    "left_hand_index_1_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_thumb_1_joint",
+    "right_hand_index_1_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "right_hand_thumb_2_joint"
+  ],
+  "rigid_bodies": [
+    "/World/SceneSmith/Props/Apple",
+    "/World/SceneSmith/Props/Banana",
+    "/World/SceneSmith/Props/Bowl",
+    "/World/SceneSmith/Props/Bread",
+    "/World/SceneSmith/Props/CuttingBoard",
+    "/World/SceneSmith/Props/MugLeft",
+    "/World/SceneSmith/Props/MugRight",
+    "/World/SceneSmith/Props/OpenMilkCan",
+    "/World/SceneSmith/Props/Orange",
+    "/World/SceneSmith/Props/Plate/Geometry/kitchen_dinner_plate_0_s1_0",
+    "/World/SceneSmith/Props/Saucepan",
+    "/World/SceneSmith/Props/SecondPlate/Geometry/kitchen_dinner_plate_0_s1_0",
+    "/World/SceneSmith/Props/Spreader",
+    "/World/SceneSmith/Props/StorageJar/Geometry/kitchen_refrigerator_jar_0_s0_0"
+  ],
+  "articulations": [
+    "/World/SceneSmith/Props/Refrigerator"
+  ],
+  "lbc_substep_phase": 0,
+  "sensor": {
+    "seed": "7b18f13531647bdbfa09587ec8da09947b69c4e5a66704b382b46eaf6fa8e593",
+    "image": {
+      "camera_samples": {
+        "left_wrist": {
+          "contrast": 0.9510955143624176,
+          "corruption": {
+            "algorithm": "egox_sensor_corruptions_v1",
+            "blur_sigma_px": 1.0541820879052477,
+            "jpeg_quality": 91,
+            "noise_std_dn": 3.1507096036817415,
+            "pixelation_scale": 1.0,
+            "profile_index": 0,
+            "profile_name": "warm_soft",
+            "reference_width_px": {
+              "main_eye": 640,
+              "wrist": 640
+            }
+          },
+          "exposure_ev": 0.014244782280484924,
+          "hue_shift": 0.006567619673981029,
+          "noise_std_dn": 0.0,
+          "saturation": 1.0625437082010514,
+          "white_balance_scale": [
+            1.0019500998854733,
+            0.9887966668719512,
+            1.0155226320161055
+          ]
+        },
+        "main": {
+          "contrast": 0.9510955143624176,
+          "corruption": {
+            "algorithm": "egox_sensor_corruptions_v1",
+            "blur_sigma_px": 1.167865526359418,
+            "jpeg_quality": 88,
+            "noise_std_dn": 3.583249472607024,
+            "pixelation_scale": 1.0,
+            "profile_index": 0,
+            "profile_name": "warm_soft",
+            "reference_width_px": {
+              "main_eye": 640,
+              "wrist": 640
+            }
+          },
+          "exposure_ev": 0.014244782280484924,
+          "hue_shift": 0.006567619673981029,
+          "noise_std_dn": 0.0,
+          "saturation": 1.0625437082010514,
+          "white_balance_scale": [
+            1.0019500998854733,
+            0.9887966668719512,
+            1.0155226320161055
+          ]
+        },
+        "right_wrist": {
+          "contrast": 0.9510955143624176,
+          "corruption": {
+            "algorithm": "egox_sensor_corruptions_v1",
+            "blur_sigma_px": 1.1692205372259739,
+            "jpeg_quality": 88,
+            "noise_std_dn": 3.3711088426558558,
+            "pixelation_scale": 1.0,
+            "profile_index": 0,
+            "profile_name": "warm_soft",
+            "reference_width_px": {
+              "main_eye": 640,
+              "wrist": 640
+            }
+          },
+          "exposure_ev": 0.014244782280484924,
+          "hue_shift": 0.006567619673981029,
+          "noise_std_dn": 0.0,
+          "saturation": 1.0625437082010514,
+          "white_balance_scale": [
+            1.0019500998854733,
+            0.9887966668719512,
+            1.0155226320161055
+          ]
+        }
+      },
+      "contrast": 0.9510955143624176,
+      "corruption": {
+        "algorithm": "egox_sensor_corruptions_v1",
+        "blur_sigma_px": 1.0588029460427466,
+        "jpeg_quality": 91,
+        "noise_std_dn": 3.28957370736572,
+        "pixelation_scale": 1.0,
+        "profile_index": 0,
+        "profile_name": "warm_soft",
+        "reference_width_px": {
+          "main_eye": 640,
+          "wrist": 640
+        }
+      },
+      "exposure_ev": 0.014244782280484924,
+      "hue_shift": 0.006567619673981029,
+      "noise_std_dn": 0.0,
+      "saturation": 1.0625437082010514,
+      "white_balance_scale": [
+        1.0019500998854733,
+        0.9887966668719512,
+        1.0155226320161055
+      ]
+    },
+    "views": {
+      "left_wrist": 1,
+      "main": 2,
+      "right_wrist": 1
+    }
+  },
+  "scoring": {
+    "scene_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scene_yaw": 0.0,
+    "hand": {
+      "active_tip_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "wrist_to_egox_rotation": {
+        "left": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "right": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        ]
+      },
+      "eef_origin_in_wrist_m": [
+        0.05,
+        0.0,
+        0.0
+      ]
+    },
+    "can": {
+      "diameter_m": 0.08169971308119255,
+      "height_m": 0.0932078840577592,
+      "bottom_thickness_m": 0.0034952956521659695
+    },
+    "spreader": {
+      "handle_anchor_xyz_m": [
+        -0.028,
+        0.0,
+        0.0
+      ],
+      "handle_size_m": [
+        0.1523227007112827,
+        0.03858841751352496,
+        0.034526478827890755
+      ]
+    },
+    "bar_translation_scene_m": [
+      0.0,
+      0.12280625298560513,
+      0.0
+    ],
+    "table_xy_bounds_m": [
+      -1.9,
+      0.0,
+      1.9,
+      0.9
+    ],
+    "table_height_m": 0.8451367052752313
+  },
+  "coating": {
+    "config": {
+      "blade_resolution": [
+        32,
+        96
+      ],
+      "bread_resolution": [
+        128,
+        128
+      ],
+      "can_inner_radius_m": 0.03703097852342968,
+      "can_mouth_z_m": 0.0932078840577592,
+      "can_fill_z_m": 0.06524551884043144,
+      "can_bottom_z_m": 0.0034952956521659695,
+      "immersion_dwell_s": 0.1,
+      "loading_rate_m_s": 0.01,
+      "blade_max_thickness_m": 0.0005,
+      "bread_max_thickness_m": 0.001,
+      "transfer_rate_s": 6.0,
+      "surface_tolerance_m": 0.002,
+      "contact_brush_radius_m": 0.01,
+      "min_downward_face_cos": 0.25,
+      "max_step_distance_m": 0.05,
+      "max_sweep_distance_m": 0.03,
+      "max_sweep_samples": 16
+    },
+    "blade_bounds_xyz": [
+      [
+        -0.1404727739659432,
+        -0.014,
+        -0.0015
+      ],
+      [
+        -0.022,
+        0.014,
+        0.0015
+      ]
+    ],
+    "blade_profile": {
+      "schema_version": 1,
+      "kind": "distal_underside_bevel",
+      "bevel_length_m": 0.03159273972425152,
+      "tip_thickness_m": 0.0008
+    },
+    "bread_outline_xy": [
+      [
+        -0.03989871417595129,
+        -0.03241195633474028
+      ],
+      [
+        0.03989871417595129,
+        -0.032411956334740276
+      ],
+      [
+        0.04404664837736832,
+        -0.02560948168593736
+      ],
+      [
+        0.046670752340436716,
+        -0.0012941980782185396
+      ],
+      [
+        0.04404664837736832,
+        0.023021085529500284
+      ],
+      [
+        0.038063311386171,
+        0.03161911046594103
+      ],
+      [
+        0.028119938479047053,
+        0.03679289617567592
+      ],
+      [
+        1.3551105211208583e-11,
+        0.03906195633474029
+      ],
+      [
+        -0.028119938479047053,
+        0.03679289617567592
+      ],
+      [
+        -0.03806331138617099,
+        0.031619110465941035
+      ],
+      [
+        -0.04404664837736832,
+        0.023021085529500284
+      ],
+      [
+        -0.046670752340436716,
+        -0.0012941980606021774
+      ],
+      [
+        -0.04404664837736832,
+        -0.025609481685937355
+      ]
+    ],
+    "bread_contact_outline_xy": [
+      [
+        -0.04912710772677549,
+        -0.001362313748002292
+      ],
+      [
+        -0.04636489302880876,
+        -0.026957349143091953
+      ],
+      [
+        -0.04199864650100136,
+        -0.03411784877341083
+      ],
+      [
+        0.04199864650100136,
+        -0.03411784877341082
+      ],
+      [
+        0.04636489302880876,
+        -0.026957349143091957
+      ],
+      [
+        0.04912710772677549,
+        -0.0013623137665458311
+      ],
+      [
+        0.04636489302880876,
+        0.0242327216100003
+      ],
+      [
+        0.040066643564390526,
+        0.03328327417467477
+      ],
+      [
+        0.029599935241102163,
+        0.038729364395448336
+      ],
+      [
+        1.4264321274956404e-11,
+        0.041117848773410834
+      ],
+      [
+        -0.029599935241102163,
+        0.038729364395448336
+      ],
+      [
+        -0.04006664356439052,
+        0.033283274174674776
+      ],
+      [
+        -0.04636489302880876,
+        0.0242327216100003
+      ]
+    ],
+    "bread_top_z": 0.014396443967074249,
+    "visual_surfaces": [
+      {
+        "source": "blade",
+        "side": 0,
+        "base": {
+          "color": [
+            0.2158605,
+            0.12213877,
+            0.5332764
+          ],
+          "roughness": 0.4,
+          "metallic": 0.0
+        }
+      },
+      {
+        "source": "blade",
+        "side": 1,
+        "base": {
+          "color": [
+            0.2158605,
+            0.12213877,
+            0.5332764
+          ],
+          "roughness": 0.4,
+          "metallic": 0.0
+        }
+      },
+      {
+        "source": "bread",
+        "side": 0,
+        "base": {
+          "color": [
+            0.5271125369403793,
+            0.4085973828676698,
+            0.26695669059234256
+          ],
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0
+        }
+      }
+    ],
+    "appearance": {
+      "color": [
+        0.3931636574626711,
+        0.2777132705650146,
+        0.18705508769188106
+      ],
+      "roughness": 0.2
+    }
+  }
+}

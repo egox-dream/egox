@@ -1,0 +1,650 @@
+{
+  "task": "kitchen_cleanup",
+  "id": "trial_043",
+  "group": "real_inspired_ood",
+  "scene_usd": "../../../scenes/cleanup/kitchen_workarea_diverse.usda",
+  "overlay": "overlay.usda",
+  "state": "state.npz",
+  "scene_position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "scene_yaw": 0.0,
+  "robot_spawn_position": [
+    0.7,
+    -0.84,
+    0.8
+  ],
+  "robot_yaw": 1.5707963267948966,
+  "camera_rig": {
+    "name": "g1_kitchen_d435_offset",
+    "outputs": {
+      "left_wrist": [
+        "left_wrist"
+      ],
+      "main": [
+        "saved_left",
+        "saved_right"
+      ],
+      "right_wrist": [
+        "right_wrist"
+      ]
+    },
+    "cameras": {
+      "left_wrist": {
+        "parent": "left_wrist_yaw_link",
+        "translation_m": [
+          -0.08368221194045491,
+          -0.08261249499709676,
+          -0.0611506291621383
+        ],
+        "rotation_quat_wxyz_ros": [
+          0.11753197730808707,
+          0.5676661337766868,
+          -0.10579325774768794,
+          0.8079289458165312
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 370.47379527513914,
+          "fy": 370.47379527513914,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "right_wrist": {
+        "parent": "right_wrist_yaw_link",
+        "translation_m": [
+          -0.07936116959640899,
+          0.08018637090916081,
+          -0.06532158039465265
+        ],
+        "rotation_quat_wxyz_ros": [
+          0.8199566539847212,
+          -0.06658713566845709,
+          0.5564143596178961,
+          0.1167916921731047
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 347.5060071235,
+          "fy": 347.5060071235,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "saved_left": {
+        "parent": "torso_link",
+        "translation_m": [
+          0.08536155091473732,
+          0.04351926076990503,
+          0.45516361039680664
+        ],
+        "rotation_quat_wxyz_ros": [
+          -0.3065779058240213,
+          0.6811708465324418,
+          -0.582674356204859,
+          0.32016692539375047
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 311.71859749497685,
+          "fy": 311.71859749497685,
+          "height": 480,
+          "width": 640
+        }
+      },
+      "saved_right": {
+        "parent": "torso_link",
+        "translation_m": [
+          0.09309140072064973,
+          -0.028827070321071315,
+          0.4601971790891134
+        ],
+        "rotation_quat_wxyz_ros": [
+          -0.3128744144771994,
+          0.6787725638120737,
+          -0.5801128593036124,
+          0.3238000584498422
+        ],
+        "intrinsics": {
+          "cx": 319.5,
+          "cy": 239.5,
+          "fx": 311.71859749497685,
+          "fy": 311.71859749497685,
+          "height": 480,
+          "width": 640
+        }
+      }
+    }
+  },
+  "render_settings": {
+    "/rtx/reflections/enabled": true,
+    "/rtx/sceneDb/ambientLightIntensity": 0.8868180081290794,
+    "/rtx/post/histogram/enabled": false
+  },
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw_joint",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_joint",
+    "right_knee_joint",
+    "left_shoulder_pitch_joint",
+    "right_shoulder_pitch_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_roll_joint",
+    "right_shoulder_roll_joint",
+    "left_ankle_roll_joint",
+    "right_ankle_roll_joint",
+    "left_shoulder_yaw_joint",
+    "right_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_elbow_joint",
+    "left_wrist_roll_joint",
+    "right_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "right_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_wrist_yaw_joint",
+    "left_hand_index_0_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_thumb_0_joint",
+    "right_hand_index_0_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_thumb_0_joint",
+    "left_hand_index_1_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_thumb_1_joint",
+    "right_hand_index_1_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "right_hand_thumb_2_joint"
+  ],
+  "rigid_bodies": [
+    "/World/SceneSmith/Props/Apple",
+    "/World/SceneSmith/Props/Banana",
+    "/World/SceneSmith/Props/Bowl",
+    "/World/SceneSmith/Props/Bread",
+    "/World/SceneSmith/Props/CuttingBoard",
+    "/World/SceneSmith/Props/MugLeft",
+    "/World/SceneSmith/Props/MugRight",
+    "/World/SceneSmith/Props/OpenMilkCan",
+    "/World/SceneSmith/Props/Orange",
+    "/World/SceneSmith/Props/Plate/Geometry/kitchen_dinner_plate_0_s1_0",
+    "/World/SceneSmith/Props/Saucepan",
+    "/World/SceneSmith/Props/SecondPlate/Geometry/kitchen_dinner_plate_0_s1_0",
+    "/World/SceneSmith/Props/Spreader",
+    "/World/SceneSmith/Props/StorageJar/Geometry/kitchen_refrigerator_jar_0_s0_0",
+    "/World/SceneSmith/Props/UtensilHolder"
+  ],
+  "articulations": [
+    "/World/SceneSmith/Props/Refrigerator"
+  ],
+  "lbc_substep_phase": 0,
+  "sensor": {
+    "seed": "b1b8e1ccc54bedf8ae85de3cfd1babfdc11fc01bc022776af793b61ba60536cc",
+    "image": {
+      "camera_samples": {
+        "left_wrist": {
+          "contrast": 1.0166395597121634,
+          "corruption": {
+            "algorithm": "egox_sensor_corruptions_v1",
+            "blur_sigma_px": 0.0,
+            "jpeg_quality": 88,
+            "noise_std_dn": 3.5289153748873683,
+            "pixelation_scale": 0.7454774702248065,
+            "profile_index": 0,
+            "profile_name": "neutral_pixelation",
+            "reference_width_px": {
+              "main_eye": 640,
+              "wrist": 640
+            }
+          },
+          "exposure_ev": 0.0013324148719038864,
+          "hue_shift": -0.0020829604626935528,
+          "noise_std_dn": 0.0,
+          "saturation": 0.920353395102763,
+          "white_balance_scale": [
+            1.0029645399790432,
+            0.9847534700080264,
+            0.9818840220172879
+          ]
+        },
+        "main": {
+          "contrast": 1.0166395597121634,
+          "corruption": {
+            "algorithm": "egox_sensor_corruptions_v1",
+            "blur_sigma_px": 0.0,
+            "jpeg_quality": 90,
+            "noise_std_dn": 3.8994230130176857,
+            "pixelation_scale": 0.7031703589324757,
+            "profile_index": 0,
+            "profile_name": "neutral_pixelation",
+            "reference_width_px": {
+              "main_eye": 640,
+              "wrist": 640
+            }
+          },
+          "exposure_ev": 0.0013324148719038864,
+          "hue_shift": -0.0020829604626935528,
+          "noise_std_dn": 0.0,
+          "saturation": 0.920353395102763,
+          "white_balance_scale": [
+            1.0029645399790432,
+            0.9847534700080264,
+            0.9818840220172879
+          ]
+        },
+        "right_wrist": {
+          "contrast": 1.0166395597121634,
+          "corruption": {
+            "algorithm": "egox_sensor_corruptions_v1",
+            "blur_sigma_px": 0.0,
+            "jpeg_quality": 89,
+            "noise_std_dn": 2.472375730714301,
+            "pixelation_scale": 0.6786171443100517,
+            "profile_index": 0,
+            "profile_name": "neutral_pixelation",
+            "reference_width_px": {
+              "main_eye": 640,
+              "wrist": 640
+            }
+          },
+          "exposure_ev": 0.0013324148719038864,
+          "hue_shift": -0.0020829604626935528,
+          "noise_std_dn": 0.0,
+          "saturation": 0.920353395102763,
+          "white_balance_scale": [
+            1.0029645399790432,
+            0.9847534700080264,
+            0.9818840220172879
+          ]
+        }
+      },
+      "contrast": 1.0166395597121634,
+      "corruption": {
+        "algorithm": "egox_sensor_corruptions_v1",
+        "blur_sigma_px": 0.0,
+        "jpeg_quality": 91,
+        "noise_std_dn": 3.11338583176067,
+        "pixelation_scale": 0.6789438379057373,
+        "profile_index": 0,
+        "profile_name": "neutral_pixelation",
+        "reference_width_px": {
+          "main_eye": 640,
+          "wrist": 640
+        }
+      },
+      "exposure_ev": 0.0013324148719038864,
+      "hue_shift": -0.0020829604626935528,
+      "noise_std_dn": 0.0,
+      "saturation": 0.920353395102763,
+      "white_balance_scale": [
+        1.0029645399790432,
+        0.9847534700080264,
+        0.9818840220172879
+      ]
+    },
+    "views": {
+      "left_wrist": 1,
+      "main": 2,
+      "right_wrist": 1
+    }
+  },
+  "scoring": {
+    "scene_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scene_yaw": 0.0,
+    "hand": {
+      "active_tip_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "wrist_to_egox_rotation": {
+        "left": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "right": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        ]
+      },
+      "eef_origin_in_wrist_m": [
+        0.05,
+        0.0,
+        0.0
+      ]
+    },
+    "holder_evaluation": {
+      "holder_inner_size_xy_m": [
+        0.064,
+        0.064
+      ],
+      "holder_height_m": 0.15,
+      "holder_bottom_thickness_m": 0.016,
+      "penetration_tolerance_m": 0.002,
+      "minimum_insertion_depth_m": 0.03,
+      "minimum_handle_above_blade_m": 0.035,
+      "minimum_exposed_handle_m": 0.015,
+      "support_proximity_m": 0.004,
+      "maximum_holder_tilt_rad": 0.2617993877991494,
+      "maximum_linear_speed_m_s": 0.025,
+      "maximum_angular_speed_rad_s": 0.2,
+      "minimum_open_command": 0.8,
+      "stable_time_s": 0.0,
+      "maximum_retained_point_drift_m": 0.006,
+      "holder_inner_corner_radius_m": 0.012,
+      "holder_wall_top_z_m": 0.1485,
+      "holder_wall_outer_size_xy_m": [
+        0.08,
+        0.08
+      ],
+      "holder_wall_outer_corner_radius_m": 0.02
+    }
+  },
+  "holder": {
+    "evaluation": {
+      "holder_inner_size_xy_m": [
+        0.064,
+        0.064
+      ],
+      "holder_height_m": 0.15,
+      "holder_bottom_thickness_m": 0.016,
+      "penetration_tolerance_m": 0.002,
+      "minimum_insertion_depth_m": 0.03,
+      "minimum_handle_above_blade_m": 0.035,
+      "minimum_exposed_handle_m": 0.015,
+      "support_proximity_m": 0.004,
+      "maximum_holder_tilt_rad": 0.2617993877991494,
+      "maximum_linear_speed_m_s": 0.025,
+      "maximum_angular_speed_rad_s": 0.2,
+      "minimum_open_command": 0.8,
+      "stable_time_s": 0.0,
+      "maximum_retained_point_drift_m": 0.006,
+      "holder_inner_corner_radius_m": 0.012,
+      "holder_wall_top_z_m": 0.1485,
+      "holder_wall_outer_size_xy_m": [
+        0.08,
+        0.08
+      ],
+      "holder_wall_outer_corner_radius_m": 0.02
+    },
+    "blade_points": [
+      [
+        -0.16464953124523163,
+        -0.014000000432133668,
+        0.0015000000130385163
+      ],
+      [
+        -0.02199999988079071,
+        -0.014000000432133676,
+        0.0015000000130385163
+      ],
+      [
+        -0.02199999988079071,
+        -0.014000000432133676,
+        -0.0015000000130385163
+      ],
+      [
+        -0.126609668135643,
+        -0.014000000432133671,
+        -0.0015000000130385163
+      ],
+      [
+        -0.16464953124523163,
+        -0.014000000432133668,
+        0.0006999999750405549
+      ],
+      [
+        -0.16464953124523163,
+        0.014000000432133688,
+        0.0015000000130385163
+      ],
+      [
+        -0.02199999988079071,
+        0.01400000043213368,
+        0.0015000000130385163
+      ],
+      [
+        -0.02199999988079071,
+        0.01400000043213368,
+        -0.0015000000130385163
+      ],
+      [
+        -0.126609668135643,
+        0.014000000432133685,
+        -0.0015000000130385163
+      ],
+      [
+        -0.16464953124523163,
+        0.014000000432133688,
+        0.0006999999750405551
+      ]
+    ],
+    "handle_points": [
+      [
+        -0.0280000015841892,
+        -0.010846415419073054,
+        -0.01317064793881756
+      ],
+      [
+        -0.0280000015841892,
+        0.010846415419073054,
+        -0.01317064793881756
+      ],
+      [
+        -0.0280000015841892,
+        0.014720135984674036,
+        -0.009296928275137284
+      ],
+      [
+        -0.0280000015841892,
+        0.014720135984674036,
+        0.009296928275137728
+      ],
+      [
+        -0.0280000015841892,
+        0.010846415419073054,
+        0.013170647938818005
+      ],
+      [
+        -0.0280000015841892,
+        -0.010846415419073054,
+        0.013170647938818005
+      ],
+      [
+        -0.0280000015841892,
+        -0.014720135984674036,
+        0.009296928275137728
+      ],
+      [
+        -0.0280000015841892,
+        -0.014720135984674036,
+        -0.009296928275137284
+      ],
+      [
+        -0.022189420735787727,
+        -0.013558020175762023,
+        -0.016463310599962533
+      ],
+      [
+        -0.022189420735787727,
+        0.013558020175762023,
+        -0.016463310599962533
+      ],
+      [
+        -0.022189420735787727,
+        0.01840016907892184,
+        -0.011621159892961308
+      ],
+      [
+        -0.022189420735787727,
+        0.01840016907892184,
+        0.011621159892961752
+      ],
+      [
+        -0.022189420735787727,
+        0.013558020175762023,
+        0.016463310599962977
+      ],
+      [
+        -0.022189420735787727,
+        -0.013558020175762023,
+        0.016463310599962977
+      ],
+      [
+        -0.022189420735787727,
+        -0.01840016907892184,
+        0.011621159892961752
+      ],
+      [
+        -0.022189420735787727,
+        -0.01840016907892184,
+        -0.011621159892961308
+      ],
+      [
+        0.11145391352366638,
+        -0.013558020175762023,
+        -0.016463310599962533
+      ],
+      [
+        0.11145391352366638,
+        0.013558020175762023,
+        -0.016463310599962533
+      ],
+      [
+        0.11145391352366638,
+        0.01840016907892184,
+        -0.011621159892961308
+      ],
+      [
+        0.11145391352366638,
+        0.01840016907892184,
+        0.011621159892961752
+      ],
+      [
+        0.11145391352366638,
+        0.013558020175762023,
+        0.016463310599962977
+      ],
+      [
+        0.11145391352366638,
+        -0.013558020175762023,
+        0.016463310599962977
+      ],
+      [
+        0.11145391352366638,
+        -0.01840016907892184,
+        0.011621159892961752
+      ],
+      [
+        0.11145391352366638,
+        -0.01840016907892184,
+        -0.011621159892961308
+      ],
+      [
+        0.11726449797975066,
+        -0.010846415419073054,
+        -0.01317064793881756
+      ],
+      [
+        0.11726449797975066,
+        0.010846415419073054,
+        -0.01317064793881756
+      ],
+      [
+        0.11726449797975066,
+        0.014720135984674036,
+        -0.009296928275137284
+      ],
+      [
+        0.11726449797975066,
+        0.014720135984674036,
+        0.009296928275137728
+      ],
+      [
+        0.11726449797975066,
+        0.010846415419073054,
+        0.013170647938818005
+      ],
+      [
+        0.11726449797975066,
+        -0.010846415419073054,
+        0.013170647938818005
+      ],
+      [
+        0.11726449797975066,
+        -0.014720135984674036,
+        0.009296928275137728
+      ],
+      [
+        0.11726449797975066,
+        -0.014720135984674036,
+        -0.009296928275137284
+      ]
+    ],
+    "handle_center": [
+      0.044632248197780736,
+      0.0,
+      2.220446049250313e-16
+    ],
+    "initial_tool_z": 0.880088210105896,
+    "holder_path": "/World/SceneSmith/Props/UtensilHolder",
+    "spreader_path": "/World/SceneSmith/Props/Spreader"
+  }
+}

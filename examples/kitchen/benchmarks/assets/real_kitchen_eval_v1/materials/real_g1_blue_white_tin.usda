@@ -1,0 +1,85 @@
+#usda 1.0
+(
+    defaultPrim = "Looks"
+    customLayerData = { string purpose = "Appearance only; contains no geometry or physics." }
+)
+
+def Scope "Looks"
+{
+    def Material "Body"
+    {
+        token outputs:surface.connect = </Looks/Body/Shader.outputs:surface>
+        def Shader "Shader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.50288646, 0.5520114, 0.57112483)
+            float inputs:roughness = 0.3
+            float inputs:metallic = 0.65
+            float inputs:clearcoat = 0.15
+            float inputs:opacity = 1.0
+            float inputs:ior = 1.47
+            token outputs:surface
+        }
+    }
+    def Material "Rim"
+    {
+        token outputs:surface.connect = </Looks/Rim/Shader.outputs:surface>
+        def Shader "Shader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.49102085, 0.5332764, 0.55834039)
+            float inputs:roughness = 0.27
+            float inputs:metallic = 0.8
+            float inputs:clearcoat = 0.1
+            float inputs:opacity = 1.0
+            float inputs:ior = 1.47
+            token outputs:surface
+        }
+    }
+    def Material "Contents"
+    {
+        token outputs:surface.connect = </Looks/Contents/Shader.outputs:surface>
+        def Shader "Shader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.7605245, 0.65140564, 0.38132601)
+            float inputs:roughness = 0.3
+            float inputs:metallic = 0.0
+            float inputs:clearcoat = 0.0
+            float inputs:opacity = 1.0
+            float inputs:ior = 1.47
+            token outputs:surface
+        }
+    }
+    def Material "Label"
+    {
+        token outputs:surface.connect = </Looks/Label/Shader.outputs:surface>
+        def Shader "Shader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor.connect = </Looks/Label/Texture.outputs:rgb>
+            float inputs:roughness = 0.6
+            float inputs:metallic = 0.0
+            float inputs:clearcoat = 0.0
+            float inputs:opacity = 1.0
+            float inputs:ior = 1.47
+            token outputs:surface
+        }
+        def Shader "UV"
+        {
+            uniform token info:id = "UsdPrimvarReader_float2"
+            token inputs:varname = "st"
+            float2 outputs:result
+        }
+        def Shader "Texture"
+        {
+            uniform token info:id = "UsdUVTexture"
+            asset inputs:file = @../textures/real_g1_blue_white_tin_label.png@
+            token inputs:sourceColorSpace = "sRGB"
+            token inputs:wrapS = "repeat"
+            token inputs:wrapT = "clamp"
+            float2 inputs:st.connect = </Looks/Label/UV.outputs:result>
+            float3 outputs:rgb
+        }
+    }
+}

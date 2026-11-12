@@ -1,0 +1,29 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "MuJoCo USD Converter v0.1.0a3"
+    }
+    defaultPrim = "scene_scene_001"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "scene_scene_001" (
+    prepend apiSchemas = ["GeomModelAPI"]
+    assetInfo = {
+        string name = "scene_scene_001"
+    }
+    kind = "component"
+    prepend payload = @Payload/Contents.usda@
+)
+{
+    float3[] extentsHint = [(-0.050010197, -0.05, -0.1), (6.55001, 4.85, 2.7), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.000003994322, -9.536743e-8, -0.1), (6.500004, 4.8, 2.7)]
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend payload = @Payload/Contents.usda@</PhysicsScene>
+)
+{
+}
+
