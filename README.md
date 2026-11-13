@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://egox-dream.github.io/assets/egox.pdf">paper</a> | <a href="https://egox-dream.github.io/">website</a>
+  <a href="https://arxiv.org/pdf/2611.16728">paper</a> | <a href="https://egox-dream.github.io/">website</a>
 </p>
 
 <p align="center">
@@ -43,7 +43,7 @@ This codebase will provide the following key implementations of EgoX:
 Clone the repository:
 
 ```bash
-git clone https://github.com/chrisyrniu/egox.git
+git clone https://github.com/egox-dream/egox.git
 cd egox
 ```
 
@@ -209,6 +209,24 @@ tracks deployment and data-collection integrations:
 - [ ] LocoMan-Dex2 — real-robot deployment
 - [ ] R1Lite-Gripper — real-robot deployment
 - [ ] Human-Dex5 — VR data collection
+
+## Citation
+
+If you find this work useful, please consider citing our paper:
+
+```bibtex
+@article{egox2026,
+  title={EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming},
+  author={Niu, Yaru and Chen, Binghong and Yao, Changwei and Li, Shangtao and
+          Fang, Zhenlong and Senthilkumaran, Revanth Krishna and Zhou, Shuai and
+          Mao, Yuemin and Ching, Kalie and Chao, Po-Ju and Luo, Yudong and Yu, Peiqi and
+          Zhang, Heng and Zhang, Hao and Chen, Bingqing and Qiu, Chen and
+          Tseng, H. Eric and Yuan, Ye and Iqbal, Umar and Liu, Changliu and
+          Francis, Jonathan and Zhao, Ding},
+  journal={arXiv preprint arXiv:2611.16728},
+  year={2026}
+}
+```
 
 ## Acknowledgements
 
