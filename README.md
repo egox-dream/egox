@@ -25,15 +25,15 @@
 ## Overview
 
 **EgoX** is an egocentric cross-embodiment framework for robot manipulation. It
-pretrains a **Modularized Cross-Embodiment Transformer with Embodiment Dreaming
-(MXT+)** on a mixture of human videos, simulated robot demonstrations, and real
-robot demonstrations, then fine-tunes the model on a specific target robot–task pair.
+pretrains a **Modular Embodiment Dreamer (MED)** on a mixture of human videos,
+simulated robot demonstrations, and real robot demonstrations, then fine-tunes the
+model on a specific target robot–task pair.
 
 This codebase will provide the following key implementations of EgoX:
 
 1. **Unified data collection:** A shared pipeline for collecting human videos and
    demonstrations from simulated and real robots *(not yet released)*.
-2. **MXT+ training:** A training pipeline for the proposed model, including
+2. **MED training:** A training pipeline for the proposed model, including
    cross-embodiment pretraining and target robot–task fine-tuning.
 3. **Policy rollout and evaluation:** Deployment of trained policies and evaluation
    of their task performance.
@@ -139,26 +139,26 @@ See [rollout and evaluation options](scripts/rollout_scripts/README.md).
 Real-robot deployment requires an embodiment-specific
 [controller integration](src/egox/robots/README.md).
 
-**G1-Sim-Dex3 with MXT+ (w/ pretrain).**
+**G1-Sim-Dex3 with MED (w/ pretrain).**
 
 <table align="center">
   <tr>
     <td align="center">
-      <img src="media/g1_sim_kitchen_cleanup_id.gif" alt="G1-Sim-Dex3 Kitchen-Cleanup ID rollout with pretrained MXT+" width="384"><br>
+      <img src="media/g1_sim_kitchen_cleanup_id.gif" alt="G1-Sim-Dex3 Kitchen-Cleanup ID rollout with pretrained MED" width="384"><br>
       <b>Kitchen-Cleanup · ID</b>
     </td>
     <td align="center">
-      <img src="media/g1_sim_kitchen_cleanup_ood.gif" alt="G1-Sim-Dex3 Kitchen-Cleanup OOD rollout with pretrained MXT+" width="384"><br>
+      <img src="media/g1_sim_kitchen_cleanup_ood.gif" alt="G1-Sim-Dex3 Kitchen-Cleanup OOD rollout with pretrained MED" width="384"><br>
       <b>Kitchen-Cleanup · OOD</b> 
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="media/g1_sim_kitchen_bread_id.gif" alt="G1-Sim-Dex3 Kitchen-Bread ID rollout with pretrained MXT+" width="384"><br>
+      <img src="media/g1_sim_kitchen_bread_id.gif" alt="G1-Sim-Dex3 Kitchen-Bread ID rollout with pretrained MED" width="384"><br>
       <b>Kitchen-Bread · ID</b> 
     </td>
     <td align="center">
-      <img src="media/g1_sim_kitchen_bread_ood.gif" alt="G1-Sim-Dex3 Kitchen-Bread OOD rollout with pretrained MXT+" width="384"><br>
+      <img src="media/g1_sim_kitchen_bread_ood.gif" alt="G1-Sim-Dex3 Kitchen-Bread OOD rollout with pretrained MED" width="384"><br>
       <b>Kitchen-Bread · OOD</b>
     </td>
   </tr>
@@ -171,7 +171,7 @@ egox/
 ├── src/egox/               # Core Python package
 │   ├── configs/            # Embodiment modalities, model settings, and configuration loading
 │   ├── data/               # HDF5 episode loading, normalization, masks, and embodiment sampling
-│   ├── models/             # MXT+ tokenizers, shared Transformer, action experts, and dreaming heads
+│   ├── models/             # MED tokenizers, shared Transformer, action experts, and dreaming heads
 │   ├── training/           # Optimization, validation, logging, and checkpoint saving/resuming
 │   ├── inference/          # Policy loading, observation preprocessing, and action rollout
 │   ├── robots/             # DDS interfaces, G1 simulation controller, and robot environment
@@ -192,7 +192,7 @@ egox/
 
 ### Code Implementation
 
-- [x] Model implementation (MXT+ and embodiment dreaming)
+- [x] Model implementation (MED and embodiment dreaming)
 - [x] Policy rollout and evaluation (G1-Sim-Dex3)
 - [ ] VR data-collection pipeline
 - [ ] Example dataset and checkpoint
@@ -232,7 +232,7 @@ If you find this work useful, please consider citing our paper:
 
 We thank the authors of the following projects:
 
-- **Model:** MXT+ builds on MXT from [Human2LocoMan](https://github.com/chrisyrniu/Human2LocoMan).
+- **Model:** MED builds on MXT from [Human2LocoMan](https://github.com/chrisyrniu/Human2LocoMan).
 - **Whole-body control:** We use the whole-body controller from [HTD](https://github.com/chrisyrniu/humanoid-touch-dream) for both simulated and real humanoids.
 - **Apple Vision Pro teleoperation:** Our teleoperation pipeline uses [VisionProTeleop](https://github.com/Improbable-AI/VisionProTeleop) to stream data from Apple Vision Pro.
 - **Pico data collection:** Our Pico data-collection pipeline builds on [Unitree XR Teleoperate](https://github.com/unitreerobotics/xr_teleoperate).

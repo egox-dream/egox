@@ -68,11 +68,11 @@ def main():
     if args.action_hz is not None and (not math.isfinite(args.action_hz) or args.action_hz <= 0):
         parser.error('--action_hz must be finite and positive')
 
-    from egox.inference import MXTPolicy, rollout
+    from egox.inference import MEDPolicy, rollout
     from egox.inference.keyboard import KeyboardControls, ResetRequested
     from egox.robots.service import RobotClient
 
-    policy = MXTPolicy(args.model_path, args.checkpoint, args.embodiment, args.device,
+    policy = MEDPolicy(args.model_path, args.checkpoint, args.embodiment, args.device,
                        inference_interval=args.inference_interval)
     with KeyboardControls() as controls, RobotClient(args.namespace, domain_id=args.dds_domain) as client:
         for episode in range(args.episodes):

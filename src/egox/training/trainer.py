@@ -1,4 +1,4 @@
-"""Train MXT / MXT+ on one or more embodiments."""
+"""Train MED / MXT-FG on one or more embodiments."""
 import contextlib
 import fcntl
 import gc
@@ -18,7 +18,7 @@ from tqdm import tqdm
 
 from egox.data.data import load_data
 from egox.data.sampler import capture_rng_state, restore_rng_state
-from egox.models.mxt.model import MXT
+from egox.models.med.model import MED
 
 from .checkpoints import (SNAPSHOT, atomic_save, export_metadata, load_snapshot,
                           resume_model_config, stats_to_numpy, stats_to_tensors)
@@ -97,7 +97,7 @@ def train(args, model_cfg, episodes=None):
             np.random.seed(args.seed)
             random.seed(args.seed)
             torch.backends.cudnn.benchmark = args.cudnn_benchmark
-            model = MXT(**model_cfg, norm_stats=norm_stats).cuda()
+            model = MED(**model_cfg, norm_stats=norm_stats).cuda()
             optimizer = torch.optim.AdamW(
                 model.param_groups(args.lr_tokenizer, args.lr_action_head, args.lr_dream_head, args.lr_trunk),
                 lr=args.lr, weight_decay=args.weight_decay)

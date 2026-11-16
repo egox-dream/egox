@@ -9,7 +9,7 @@ from .transformer import CrossAttention, sinusoid_table
 
 class EmbodimentTokenizer(BaseTokenizer):
     """Summary tokens of an embodiment: queries attend to the concatenated features of
-    several modalities. MXT+ dreams these tokens for future frames.
+    several modalities. MED dreams these tokens for future frames.
 
     A positive `norm_upper_bound_weight` adds the soft penalty
     mean(relu(||token|| - norm_upper_bound) ** 2) on the online tokens.

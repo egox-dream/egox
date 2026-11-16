@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "egox"
 version = "1.0.0"
-description = "MXT / MXT+ cross-embodiment policy training for EgoX"
+description = "MED cross-embodiment policy training for EgoX"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "BSD-3-Clause"}

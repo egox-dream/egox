@@ -1,4 +1,4 @@
-"""Evaluate current MXT checkpoints on the frozen Kitchen-Bread / Kitchen-Cleanup trials.
+"""Evaluate current MED checkpoints on the frozen Kitchen-Bread / Kitchen-Cleanup trials.
 
 The policy and Isaac Sim run in separate processes. Each worker runs one trial
 at a time, with simulation-paced actions and rendered cameras in both GUI and headless
@@ -76,10 +76,10 @@ def prepare_output(args, protocol):
 
 
 def load_policy(args, protocol):
-    from egox.inference import MXTPolicy
+    from egox.inference import MEDPolicy
     if run_identity(args, protocol) != args.run_identity:
         raise ValueError('checkpoint or metadata changed before policy loading; use a fixed checkpoint and a new output')
-    policy = MXTPolicy(args.model_path, args.checkpoint, args.embodiment, args.device,
+    policy = MEDPolicy(args.model_path, args.checkpoint, args.embodiment, args.device,
                        inference_interval=protocol['inference_interval'])
     if run_identity(args, protocol) != args.run_identity:
         raise ValueError('checkpoint or metadata changed during policy loading; use a fixed checkpoint and a new output')

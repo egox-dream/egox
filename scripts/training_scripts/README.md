@@ -1,6 +1,6 @@
 # Training Scripts
 
-MXT+ recipes for G1-Sim-Dex3. Each script calls [scripts/train.py](../train.py)
+MED recipes for G1-Sim-Dex3. Each script calls [scripts/train.py](../train.py)
 with task-specific data and training settings.
 
 ## Script Structure

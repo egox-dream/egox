@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
-"""MXT trunk and attention blocks.
+"""MED trunk and attention blocks.
 
 The trunk is DETR's pre-norm transformer encoder-decoder (Apache 2.0,
 https://github.com/facebookresearch/detr). CrossAttention is the Perceiver-style

@@ -68,7 +68,7 @@ class TrainConfig:
     resume_dir: str | None = None
     auto_resume: bool = True
     wandb: bool = False
-    wandb_name: str = 'MXT'
+    wandb_name: str = 'MED'
 
     print_config: bool = False
 

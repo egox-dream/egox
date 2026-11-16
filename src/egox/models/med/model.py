@@ -1,10 +1,10 @@
-"""MXT: a cross-embodiment transformer policy, with MXT+ embodiment dreaming.
+"""MED: a cross-embodiment transformer policy with embodiment dreaming.
 
 Per embodiment, every observation modality is encoded and pooled into a few
 tokens. A shared encoder-decoder trunk turns the tokens into one block of
 decoded queries per action field, and per-embodiment heads predict action chunks.
 
-Embodiment dreaming (MXT+): an embodiment tokenizer summarizes the current
+Embodiment dreaming (omitted in MXT-FG): an embodiment tokenizer summarizes the current
 observation into a few tokens; a dream head predicts, from the trunk output, the
 summary tokens of future frames as computed by an EMA copy of the encoders.
 """
@@ -62,7 +62,7 @@ def _to_device(data, device):
     return data.to(device, non_blocking=True) if isinstance(data, torch.Tensor) else data
 
 
-class MXT(nn.Module):
+class MED(nn.Module):
     """
     All tokens have the trunk's `hidden_dim`.
 

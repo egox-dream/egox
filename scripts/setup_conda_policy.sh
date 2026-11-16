@@ -122,7 +122,7 @@ if check.returncode:
     print('Known Isaac Lab livestreaming conflict; local simulation uses Isaac Sim\'s Starlette.')
 
 import torch, torchvision, scipy, cyclonedds
-from egox.inference import MXTPolicy
+from egox.inference import MEDPolicy
 from egox.training.trainer import train
 print("PyTorch:", torch.__version__, "torchvision:", torchvision.__version__)
 print("CUDA available:", torch.cuda.is_available())

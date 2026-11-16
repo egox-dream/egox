@@ -28,7 +28,7 @@ See [G1-Dex5.yaml](robots/G1-Dex5.yaml) for the layout used by all robots.
 | `dreaming.embodiment_tokenizer` | Pools the selected observations into embodiment tokens |
 | `dreaming.head` | Predicts future embodiment tokens from the trunk output |
 
-Omit `dreaming` or set it to `null` for plain MXT. Otherwise, configure both components:
+Omit `dreaming` or set it to `null` for MXT-FG (MED without embodiment dreaming). Otherwise, configure both components:
 
 ```yaml
 dreaming:

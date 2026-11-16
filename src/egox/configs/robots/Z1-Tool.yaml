@@ -18,7 +18,7 @@ action:
   defaults: {crossattn_modality_dropout: 0.1, crossattn_heads: 8, crossattn_dim_head: 32, loss_weight: 1.0, dtype: float32}
   right_eef_to_body_pose: {shape: [6]}  # Target right end-effector-to-body pose vector.
 
-# MXT+ embodiment dreaming; remove this block for plain MXT.
+# MED embodiment dreaming; remove this block for MXT-FG (MED without dreaming).
 dreaming:
   embodiment_tokenizer:
     norm_upper_bound: 100.0

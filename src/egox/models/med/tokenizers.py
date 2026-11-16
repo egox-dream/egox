@@ -44,7 +44,7 @@ class ImageTokenizer(BaseTokenizer):
     """ResNet feature map -> optional LayerNorm -> linear projection -> one token per cell.
 
     `split_dual` encodes the left and right halves of a side-by-side stereo frame
-    separately. With `shared_encoder`, the ResNet is owned (and saved) by MXT
+    separately. With `shared_encoder`, the ResNet is owned (and saved) by MED
     and shared across embodiments; this tokenizer only keeps a reference.
     """
 

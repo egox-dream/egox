@@ -1,4 +1,4 @@
-"""Train MXT / MXT+; install with `pip install -e ".[training]"` first."""
+"""Train MED / MXT-FG; install with `pip install -e ".[training]"` first."""
 import argparse
 from dataclasses import InitVar
 import json
@@ -51,7 +51,7 @@ _HELP = {
     'auto_resume': 'use a fixed run directory and continue its training snapshot (default: on) '
                    '(--no-auto_resume starts a new timestamped directory)',
     'wandb': 'log metrics to Weights & Biases (default: off; --wandb enables it)',
-    'wandb_name': 'Weights & Biases project, used only with --wandb (default: MXT); not the run name',
+    'wandb_name': 'Weights & Biases project, used only with --wandb (default: MED); not the run name',
     'print_config': 'print the resolved settings without starting training',
 }
 

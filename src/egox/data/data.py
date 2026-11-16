@@ -2,7 +2,7 @@
 
 Each episode file has an `embodiment` attribute; observation/action fields are
 read through KEY_PATH_MAP. A sample holds the current observation, the action
-chunk and, for MXT+, the observations and availability masks at future `dream_offsets`.
+chunk and, for MED, the observations and availability masks at future `dream_offsets`.
 """
 import os
 
@@ -272,14 +272,14 @@ def load_data(dataset_dirs, emb_dict, batch_size, chunk_size, seed, per_emb_batc
     val_set = EpisodicDataset(paths, val_ids, val_len, chunk_size, emb_dict,
                              main_cam_size, wrist_cam_size, episode_index.embodiments)
     env = lambda name, default: int(os.environ.get(name, default))
-    train_workers = env('MXT_TRAIN_NUM_WORKERS', env('MXT_NUM_WORKERS', 8))
-    val_workers = env('MXT_VAL_NUM_WORKERS', env('MXT_NUM_WORKERS', 8))
+    train_workers = env('MED_TRAIN_NUM_WORKERS', env('MED_NUM_WORKERS', 8))
+    val_workers = env('MED_VAL_NUM_WORKERS', env('MED_NUM_WORKERS', 8))
 
     def loader(dataset, sampler, workers, prefetch):
         return ResumableDataLoader(dataset, batch_sampler=sampler, pin_memory=True, num_workers=workers,
                                    collate_fn=collate_by_embodiment, persistent_workers=workers > 0,
                                    prefetch_factor=prefetch if workers > 0 else None)
 
-    return (loader(train_set, train_sampler, train_workers, env('MXT_TRAIN_PREFETCH_FACTOR', 2)),
-            loader(val_set, val_sampler, val_workers, env('MXT_VAL_PREFETCH_FACTOR', 1)),
+    return (loader(train_set, train_sampler, train_workers, env('MED_TRAIN_PREFETCH_FACTOR', 2)),
+            loader(val_set, val_sampler, val_workers, env('MED_VAL_PREFETCH_FACTOR', 1)),
             norm_stats, embodiments)

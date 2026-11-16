@@ -25,7 +25,7 @@ action:
   left_eef_link_pose: {shape: [15]}  # Target left end-effector link vector; may include padded channels.
   right_eef_link_pose: {shape: [15]}  # Target right end-effector link vector; may include padded channels.
 
-# MXT+ embodiment dreaming; remove this block for plain MXT.
+# MED embodiment dreaming; remove this block for MXT-FG (MED without dreaming).
 dreaming:
   embodiment_tokenizer:
     norm_upper_bound: 100.0

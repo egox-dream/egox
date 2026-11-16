@@ -10,7 +10,7 @@ from copy import deepcopy
 import numpy as np
 
 
-class MXTPolicy:
+class MEDPolicy:
     """Inference from policy weights plus exports, or a metadata-bearing training snapshot.
 
     `embodiment` may be omitted when the run trained a single robot.
@@ -21,7 +21,7 @@ class MXTPolicy:
     def __init__(self, model_path, checkpoint='policy_last.ckpt', embodiment=None, device='cuda:0',
                  inference_interval=None):
         import torch
-        from egox.models.mxt.model import MXT
+        from egox.models.med.model import MED
         from egox.training.checkpoints import load_run
 
         weights, config, stats = load_run(model_path, checkpoint)
@@ -52,7 +52,7 @@ class MXTPolicy:
             for key, tokenizer in spec['tokenizer'].items():
                 if 'image' in key:
                     tokenizer.update(weights=None, gradient_checkpoint=False)
-        self.policy = MXT(**model_config, norm_stats=stats)
+        self.policy = MED(**model_config, norm_stats=stats)
         self.policy.load_state_dict(weights, strict=True)
         self.policy.to(device).eval()
         self.bf16 = bool(config.get('bf16')) and torch.device(device).type == 'cuda'
