@@ -3,31 +3,30 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "$SCRIPT_DIR/../../../.." && pwd)"
-DATA_DIR="${DATA_DIR:-unknown}"
-export PYTHONPATH="$REPO_ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
+DATA_DIR="${DATA_DIR:-$REPO_ROOT/data}"
 
-# Pretrain on all data except G1-Sim-Dex3/Kitchen-Bread.
+# Pretrain on all data except g1-sim-dex3/kitchen-bread.
 # Usage: ./pretrain.sh [training options]; DATA_DIR overrides the data root.
 
 # One directory per embodiment; include only the other simulated task.
 DATASET_DIRS=(
-    "$DATA_DIR/Human-Dex5"
-    "$DATA_DIR/G1-Dex5"
-    "$DATA_DIR/xArm7-Dex4"
-    "$DATA_DIR/Z1-Tool"
-    "$DATA_DIR/LocoMan-Dex2"
-    "$DATA_DIR/R1Lite-Gripper"
-    "$DATA_DIR/G1-Sim-Dex3/Kitchen-Cleanup"
+    "$DATA_DIR/human-dex5"
+    "$DATA_DIR/g1-dex5"
+    "$DATA_DIR/xarm7-dex4"
+    "$DATA_DIR/z1-tool"
+    "$DATA_DIR/locoman-dex2"
+    "$DATA_DIR/r1lite-gripper"
+    "$DATA_DIR/g1-sim-dex3/kitchen-cleanup"
 )
 
-exec "${PYTHON:-python}" "$REPO_ROOT/scripts/train.py" \
+exec python "$REPO_ROOT/scripts/train.py" \
     --dataset_dir "${DATASET_DIRS[@]}" \
     --main_cam_resolution "(1280,480)" \
     --wrist_cam_resolution "(240,240)" \
     --gpu_id 0 \
     --seed 6 \
     --bf16 \
-    --wandb_name egox-release \
+    --wandb_name egox \
     --wandb \
     --auto_resume \
     --task_name G1-Sim-Dex3_kitchen-Bread_pretrain-dream5e-6 \

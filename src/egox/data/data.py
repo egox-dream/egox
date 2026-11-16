@@ -276,7 +276,7 @@ def load_data(dataset_dirs, emb_dict, batch_size, chunk_size, seed, per_emb_batc
     val_workers = env('MED_VAL_NUM_WORKERS', env('MED_NUM_WORKERS', 8))
 
     def loader(dataset, sampler, workers, prefetch):
-        return ResumableDataLoader(dataset, batch_sampler=sampler, pin_memory=True, num_workers=workers,
+        return ResumableDataLoader(dataset, batch_sampler=sampler, pin_memory=False, num_workers=workers,
                                    collate_fn=collate_by_embodiment, persistent_workers=workers > 0,
                                    prefetch_factor=prefetch if workers > 0 else None)
 

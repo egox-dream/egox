@@ -21,11 +21,9 @@ Follow [Installation](../../README.md#installation) with `--sim`, activate that
 environment, and run from the repository root. Set `--model_path` to a
 [training run](../training_scripts/README.md#saved-outputs) containing
 `policy_last.ckpt`, `all_configs.json`, and `dataset_stats.pkl`.
+The [robot simulation model](../../assets/README.md) is included in the repository.
 
 ```bash
-# Download robot assets once.
-python scripts/download_assets.py
-
 # Interactive rollout; press 2 to start.
 bash scripts/rollout_scripts/G1-Sim-Dex3/kitchen-Bread/interactive.sh \
     --model_path /path/to/training/run

@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/pdf/2611.16728">paper</a> | <a href="https://egox-dream.github.io/">website</a>
+  <a href="https://arxiv.org/pdf/2611.16728">paper</a> | <a href="https://egox-dream.github.io/">website</a> | <a href="https://huggingface.co/datasets/binghong0727/egox">dataset</a>
 </p>
 
 <p align="center">
@@ -47,10 +47,6 @@ git clone https://github.com/egox-dream/egox.git
 cd egox
 ```
 
-**Datasets and the VR data-collection pipeline are not yet released.** Training
-requires compatible demonstrations; deployment requires a checkpoint. Please Run all commands from the
-repository root with Conda installed.
-
 ### Installation
 
 Choose one setup. **Without `--sim`**, install the environment for training and
@@ -80,18 +76,53 @@ then activate that same name.
 See [simulation scenes and viewers](examples/README.md) and
 [robot assets](assets/README.md) for details.
 
-### Training
+### Download Data
 
-The examples below target `G1-Sim-Dex3/Kitchen-Bread`. Set your dataset root;
-embodiment configurations are selected from the data. Recipes enable W&B logging;
-append `--no-wandb` to disable it.
+Download the training HDF5 files from Hugging Face. By default, the script downloads
+all embodiments into `data/` under this repository, retaining the Hub's lowercase
+directories and `train`/`val` splits. Separate video previews and JSON files are
+not needed for training and are skipped.
+
+The training setup installs `huggingface_hub`. In an existing environment, install
+it with `python -m pip install "huggingface_hub>=1.0"` if needed.
 
 ```bash
-export DATA_DIR=/path/to/dataset
+# Preview the selected files and total size without downloading them.
+python scripts/download_data.py --dry-run
+
+# Download all embodiments (about 934 GB of HDF5 files).
+python scripts/download_data.py
+
+# Download only one embodiment, including all of its tasks and splits.
+python scripts/download_data.py --embodiment g1-sim-dex3
+
+# Use another disk or directory.
+python scripts/download_data.py --embodiment g1-sim-dex3 --output-dir /path/to/egox-data
 ```
+
+Available embodiments are `g1-dex5`, `g1-sim-dex3`, `human-dex5`, `locoman-dex2`,
+`r1lite-gripper`, `xarm7-dex4`, and `z1-tool`. Embodiment names are case-insensitive.
+Use `--revision COMMIT` to select a fixed dataset revision; the default is `main`.
+Rerun the same command to continue an interrupted download.
+
+### Training
+
+The examples below target Kitchen-Bread with G1-Sim-Dex3. Recipes use this repository's
+`data/` folder by default, matching the downloader. For a custom download location,
+set `DATA_DIR` to that same root:
+
+```bash
+export DATA_DIR=/path/to/egox-data
+```
+
+Dataset directories use lowercase embodiment and task names, for example
+`data/g1-sim-dex3/kitchen-bread/train/`. Use this same layout for existing local
+datasets. Embodiment configurations are selected from the data. Recipes enable
+W&B logging; append `--no-wandb` to disable it.
 
 **Pretraining:** learn from the cross-embodiment mixture, excluding the target
 `G1-Sim-Dex3/Kitchen-Bread` pair while retaining Bread data from other embodiments.
+Download all embodiments before running this recipe.
 
 ```bash
 bash scripts/training_scripts/G1-Sim-Dex3/kitchen-Bread/pretrain.sh
@@ -119,13 +150,12 @@ See [training recipes](scripts/training_scripts/README.md) and
 
 ### Deployment
 
-For **G1-Sim-Dex3**, use the environment created with `--sim` and download the robot
-assets once. Set `--model_path` to a training run containing `policy_last.ckpt`,
+For **G1-Sim-Dex3**, use the environment created with `--sim`. The
+[robot simulation assets](assets/README.md) are included in the repository.
+Set `--model_path` to a training run containing `policy_last.ckpt`,
 `all_configs.json`, and `dataset_stats.pkl`.
 
 ```bash
-python scripts/download_assets.py
-
 # Interactive rollout: press 2 to start the policy.
 bash scripts/rollout_scripts/G1-Sim-Dex3/kitchen-Bread/interactive.sh \
     --model_path /path/to/training/run
@@ -177,8 +207,10 @@ egox/
 │   ├── robots/             # DDS interfaces, G1 simulation controller, and robot environment
 │   └── sim/                # Shared scene setup, state restoration, and interactive viewers
 ├── scripts/                # Setup, training, and rollout entry points
+│   ├── download_data.py     # Download all or selected embodiment HDF5 files
 │   ├── training_scripts/   # Pretraining, fine-tuning, and training from scratch
 │   └── rollout_scripts/    # Interactive rollout and benchmark evaluation
+├── data/                   # Downloaded datasets (created by download_data.py; ignored by Git)
 ├── examples/
 │   └── kitchen/            # Simulation scenes, tasks, and benchmarks
 ├── assets/
@@ -195,7 +227,8 @@ egox/
 - [x] Model implementation (MED and embodiment dreaming)
 - [x] Policy rollout and evaluation (G1-Sim-Dex3)
 - [ ] VR data-collection pipeline
-- [ ] Example dataset and checkpoint
+- [x] Dataset release on Hugging Face
+- [ ] Released policy checkpoints
 
 ### Supported Embodiments
 

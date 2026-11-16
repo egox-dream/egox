@@ -6,7 +6,7 @@ import yaml
 
 ASSETS = Path(__file__).resolve().parents[4] / 'assets/robots/g1_dex3'
 URDF = ASSETS / 'g1_body29_hand14.urdf'
-USD = ASSETS / 'usd/g1_29dof_with_dex3_rev_1_0.usd'  # from scripts/download_assets.py
+USD = ASSETS / 'usd/g1_29dof_with_dex3_rev_1_0.usd'  # bundled Unitree simulation model
 WBC_CONFIG = ASSETS / 'wbc/g1_student.yaml'
 CAMERA_RIG = ASSETS / 'camera_rig.json'
 

@@ -113,6 +113,18 @@ class RoomState:
             tensor = lambda x: torch.as_tensor(np.asarray(x), dtype=torch.float32, device=device).reshape(1, -1)  # noqa: E731
             self._set_articulation(view, tensor(pose), tensor(velocity), tensor(joints), tensor(joint_velocities))
 
+    def restore_trial(self, trial, state=None):
+        """Restore the room from a rollout snapshot, converting WXYZ to PhysX XYZW."""
+        state = trial['state'] if state is None else state
+        xyzw = lambda pose: np.asarray(pose)[..., [0, 1, 2, 4, 5, 6, 3]]  # noqa: E731
+        articulations = {}
+        for index, path in enumerate(trial['articulations']):
+            prefix = f'articulations/articulation_{index:03d}/'
+            articulations[path] = (xyzw(state[prefix + 'pose_world_wxyz']), state[prefix + 'velocity_world'],
+                                   state[prefix + 'joint_position'], state[prefix + 'joint_velocity'])
+        self.set_state(trial['rigid_bodies'], xyzw(state['rigid_objects/pose_world_wxyz']),
+                       state['rigid_objects/velocity_world'], articulations)
+
     def _set_bodies(self, pose, velocity):
         import torch
 

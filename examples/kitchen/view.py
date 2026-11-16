@@ -1,4 +1,4 @@
-"""View the kitchen and the simulated G1; props and doors move with the mouse."""
+"""Preview a kitchen rollout trial with G1 held in place; drag props and doors with the mouse."""
 import argparse
 
 from egox.sim import viewer
@@ -10,8 +10,11 @@ def main():
     scene.add_arguments(parser)
     viewer.add_arguments(parser)
     args = parser.parse_args()
-    robot = None if args.robot_at == 'none' else scene.robot_at(args.robot_at)
-    viewer.view(args, scene.scene_path(args), robot, scene.CAMERAS)
+    try:
+        scene_usd, robot, trial = scene.viewer_setup(args)
+    except (ValueError, FileNotFoundError) as exc:
+        parser.error(str(exc))
+    viewer.view(args, scene_usd, robot, scene.CAMERAS, trial=trial, room_path=scene.ROOM)
 
 
 if __name__ == '__main__':

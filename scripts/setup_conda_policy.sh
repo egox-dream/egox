@@ -140,5 +140,5 @@ if sys.argv[1] == '1':
 PY
 echo "Setup complete. Activate with: conda activate $EGOX_ENV_NAME"
 if [[ "$EGOX_SIM" == 1 ]]; then
-    echo "Robot assets: python $REPO_ROOT/scripts/download_assets.py"
+    echo "Bundled robot assets: $REPO_ROOT/assets/robots/g1_dex3/usd"
 fi

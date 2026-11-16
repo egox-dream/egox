@@ -7,10 +7,9 @@ EGOX_SIM_ARGS=()
 if [[ -n "${SIM_PYTHON:-}" ]]; then
     EGOX_SIM_ARGS=(--python_executable "$SIM_PYTHON")
 fi
-export PYTHONPATH="$REPO_ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
 
 # Inspect one Cleanup trial with a window. Select any trained policy with --model_path.
-exec "${PYTHON:-python}" "$REPO_ROOT/scripts/rollout.py" sim \
+exec python "$REPO_ROOT/scripts/rollout.py" sim \
     --mode interactive \
     --benchmark kitchen_cleanup \
     --checkpoint policy_last.ckpt \

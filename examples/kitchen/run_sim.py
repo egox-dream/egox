@@ -48,7 +48,8 @@ def main():
     if args.seed < 0:
         parser.error('--seed must be nonnegative')
     if not args.robot_usd.is_file():
-        parser.error(f'missing robot USD {args.robot_usd}; run python scripts/download_assets.py')
+        parser.error(f'missing robot USD {args.robot_usd}; check the path or restore the bundled '
+                     'assets/robots/g1_dex3/usd/ directory')
     if args.settle_steps < 0:
         parser.error('--settle_steps must be nonnegative')
     # Pinocchio's Assimp must load before Kit's incompatible build.

@@ -5,7 +5,7 @@ from pathlib import Path
 
 import numpy as np
 
-from egox.robots.g1_sim_dex3.description import USD, camera_rig
+from egox.robots.g1_sim_dex3.description import USD
 from egox.sim.scene import RobotSetup
 
 EXAMPLE = Path(__file__).resolve().parent
@@ -26,26 +26,47 @@ def load_trial(path):
     return trial
 
 
-def robot_at(task):
-    """Robot setup from the first trial; viewers use the default camera rig."""
-    trial = load_trial(EXAMPLE / f'benchmarks/kitchen_{task}/trial_001')
+def trial_robot(trial):
+    """Viewer robot pose, joints and camera rig from a rollout trial."""
     state = trial['state']
     pose = state['robot/pose_world_wxyz']
     joints = dict(zip(trial['joint_names'], state['robot/joint_position'].tolist()))
-    return RobotSetup(USD, tuple(pose[:3].tolist()), tuple(pose[3:].tolist()), joints, camera_rig())
+    return RobotSetup(USD, tuple(pose[:3].tolist()), tuple(pose[3:].tolist()), joints, trial['camera_rig'])
 
 
 def add_arguments(parser):
-    parser.add_argument('--variant', choices=('baseline', 'diverse'), default='diverse',
-                        help='baseline: task props only; diverse: extra kitchenware')
+    parser.add_argument('--trial', type=Path, help='preview a rollout trial directory instead of trial_001')
+    parser.add_argument('--variant', choices=('baseline', 'diverse'),
+                        help='preview the authored scene without a trial overlay or recorded object layout; '
+                             'baseline: Bread task props only; diverse: extra kitchenware')
     parser.add_argument('--scene-usd', '--scene_usd', type=Path, help='override the scene USD')
     parser.add_argument('--robot-at', '--robot_at', choices=('bread', 'cleanup', 'none'),
-                        default='bread', help='robot start pose from the first task trial')
+                        help='task scene and robot from its first rollout trial (default: bread); none hides the robot')
 
 
 def scene_path(args):
+    if args.scene_usd:
+        return args.scene_usd
+    if args.robot_at == 'cleanup':
+        if args.variant == 'baseline':
+            raise ValueError('Cleanup has no baseline scene; use --variant diverse or omit --variant for the rollout trial')
+        return EXAMPLE / 'scenes/cleanup/kitchen_workarea_diverse.usda'
     name = 'kitchen_workarea.usda' if args.variant == 'baseline' else 'kitchen_workarea_diverse.usda'
-    return args.scene_usd or KITCHEN / name
+    return KITCHEN / name
+
+
+def viewer_setup(args):
+    """Select a complete rollout trial by default, or an explicitly requested raw scene."""
+    if args.trial and (args.variant or args.scene_usd):
+        raise ValueError('--trial cannot be combined with --variant or --scene-usd')
+    task = args.robot_at if args.robot_at in ('bread', 'cleanup') else 'bread'
+    trial = load_trial(args.trial or EXAMPLE / f'benchmarks/kitchen_{task}/trial_001')
+    if args.trial and args.robot_at in ('bread', 'cleanup') and trial['task'] != f'kitchen_{task}':
+        raise ValueError('--robot-at must match the selected --trial task, or be none')
+    robot = None if args.robot_at == 'none' else trial_robot(trial)
+    if args.variant or args.scene_usd:
+        return scene_path(args), robot, None
+    return trial['scene_usd'], robot, trial
 
 
 # Original KitchenTwin collection ranges, in scene-local metres/radians. The

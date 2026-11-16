@@ -414,13 +414,7 @@ class G1Dex3Env:
         view.set_root_velocities(tensor(state['robot/velocity_world'])[None], ids)
         self.robot.write_joint_state_to_sim(tensor(state['robot/joint_position'][order])[None],
                                             tensor(state['robot/joint_velocity'][order])[None])
-        articulations = {}
-        for index, path in enumerate(self.trial['articulations']):
-            prefix = f'articulations/articulation_{index:03d}/'
-            articulations[path] = (xyzw(state[prefix + 'pose_world_wxyz']), state[prefix + 'velocity_world'],
-                                   state[prefix + 'joint_position'], state[prefix + 'joint_velocity'])
-        self.room.set_state(self.trial['rigid_bodies'], xyzw(state['rigid_objects/pose_world_wxyz']),
-                            state['rigid_objects/velocity_world'], articulations)
+        self.room.restore_trial(self.trial, state)
         self.robot.reset()
         controller = self.controller
         controller.history = state['controller/lbc_history'].astype(np.float32).copy()

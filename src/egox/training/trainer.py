@@ -85,12 +85,18 @@ def train(args, model_cfg, episodes=None):
             wrist_cam_size=(args.wrist_cam_height, args.wrist_cam_width),
             vel_rebalance=vel_rebalance, norm_stats=norm_stats, episode_index=episodes)
 
+        wandb_log_start_step = 0
         try:
             if args.wandb:
                 run_id = None
                 if args.auto_resume and resume_dir == run_dir and snapshot is not None:
                     run_id = snapshot['wandb_run_id']
-                wandb.init(project=args.wandb_name, name=os.path.basename(run_dir), id=run_id, resume='allow' if run_id else None)
+                wandb_run = wandb.init(project=args.wandb_name, name=os.path.basename(run_dir), id=run_id,
+                                       resume='allow' if run_id else None)
+                # Uploaded history can extend beyond the last saved training snapshot.
+                # W&B 0.31 reports step=0 until the first history log; starting_step
+                # already contains the server's resume position returned by init.
+                wandb_log_start_step = max(wandb_run.starting_step, wandb_run.step)
                 wandb.config.update(args.to_dict(), allow_val_change=True)
 
             torch.manual_seed(args.seed)
@@ -114,6 +120,9 @@ def train(args, model_cfg, episodes=None):
                 print(f'Resumed training at step {start_step}')
             elif args.pretrained_path:
                 model.load_pretrained(torch.load(args.pretrained_path, map_location='cuda', weights_only=True))
+            if args.wandb and start_step < wandb_log_start_step:
+                print(f'W&B logging resumes at step {wandb_log_start_step}; '
+                      f'replaying training from checkpoint step {start_step} without uploading overlapping metrics.')
             model.update_ema(decay=None)  # start the EMA encoders from the current BatchNorm statistics
             print(f'Trainable parameters: {sum(p.numel() for p in model.parameters() if p.requires_grad)}')
             if start_step >= args.num_steps:
@@ -154,7 +163,7 @@ def train(args, model_cfg, episodes=None):
                         summary = compute_dict_mean(val_dicts)
                     val_losses.append(summary['all_emb_loss'])
                     print(f"Val loss: {summary['all_emb_loss']:.5f}")
-                    if args.wandb:
+                    if args.wandb and step >= wandb_log_start_step:
                         wandb.log({f'val_{k}': v for k, v in summary.items()}, step=step)
                     del val_dicts, summary
 
@@ -178,7 +187,7 @@ def train(args, model_cfg, episodes=None):
                 train_losses.append(log['all_emb_loss'])
                 optimizer.step()
                 model.update_ema()
-                if args.wandb:
+                if args.wandb and step >= wandb_log_start_step:
                     log['lr_scale'] = lr_scale
                     log['lr_max'] = max(group['lr'] for group in optimizer.param_groups)
                     wandb.log(log, step=step)

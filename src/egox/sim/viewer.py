@@ -62,9 +62,10 @@ def _add_robot(stage, robot):
         add_camera(view, camera)
 
 
-def load_setup(scene_usd=None, robot=None, rendering_mode=None):
-    """Open the setup on CPU PhysX, let it settle, and snapshot its start layout."""
+def load_setup(scene_usd=None, robot=None, rendering_mode=None, *, trial=None, room_path=ROOM):
+    """Open on CPU PhysX and snapshot the restored trial or settled authored layout."""
     import carb
+    import torch
     from isaacsim.core.api import SimulationContext
     import isaaclab.sim as sim_utils
     from pxr import PhysxSchema
@@ -80,7 +81,9 @@ def load_setup(scene_usd=None, robot=None, rendering_mode=None):
         .CreateInvertCollisionGroupFilterAttr(False)
     if scene_usd:
         room = sim_utils.UsdFileCfg(usd_path=str(scene_usd))
-        room.func(ROOM, room)
+        position = tuple(trial['scene_position']) if trial else (0., 0., 0.)
+        yaw = trial['scene_yaw'] if trial else 0.
+        room.func(room_path, room, translation=position, orientation=(math.cos(yaw / 2), 0., 0., math.sin(yaw / 2)))
     else:
         ground = sim_utils.GroundPlaneCfg()
         ground.func('/World/Ground', ground)
@@ -88,26 +91,47 @@ def load_setup(scene_usd=None, robot=None, rendering_mode=None):
     light.func('/World/Light', light)
     if robot:
         _add_robot(stage, robot)
+    if trial:
+        # Use the same prim root and strongest overlay as rollout; source USDs stay untouched.
+        stage.GetSessionLayer().subLayerPaths.insert(0, str(trial['overlay']))
 
     settings = carb.settings.get_settings()
-    reflections = stage.GetPrimAtPath(ROOM).GetAttribute('egox:enableReflections') if scene_usd else None
+    reflections = stage.GetPrimAtPath(room_path).GetAttribute('egox:enableReflections') if scene_usd else None
     if reflections and reflections.Get() is not None and rendering_mode != 'performance':
         settings.set_bool('/rtx/reflections/enabled', bool(reflections.Get()))
+    if trial:
+        for key, value in trial['render_settings'].items():
+            settings.set(key, value)
     for key in ('mouseInteractionEnabled', 'mouseGrab', 'forceGrab'):
         settings.set_bool(f'/physics/{key}', True)
     settings.set_bool('/physics/mouseGrabIgnoreInvisible', False)
     settings.set_float('/physics/pickingForce', 1.)
 
     sim.reset()
-    for _ in range(round(1 / PHYSICS_DT)):  # one second for the props to settle
-        sim.step(render=False)
+    if trial:
+        room_state = RoomState(stage, room_path)
+        room_state.restore_trial(trial)
+        room_state.view.update_articulations_kinematic()
+        if robot:
+            # sim.reset() advances physics; restore the joint pose after that initial step.
+            robot_state = RoomState(stage, ROBOT)
+            for view, pose, joints in robot_state.articulations:
+                names = [path.rsplit('/', 1)[-1] for path in view.dof_paths[0]]
+                positions = joints.new_tensor([[robot.joint_positions.get(name, 0.) for name in names]])
+                robot_state._set_articulation(view, pose, pose.new_zeros((1, 6)), positions,
+                                              torch.zeros_like(positions))
+            robot_state.view.update_articulations_kinematic()
+    else:
+        for _ in range(round(1 / PHYSICS_DT)):  # one second for the props to settle
+            sim.step(render=False)
     sim.render()
-    return sim, [RoomState(stage, root) for root, used in ((ROOM, scene_usd), (ROBOT, robot)) if used]
+    # Capture after restoring so Reset layout returns to the rollout's starting state.
+    return sim, [RoomState(stage, root) for root, used in ((room_path, scene_usd), (ROBOT, robot)) if used]
 
 
-def available_cameras(stage, scene_cameras=(), robot=None):
+def available_cameras(stage, scene_cameras=(), robot=None, *, room_path=ROOM):
     """Panel labels and prim paths of the cameras this setup has, the first being the start view."""
-    cameras = {name: f'{ROOM}/Cameras/{name}' for name in scene_cameras}
+    cameras = {name: f'{room_path}/Cameras/{name}' for name in scene_cameras}
     if robot:
         rig = robot.camera_rig
         for output, views in rig['outputs'].items():  # the first of a stereo pair stands for it
@@ -178,7 +202,7 @@ def add_arguments(parser):
     parser.set_defaults(device='cpu')  # CPU PhysX; rendering still uses the GPU
 
 
-def view(args, scene_usd=None, robot=None, scene_cameras=(), free_camera=None):
+def view(args, scene_usd=None, robot=None, scene_cameras=(), free_camera=None, *, trial=None, room_path=ROOM):
     """Open the viewer and run until the window closes. `free_camera` is (eye, target) in meters."""
     from isaaclab.app import AppLauncher
 
@@ -187,18 +211,19 @@ def view(args, scene_usd=None, robot=None, scene_cameras=(), free_camera=None):
     if scene_usd and not Path(scene_usd).is_file():
         raise SystemExit(f'Missing scene USD {scene_usd}')
     if robot and not Path(robot.usd).is_file():
-        raise SystemExit(f'Missing robot USD {robot.usd}; run python scripts/download_assets.py')
+        raise SystemExit(f'Missing robot USD {robot.usd}; check the path or restore the bundled '
+                         'assets/robots/g1_dex3/usd/ directory')
     with ExitStack() as cleanup:
         app = AppLauncher(args).app
         cleanup.callback(app.close)
 
         from isaacsim.core.utils.viewports import set_camera_view
 
-        sim, states = load_setup(scene_usd, robot, args.rendering_mode)
+        sim, states = load_setup(scene_usd, robot, args.rendering_mode, trial=trial, room_path=room_path)
         cleanup.callback(sim.stop)
         if free_camera:
             set_camera_view(*free_camera)
-        viewer = Viewer(sim, states, available_cameras(sim.stage, scene_cameras, robot))
+        viewer = Viewer(sim, states, available_cameras(sim.stage, scene_cameras, robot, room_path=room_path))
         window = build_panel(viewer)
         cleanup.callback(window.destroy)
         print('Viewer ready: Shift + left-drag moves props and doors; stop the timeline to exit.', flush=True)

@@ -20,17 +20,50 @@ scripts/training_scripts/G1-Sim-Dex3/
 ## Usage
 
 Follow [Installation](../../README.md#installation), activate your environment,
-and run from the repository root. The dataset is not yet released; these recipes
-require compatible HDF5 demonstrations. The default data root is the placeholder
-`unknown`; set `DATA_DIR` to your actual dataset root before training:
+and run from the repository root. Download the HDF5 demonstrations from the
+[EgoX dataset on Hugging Face](https://huggingface.co/datasets/binghong0727/egox):
 
 ```bash
-export DATA_DIR=/path/to/dataset
+# Download all embodiments for cross-embodiment pretraining.
+python scripts/download_data.py
+
+# Or download only the simulated robot for fine-tuning or training from scratch.
+python scripts/download_data.py --embodiment g1-sim-dex3
+
+# Check file count and total size without downloading files.
+python scripts/download_data.py --embodiment g1-sim-dex3 --dry-run
 ```
+
+Downloads and recipes default to `data/` under the repository root. The downloader
+preserves lowercase Hub paths, for example:
+
+```text
+data/
+├── g1-sim-dex3/
+│   ├── kitchen-bread/
+│   │   ├── train/
+│   │   └── val/
+│   └── kitchen-cleanup/
+│       ├── train/
+│       └── val/
+├── human-dex5/
+└── ...
+```
+
+To use a different disk or directory, give the downloader `--output-dir` and set
+the recipes' `DATA_DIR` to the same location:
+
+```bash
+python scripts/download_data.py --output-dir /path/to/egox-data
+export DATA_DIR=/path/to/egox-data
+```
+
+Dataset directories use lowercase embodiment and task names under `DATA_DIR`,
+matching the Hub layout. Use this same layout for existing local datasets.
 
 Pretraining uses the cross-embodiment mixture, excluding the target robot–task
 pair. Fine-tuning and training from scratch use
-`$DATA_DIR/G1-Sim-Dex3/Kitchen-Bread` or `Kitchen-Cleanup`. Each episode's
+`$DATA_DIR/g1-sim-dex3/kitchen-bread` or `kitchen-cleanup`. Each episode's
 `embodiment` attribute selects its [robot configuration](../../src/egox/configs/README.md).
 
 ```bash

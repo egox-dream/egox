@@ -8,7 +8,7 @@ __pycache__/
 ckpt/
 wandb/
 datasets/
+/data/
 build/
-/assets/robots/g1_dex3/usd/
 /IsaacLab/
 /results/
