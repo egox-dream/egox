@@ -9,11 +9,14 @@ from pathlib import Path
 import signal
 import time
 
-from egox.robots.g1_sim_dex3.description import CAMERA_RIG, USD
-from scene import CollectionReset, load_trial
+from launch import configure_simulator_process, simulator_ready
 
 
 def main():
+    ready_fd = configure_simulator_process()
+    from egox.robots.g1_sim_dex3.description import CAMERA_RIG, USD
+    from scene import CollectionReset, load_trial
+
     try:
         import cyclonedds  # noqa: F401 -- fail before allocating the simulator/GPU.
     except ImportError as exc:
@@ -52,6 +55,12 @@ def main():
                      'assets/robots/g1_dex3/usd/ directory')
     if args.settle_steps < 0:
         parser.error('--settle_steps must be nonnegative')
+    if args.capture_mode == 'rgb' or args.preview:
+        try:
+            import zmq  # noqa: F401 -- fail before allocating the simulator/GPU.
+        except ImportError as exc:
+            raise RuntimeError('Simulator images need ZeroMQ. Install it with: '
+                               'python -m pip install "pyzmq>=26"') from exc
     # Pinocchio's Assimp must load before Kit's incompatible build.
     import pinocchio  # noqa: F401
 
@@ -87,6 +96,7 @@ def main():
                                     namespace=args.namespace, domain_id=args.dds_domain)
         cleanup.callback(service.close)
         print(f'G1 Dex3 simulation ready on DDS {args.dds_domain}/{args.namespace}', flush=True)
+        simulator_ready(ready_fd)
         last_viewport = time.monotonic()
         while not stopping and app.is_running():
             if args.capture_mode == 'state_only':

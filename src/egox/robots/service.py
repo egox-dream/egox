@@ -1,4 +1,4 @@
-"""Shared DDS interface for collection and policy clients of an embodiment controller.
+"""DDS commands/state with separate camera acquisition for collection and policy clients.
 
 The service runs callbacks on its caller's thread. In Isaac, call ``poll`` from
 the simulation loop; DDS never runs physics from a subscription callback.
@@ -20,7 +20,10 @@ class RobotClient(Client):
     an unacknowledged command requires restarting the controller service.
     """
 
-    def __init__(self, namespace='g1_sim_dex3', domain_id=0, timeout_ms=60000):
+    def __init__(self, namespace='g1_sim_dex3', domain_id=0, timeout_ms=60000, *, camera_source=None):
+        # A local camera callable returns {signal_name: RGB array}; its caller owns
+        # camera lifetime. Simulator images are resolved automatically over ZeroMQ.
+        self.camera_source, self._images = camera_source, None
         self.episode_id = None
         self._owns_control = False
         super().__init__(namespace, domain_id=domain_id, timeout_ms=timeout_ms)
@@ -33,10 +36,36 @@ class RobotClient(Client):
         if method in ('step', 'reset'):
             # A callback may fail after accepting ownership or changing state.
             self._owns_control = True
-        reply = super().request(method, **payload)
+        try:
+            reply = super().request(method, **payload)
+        except RuntimeError:
+            # Reset may have succeeded before publishing its images failed.
+            # Refresh the epoch before another command, without replaying this one.
+            self.episode_id = None
+            raise
         self.episode_id = reply['episode_id']
         if method == 'release':
             self._owns_control = False
+        reference = reply.pop('image_ref', None)
+        if reference is not None:
+            if self.camera_source is not None and method != 'preview':
+                raise ValueError('choose either controller images or a local camera_source')
+            if self._images is None:
+                from .images import ImageClient
+                self._images = ImageClient(timeout_ms=self.timeout_ms)
+            images = self._images.read(reference)
+            if 'obs' in images:
+                reply.setdefault('obs', {}).update(images['obs'])
+            if 'jpeg' in images:
+                reply['jpeg'] = images['jpeg']
+        elif self.camera_source is not None and method in ('observe', 'step', 'reset') and 'obs' in reply:
+            images = self.camera_source(reply)
+            if not isinstance(images, dict) or any(not key.endswith('_image') for key in images):
+                raise ValueError('camera_source must return a dictionary of *_image arrays')
+            reply['obs'].update(images)
+            masks = reply.setdefault('obs_mask', {})
+            for key in images:
+                masks[key] = True
         return reply
 
     def observe(self):
@@ -48,7 +77,7 @@ class RobotClient(Client):
         return self.request('describe')
 
     def preview(self):
-        """Read a lightweight JPEG preview without taking command ownership."""
+        """Read a JPEG preview over ZeroMQ without taking command ownership."""
         return self.request('preview')
 
     def send(self, action, *, source_time_ns=None):
@@ -78,7 +107,12 @@ class RobotClient(Client):
                 finally:
                     self.timeout_ms = timeout
         finally:
-            super().close()
+            try:
+                super().close()
+            finally:
+                if self._images is not None:
+                    self._images.close()
+                    self._images = None
 
 
 class ControllerService:
@@ -100,6 +134,26 @@ class ControllerService:
         self.transport = transport if transport is not None else Server(namespace, domain_id=domain_id)
         self.owner = None
         self.episode_id = 0
+        self._images = None
+
+    def _split_images(self, result):
+        """Keep image bytes off DDS without mutating a controller's cached observation."""
+        result = dict(result)
+        images = {}
+        if 'obs' in result:
+            obs = dict(result['obs'])
+            cameras = {key: obs.pop(key) for key in list(obs) if key.endswith('_image')}
+            result['obs'] = obs
+            if cameras:
+                images['obs'] = cameras
+        if 'jpeg' in result:
+            images['jpeg'] = result.pop('jpeg')
+        if images:
+            if self._images is None:
+                from .images import ImageServer
+                self._images = ImageServer()
+            result['image_ref'] = self._images.store(images)
+        return result
 
     def poll(self, timeout_ms=0):
         """Handle at most one request on this thread; return False when idle."""
@@ -154,14 +208,19 @@ class ControllerService:
                 raise TypeError('controller callbacks must return an observation dictionary')
             if method == 'reset':
                 self.episode_id += 1
-            reply = {**result, 'ok': True, 'episode_id': self.episode_id}
+            reply = {**self._split_images(result), 'ok': True, 'episode_id': self.episode_id}
         except Exception as exc:
             reply = {'ok': False, 'error': f'{type(exc).__name__}: {exc}', 'episode_id': self.episode_id}
         self.transport.reply(reply)
         return True
 
     def close(self):
-        self.transport.close()
+        try:
+            self.transport.close()
+        finally:
+            if self._images is not None:
+                self._images.close()
+                self._images = None
 
     def __enter__(self):
         return self

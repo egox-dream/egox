@@ -2,7 +2,7 @@
 
 Importing this package does not import torch; the model loads inside `MEDPolicy`.
 Robot input/output and coordinates belong to `egox.robots`; collection and
-rollout connect through its shared DDS `RobotClient`.
+rollout share `RobotClient`, with DDS state and separate camera acquisition.
 """
 from .policy import MEDPolicy
 from .rollout import rollout

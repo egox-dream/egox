@@ -23,7 +23,7 @@ from egox.inference.keyboard import KeyboardControls, ResetRequested
 from egox.robots.service import RobotClient
 from egox.training.checkpoints import RUN_CONFIG, RUN_STATS, SNAPSHOT
 from examples.kitchen import scoring
-from examples.kitchen.launch import start_simulator, stop_simulator
+from examples.kitchen.launch import guard_parent, ignore_shutdown_signals, start_simulator, stop_simulator
 
 EXAMPLE = Path(__file__).resolve().parent
 BENCHMARKS = EXAMPLE / 'benchmarks'
@@ -114,7 +114,7 @@ def evaluate_trial(args, policy, task, trial_id, protocol, output, events=None, 
     trial = json.loads((trial_dir / 'trial.json').read_text())
     output.mkdir(parents=True, exist_ok=True)
     namespace = f'egox_{uuid.uuid4().hex}'
-    with (output / 'simulator.log').open('w') as log:
+    with (output / f'simulator-{namespace}.log').open('x') as log:
         process = start_simulator(args, trial_dir, namespace, log, events)
         try:
             started = time.monotonic()
@@ -158,8 +158,12 @@ def rescore(task, trial_id, output):
     write_json(path, {**json.loads(path.read_text()), **scores})
 
 
-def worker(args, protocol, trial_ids, events):
+def worker(args, protocol, trial_ids, events, parent_pid):
+    guard_parent(parent_pid)
+    signal.signal(signal.SIGINT, signal.SIG_IGN)  # The foreground parent coordinates Ctrl-C cleanup.
+
     def terminate(*_):
+        signal.signal(signal.SIGTERM, signal.SIG_IGN)
         raise SystemExit(1)
     signal.signal(signal.SIGTERM, terminate)
     try:
@@ -192,8 +196,29 @@ def run_workers(args, protocol, pending):
     context = multiprocessing.get_context('spawn')
     events = context.Queue()
     assignments = [pending[i::args.workers] for i in range(min(args.workers, len(pending)))]
-    workers = [context.Process(target=worker, args=(args, protocol, trials, events)) for trials in assignments]
+    workers = [context.Process(target=worker, args=(args, protocol, trials, events, os.getpid()))
+               for trials in assignments]
     remaining, simulators, reaped = set(pending), {}, set()
+
+    def track_simulator(result):
+        if result['event'] == 'started':
+            simulators[result['pid']] = result['worker']
+            # The startup event may arrive just after its owner was reaped.
+            if result['worker'] in reaped:
+                with contextlib.suppress(ProcessLookupError):
+                    os.killpg(result['pid'], signal.SIGKILL)
+                del simulators[result['pid']]
+        else:
+            simulators.pop(result['pid'], None)
+
+    def drain_simulators():
+        while True:
+            try:
+                result = events.get_nowait()
+            except queue.Empty:
+                return
+            if 'event' in result:
+                track_simulator(result)
 
     def check_workers(drained=False):
         for process, trials in zip(workers, assignments):
@@ -230,15 +255,7 @@ def run_workers(args, protocol, pending):
                 check_workers(drained=True)
                 continue
             if 'event' in result:
-                if result['event'] == 'started':
-                    simulators[result['pid']] = result['worker']
-                    # The startup event may arrive just after its owner was reaped.
-                    if result['worker'] in reaped:
-                        with contextlib.suppress(ProcessLookupError):
-                            os.killpg(result['pid'], signal.SIGKILL)
-                        del simulators[result['pid']]
-                else:
-                    simulators.pop(result['pid'], None)
+                track_simulator(result)
             else:
                 trial_id = result['trial']
                 remaining.discard(trial_id)
@@ -252,20 +269,25 @@ def run_workers(args, protocol, pending):
                           f"{result['maximum_task_score']} ({result['termination']})", flush=True)
             check_workers()
     finally:
-        for process in workers:
-            if process.pid is None:
-                continue
-            if process.is_alive():
-                process.terminate()
-            process.join(timeout=10)
-            if process.is_alive():
-                process.kill()
-                process.join()
-        for pid in simulators:
-            with contextlib.suppress(ProcessLookupError):
-                os.killpg(pid, signal.SIGKILL)
-        events.close()
-        events.join_thread()
+        with ignore_shutdown_signals():
+            drain_simulators()
+            for process in workers:
+                if process.pid is not None and process.is_alive():
+                    process.terminate()
+            deadline = time.monotonic() + 10
+            for process in workers:
+                if process.pid is None:
+                    continue
+                process.join(timeout=max(0., deadline - time.monotonic()))
+                if process.is_alive():
+                    process.kill()
+                    process.join(timeout=5)
+            drain_simulators()  # Include startup events flushed during worker shutdown.
+            for pid in simulators:
+                with contextlib.suppress(ProcessLookupError):
+                    os.killpg(pid, signal.SIGKILL)
+            events.close()
+            events.join_thread()
 
 
 def select_trials(trials, selection):

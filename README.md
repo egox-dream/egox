@@ -32,7 +32,7 @@ model on a specific target robot–task pair.
 This codebase will provide the following key implementations of EgoX:
 
 1. **Unified data collection:** A shared pipeline for collecting human videos and
-   demonstrations from simulated and real robots *(not yet released)*.
+   demonstrations from simulated and real robots
 2. **MED training:** A training pipeline for the proposed model, including
    cross-embodiment pretraining and target robot–task fine-tuning.
 3. **Policy rollout and evaluation:** Deployment of trained policies and evaluation
@@ -57,11 +57,6 @@ bash scripts/setup_conda_policy.sh --name egox
 conda activate egox
 ```
 
-For RTX 50-series GPUs, prefix the policy-only setup command with
-`EGOX_TORCH_INDEX_URL=https://download.pytorch.org/whl/cu130` to use
-[CUDA 13.0 wheels](https://pytorch.org/blog/pytorch-2-12-release-blog/)
-(Linux NVIDIA driver ≥ 580.65.06).
-
 **With `--sim`**, also install Isaac Sim, Isaac Lab, and the G1 control stack for
 simulation rollout and evaluation:
 
@@ -78,22 +73,13 @@ See [simulation scenes and viewers](examples/README.md) and
 
 ### Download Data
 
-Download the training HDF5 files from Hugging Face. By default, the script downloads
-all embodiments into `data/` under this repository, retaining the Hub's lowercase
-directories and `train`/`val` splits. Separate video previews and JSON files are
-not needed for training and are skipped.
-
-The training setup installs `huggingface_hub`. In an existing environment, install
-it with `python -m pip install "huggingface_hub>=1.0"` if needed.
+Download the training HDF5 files from Hugging Face. 
 
 ```bash
-# Preview the selected files and total size without downloading them.
-python scripts/download_data.py --dry-run
-
-# Download all embodiments (about 934 GB of HDF5 files).
+# Download all embodiments.
 python scripts/download_data.py
 
-# Download only one embodiment, including all of its tasks and splits.
+# Download only one embodiment, including all of its tasks.
 python scripts/download_data.py --embodiment g1-sim-dex3
 
 # Use another disk or directory.
@@ -101,9 +87,7 @@ python scripts/download_data.py --embodiment g1-sim-dex3 --output-dir /path/to/e
 ```
 
 Available embodiments are `g1-dex5`, `g1-sim-dex3`, `human-dex5`, `locoman-dex2`,
-`r1lite-gripper`, `xarm7-dex4`, and `z1-tool`. Embodiment names are case-insensitive.
-Use `--revision COMMIT` to select a fixed dataset revision; the default is `main`.
-Rerun the same command to continue an interrupted download.
+`r1lite-gripper`, `xarm7-dex4`, and `z1-tool`.
 
 ### Training
 

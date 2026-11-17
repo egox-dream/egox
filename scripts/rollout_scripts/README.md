@@ -60,9 +60,14 @@ Results are saved under `results/G1-Sim-Dex3/<task>/<mode>/` by default, where
 | `results.json` | Per-trial results, aggregate ID/OOD scores, and missing trials |
 | `trial_*/result.json` | Trial scores, success, termination reason, and timing |
 | `trial_*/trace.npz` | Recorded simulation states used for scoring |
-| `trial_*/simulator.log` | Simulator logs |
+| `trial_*/simulator-<launch-id>.log` | Separate simulator log for each attempt |
 | `trial_*/video.mp4` | Camera recording when `--video` is enabled |
 | `trial_*/error.json` | Headless execution errors, when present |
 
 Rerunning re-scores completed traces and retries incomplete trials. Choose a new
 `--output` when changing the checkpoint, preprocessing, or evaluation protocol.
+
+Ctrl-C stops the workers and their simulators. Startup readiness uses a private
+pipe for each launch, independent of log files. On Linux, workers and simulators
+also exit if their launching process disappears. Existing results and logs are
+preserved when resuming.
