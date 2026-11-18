@@ -167,7 +167,7 @@ Real-robot deployment requires an embodiment-specific
 Collect **G1-Sim-Dex3** demonstrations with PICO for Kitchen-Bread or
 Kitchen-Cleanup using a headset and two controllers; body trackers are not required.
 
-1. Install the official [XRoboToolkit PICO 1.1.1 APK](https://github.com/XR-Robotics/XRoboToolkit-Unity-Client/releases/download/v1.1.1/XRoboToolkit-PICO-1.1.1.apk)
+1. Install the official [XRoboToolkit PICO 1.1.1 APK](https://github.com/XR-Robotics/XRoboToolkit-Unity-Client)
    on the headset. 
 
 2. Start the PC service in one terminal and leave it running:
@@ -210,15 +210,13 @@ use the left stick to move, and the right stick to turn.
 | A | After reset: calibrate head heading and height; press again to start recording. When paused: resume. |
 | B | Pause recording; also toggle the headset's stereo display mode. |
 | Y | Save and end the episode. |
-| Left menu | Discard and end the episode. |
 
 **Collect an episode:** X (reset) → stand comfortably → A (calibrate) → release A
 → A (record) → perform the task → Y (save) or left menu (discard).
 Check for `Recording` before performing the task and `Saved ... to ...` after pressing Y.
 For every new episode, repeat **X → A → A**. To resume the same paused episode, press **A** once.
 
-You can save or discard directly while recording; B is optional. To pause and inspect
-without switching the headset view, press X; unsaved data prevents a reset. If B
+You can save or discard directly while recording; B is optional. If B
 changes the view, press B again to switch it back, then A to resume recording.
 
 After collection, render the training images and main/wrist camera videos:
