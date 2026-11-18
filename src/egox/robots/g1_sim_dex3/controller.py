@@ -8,7 +8,6 @@ proprioception, in the conventions of the G1-Sim-Dex3 dataset:
 - arms: numerical IK reaches the head-relative wrist poses, with gravity feedforward;
 - hands: fingertip targets are projected onto the Dex3 open/close curve.
 
-Simulator independent (NumPy, SciPy, PyTorch, Pinocchio); the simulator owns physics.
 """
 
 from pathlib import Path
@@ -28,7 +27,7 @@ EEF_IN_WRIST = np.array([.05, 0., 0.])        # EgoX end-effector origin in the 
 HEAD_TO_ARM_BASE = np.array([.15, 0., .45])   # head-relative wrist commands -> fixed-waist arm frame
 STANDING_HEIGHT = .75
 # Availability masks of the recorded G1-Sim-Dex3 proprioception; other fields are fully available.
-OBS_MASKS = {'body_pose_proprio': np.array([False, False] + [True] * 4),
+OBS_MASKS = {'body_pose_proprio': np.ones(6, dtype=bool),
              'right_eef_link_proprio': np.array([True] * 9 + [False] * 6),
              'left_eef_link_proprio': np.array([True] * 9 + [False] * 6)}
 

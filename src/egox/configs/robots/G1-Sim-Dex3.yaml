@@ -11,7 +11,7 @@ tokenizer:
     right_wrist_image: {token_num: 64}  # Right wrist camera observation.
   proprioceptions:
     defaults: {widths: [512, 512], tanh_end: false, ln: true, token_num: 4, dtype: float32}
-    body_pose_proprio: {shape: [6]}  # Observed body pose vector; x and y are masked out
+    body_pose_proprio: {shape: [6]}  # Observed body pose vector; all six coordinates are available.
     eef_pose_proprio: {shape: [12]}  # Observed end-effector pose vector.
     left_eef_to_body_pose_proprio: {shape: [6]}  # Observed left end-effector-to-body pose vector.
     right_eef_to_body_pose_proprio: {shape: [6]}  # Observed right end-effector-to-body pose vector.

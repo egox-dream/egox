@@ -1,6 +1,7 @@
 """Launch/stop the separate Isaac process for collection or evaluation."""
 import contextlib
 import ctypes
+import json
 import os
 from pathlib import Path
 import selectors
@@ -68,6 +69,17 @@ def stop_simulator(process):
             process.wait(timeout=5)
 
 
+def simulator_environment(python):
+    """Reuse the target Conda environment's existing Isaac license choice."""
+    env = {**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'}
+    state = Path(python).absolute().parent.parent / 'conda-meta/state'
+    if 'OMNI_KIT_ACCEPT_EULA' not in env and state.is_file():
+        value = json.loads(state.read_text()).get('env_vars', {}).get('OMNI_KIT_ACCEPT_EULA')
+        if value is not None:
+            env['OMNI_KIT_ACCEPT_EULA'] = str(value)
+    return env
+
+
 def start_simulator(args, trial_dir, namespace, log, events=None, *, extra_args=()):
     command = [str(args.sim_python), '-u', str(EXAMPLE / 'run_sim.py'), '--trial', str(trial_dir),
                '--namespace', namespace, '--dds-domain', str(args.dds_domain)]
@@ -79,7 +91,7 @@ def start_simulator(args, trial_dir, namespace, log, events=None, *, extra_args=
     try:
         process = subprocess.Popen(
             command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True, pass_fds=(ready_write,),
-            env={**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1',
+            env={**simulator_environment(args.sim_python),
                  'EGOX_SIM_PARENT_PID': str(os.getpid()), 'EGOX_SIM_READY_FD': str(ready_write)})
         os.close(ready_write)
         ready_write = None

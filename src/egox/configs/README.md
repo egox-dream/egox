@@ -13,7 +13,7 @@ configs/
 ```
 
 Shared training defaults live in `egox.training.config`. Task/stage commands live in
-[scripts/training_scripts](../../../scripts/training_scripts/README.md).
+[scripts/training_scripts](../../../scripts/training_scripts/readme.md).
 
 ## Robot files
 
@@ -81,7 +81,7 @@ model_config = build_model_config(TrainConfig(robots=["Z1-Tool"]))
 ```
 
 ```bash
-bash scripts/training_scripts/G1-Sim-Dex3/kitchen-Bread/pretrain.sh \
+bash scripts/training_scripts/g1-sim-dex3/kitchen-bread/pretrain.sh \
     --dataset_dir /data/pretrain --print-config
 ```
 

@@ -49,45 +49,29 @@ cd egox
 
 ### Installation
 
-Choose one setup. **Without `--sim`**, install the environment for training and
-policy inference:
+Run the setup script to create a Conda environment and install all dependencies, including third-party tools:
 
 ```bash
-bash scripts/setup_conda_policy.sh --name egox
+bash scripts/setup.sh --sim --PICO-teleop --name egox
 conda activate egox
 ```
 
-**With `--sim`**, also install Isaac Sim, Isaac Lab, and the G1 control stack for
-simulation rollout and evaluation:
-
-```bash
-bash scripts/setup_conda_policy.sh --sim --name egox
-conda activate egox
-```
-
-Use `--name NAME` (or `-n NAME`) to choose the environment name in either mode,
-then activate that same name. 
-
-See [simulation scenes and viewers](examples/README.md) and
-[robot assets](assets/README.md) for details.
+Use `--sim` to enable simulation and `--PICO-teleop` to enable PICO teleoperation.
 
 ### Download Data
 
-Download the training HDF5 files from Hugging Face. 
+Download the training datasets from Hugging Face in HDF5 format:
 
 ```bash
-# Download all embodiments.
-python scripts/download_data.py
-
-# Download only one embodiment, including all of its tasks.
+# Download all tasks for a specific embodiment.
 python scripts/download_data.py --embodiment g1-sim-dex3
-
-# Use another disk or directory.
-python scripts/download_data.py --embodiment g1-sim-dex3 --output-dir /path/to/egox-data
 ```
 
-Available embodiments are `g1-dex5`, `g1-sim-dex3`, `human-dex5`, `locoman-dex2`,
+Supported embodiments: `g1-dex5`, `g1-sim-dex3`, `human-dex5`, `locoman-dex2`,
 `r1lite-gripper`, `xarm7-dex4`, and `z1-tool`.
+
+Omit `--embodiment` to download all embodiments. Use `--output-dir PATH` to choose
+a download directory.
 
 ### Training
 
@@ -109,23 +93,23 @@ W&B logging; append `--no-wandb` to disable it.
 Download all embodiments before running this recipe.
 
 ```bash
-bash scripts/training_scripts/G1-Sim-Dex3/kitchen-Bread/pretrain.sh
+bash scripts/training_scripts/g1-sim-dex3/kitchen-bread/pretrain.sh
 ```
 
 **Fine-tuning:** adapt a pretrained checkpoint to the target task.
 
 ```bash
-bash scripts/training_scripts/G1-Sim-Dex3/kitchen-Bread/finetune.sh \
+bash scripts/training_scripts/g1-sim-dex3/kitchen-bread/finetune.sh \
     /path/to/pretrained/policy_last.ckpt
 ```
 
 **Training from scratch:** train on the target task without pretrained weights.
 
 ```bash
-bash scripts/training_scripts/G1-Sim-Dex3/kitchen-Bread/train-from-scratch.sh
+bash scripts/training_scripts/g1-sim-dex3/kitchen-bread/train-from-scratch.sh
 ```
 
-See [training recipes](scripts/training_scripts/README.md) and
+See [training recipes](scripts/training_scripts/readme.md) and
 [model and robot configurations](src/egox/configs/README.md) for details.
 
 <p align="center">
@@ -141,15 +125,15 @@ Set `--model_path` to a training run containing `policy_last.ckpt`,
 
 ```bash
 # Interactive rollout: press 2 to start the policy.
-bash scripts/rollout_scripts/G1-Sim-Dex3/kitchen-Bread/interactive.sh \
+bash scripts/rollout_scripts/g1-sim-dex3/kitchen-bread/interactive.sh \
     --model_path /path/to/training/run
 
 # Headless benchmark evaluation.
-bash scripts/rollout_scripts/G1-Sim-Dex3/kitchen-Bread/headless.sh \
+bash scripts/rollout_scripts/g1-sim-dex3/kitchen-bread/headless.sh \
     --model_path /path/to/training/run
 ```
 
-See [rollout and evaluation options](scripts/rollout_scripts/README.md).
+See [rollout and evaluation options](scripts/rollout_scripts/readme.md).
 Real-robot deployment requires an embodiment-specific
 [controller integration](src/egox/robots/README.md).
 
@@ -178,22 +162,91 @@ Real-robot deployment requires an embodiment-specific
   </tr>
 </table>
 
+### Collect Demonstrations
+
+Collect **G1-Sim-Dex3** demonstrations with PICO for Kitchen-Bread or
+Kitchen-Cleanup using a headset and two controllers; body trackers are not required.
+
+1. Install the official [XRoboToolkit PICO 1.1.1 APK](https://github.com/XR-Robotics/XRoboToolkit-Unity-Client/releases/download/v1.1.1/XRoboToolkit-PICO-1.1.1.apk)
+   on the headset. 
+
+2. Start the PC service in one terminal and leave it running:
+
+   ```bash
+   bash scripts/data_collect_scripts/run_pico_service.sh
+   ```
+
+3. Start collection in a second terminal with the PC and PICO on the same network.
+   Set `--pico_host` to the **headset's IP** (`PICO_IP`), found in its Wi-Fi connection
+   details. Run `ip route get PICO_IP` on the PC; the address after `src` is **PC_IP**,
+   used for both **PC Service IP** and **Camera Source IP** in XRoboToolkit.
+
+   For Cleanup, use `kitchen-cleanup` instead of `kitchen-bread` in both the collection
+   and rendering commands. Collection is headless by default.
+
+   ```bash
+   conda activate egox
+   bash scripts/data_collect_scripts/g1-sim-dex3/kitchen-bread/collect.sh --pico_host PICO_IP
+   ```
+
+4. Open XRoboToolkit on the headset and configure:
+
+   - **PC Service IP:** enter **PC_IP** and connect to the service.
+   - **Tracking:** enable **Head**, **Controller**, and **Send**; set **PICO Motion Tracker Mode**
+     to **None** and disable **Switch w/ A Button**.
+   - **Remote Vision:** select **ZEDMINI / H.264**. Once the terminal shows `X: reset | A: calibrate...`,
+     select **Listen**, enter **PC_IP** as **Camera Source IP**, and confirm.
+
+   Simulator startup can take several minutes. The terminal's `PICO video first frame sent`
+   message confirms that video is being sent; check that the ego camera view appears
+   before starting. If the stream was disconnected, turn **Listen** off and on to reconnect.
+
+Move the controllers to position the robot's hands, squeeze the triggers to grasp,
+use the left stick to move, and the right stick to turn.
+
+| Button | Function |
+| --- | --- |
+| X | Reset the scene. If an episode has unsaved data, pause until you save or discard it. |
+| A | After reset: calibrate head heading and height; press again to start recording. When paused: resume. |
+| B | Pause recording; also toggle the headset's stereo display mode. |
+| Y | Save and end the episode. |
+| Left menu | Discard and end the episode. |
+
+**Collect an episode:** X (reset) → stand comfortably → A (calibrate) → release A
+→ A (record) → perform the task → Y (save) or left menu (discard).
+Check for `Recording` before performing the task and `Saved ... to ...` after pressing Y.
+For every new episode, repeat **X → A → A**. To resume the same paused episode, press **A** once.
+
+You can save or discard directly while recording; B is optional. To pause and inspect
+without switching the headset view, press X; unsaved data prevents a reset. If B
+changes the view, press B again to switch it back, then A to resume recording.
+
+After collection, render the training images and main/wrist camera videos:
+
+```bash
+bash scripts/data_collect_scripts/g1-sim-dex3/kitchen-bread/render.sh
+```
+
+See the [collection guide](scripts/data_collect_scripts/readme.md) for additional details.
+
 ## Code Structure
 
 ```text
 egox/
-├── src/egox/               # Core Python package
-│   ├── configs/            # Embodiment modalities, model settings, and configuration loading
+├── src/egox/               
+│   ├── configs/            # Embodiment configuration and model settings
 │   ├── data/               # HDF5 episode loading, normalization, masks, and embodiment sampling
-│   ├── models/             # MED tokenizers, shared Transformer, action experts, and dreaming heads
+│   ├── models/             # The implementation of MED 
 │   ├── training/           # Optimization, validation, logging, and checkpoint saving/resuming
 │   ├── inference/          # Policy loading, observation preprocessing, and action rollout
-│   ├── robots/             # DDS interfaces, G1 simulation controller, and robot environment
-│   └── sim/                # Shared scene setup, state restoration, and interactive viewers
-├── scripts/                # Setup, training, and rollout entry points
-│   ├── download_data.py     # Download all or selected embodiment HDF5 files
-│   ├── training_scripts/   # Pretraining, fine-tuning, and training from scratch
-│   └── rollout_scripts/    # Interactive rollout and benchmark evaluation
+│   ├── robots/             # Robot controller and interface
+│   ├── teleoperator/       # Data collection
+│   └── sim/                # Shared scene setup
+├── scripts/                # Setup, collection, training, and rollout entry points
+│   ├── download_data.py     
+│   ├── data_collect_scripts/ 
+│   ├── training_scripts/   
+│   └── rollout_scripts/    
 ├── data/                   # Downloaded datasets (created by download_data.py; ignored by Git)
 ├── examples/
 │   └── kitchen/            # Simulation scenes, tasks, and benchmarks
@@ -201,7 +254,8 @@ egox/
 │   └── robots/             # Robot models and controller assets
 ├── media/                  # README figures and animations
 └── third_party/
-    └── IsaacLab/           # Simulation dependency
+    ├── IsaacLab/           
+    └── xrobotoolkit/       
 ```
 
 ## To-do List
@@ -210,7 +264,7 @@ egox/
 
 - [x] Model implementation (MED and embodiment dreaming)
 - [x] Policy rollout and evaluation (G1-Sim-Dex3)
-- [ ] VR data-collection pipeline
+- [x] PICO data collection (G1-Sim-Dex3 simulation)
 - [x] Dataset release on Hugging Face
 - [ ] Released policy checkpoints
 
@@ -219,7 +273,7 @@ egox/
 Training configurations are included for all seven embodiments. The checklist
 tracks deployment and data-collection integrations:
 
-- [x] G1-Sim-Dex3 — simulation rollout and evaluation
+- [x] G1-Sim-Dex3 — PICO collection, simulation rollout and evaluation
 - [ ] G1-Dex5 — real-robot deployment
 - [ ] xArm7-Dex4 — real-robot deployment
 - [ ] Z1-Tool — real-robot deployment

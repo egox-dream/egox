@@ -17,6 +17,7 @@ collection = ["cyclonedds==11.0.1", "pyzmq>=26", "h5py==3.14.0", "opencv-python-
 training = ["torch", "torchvision", "h5py==3.14.0", "opencv-python-headless", "einops", "tqdm", "matplotlib", "wandb", "huggingface_hub>=1.0"]
 inference = ["torch", "torchvision", "opencv-python-headless", "einops", "scipy", "cyclonedds==11.0.1", "pyzmq>=26", "pynput"]
 simulation = ["pin==2.7.0", "scipy", "cyclonedds==11.0.1", "pyzmq>=26", "opencv-python-headless==4.11.0.86", "numpy==1.26.0", "h5py==3.14.0"]
+visualization = ["h5py==3.14.0", "matplotlib", "opencv-python-headless", "scipy", "pillow"]
 test = ["pytest", "pyzmq>=26"]
 
 [tool.setuptools.packages.find]

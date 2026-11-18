@@ -1,8 +1,5 @@
 """Load a current EgoX training run and predict or execute physical-unit action chunks.
 
-Observations use the dataset's signal names: RGB uint8 HWC images, float vectors,
-and optional boolean availability masks. Robot/environment adapters own coordinates
-and masks for padded channels; this module owns resizing and model execution.
 """
 from contextlib import nullcontext
 from copy import deepcopy

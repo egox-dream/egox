@@ -9,6 +9,7 @@ examples/
 └── kitchen/                    # G1-Sim-Dex3 kitchen tasks
     ├── evaluate.py             # Policy trials, parallel workers, scoring, and results
     ├── run_sim.py              # Isaac Sim process and G1 DDS controller
+    ├── render_dataset.py       # Restore collected states and render training images offline
     ├── launch.py               # Start and stop simulator processes
     ├── scene.py                # Scene selection, trial loading, and object resets
     ├── tasks.py                # Simulator-side Bread and Cleanup task logic
@@ -51,17 +52,5 @@ python examples/kitchen/view.py --trial examples/kitchen/benchmarks/kitchen_clea
 
 By default, the viewer loads the selected task's `trial_001` using the same scene
 USD, appearance overlay, saved object and door positions, camera rig, and render
-settings as rollout. Cleanup includes the benchmark utensil holder with its
-64 mm opening. The viewer holds the robot's base and joints at the recorded pose
-for inspection; it does not run the controller, policy, or task scoring. No policy
-checkpoint is required. Use `--robot-at none` to hide the robot; combine it with
+settings as rollout. Use `--robot-at none` to hide the robot; combine it with
 `--trial` to select a particular task's scene without a robot.
-
-For an authored-scene preview without the trial overlay and saved object layout,
-use `--variant diverse` or `--scene-usd PATH`. `--variant baseline` shows the Bread
-scene with task props only; Cleanup has no baseline variant. These overrides
-cannot be combined with `--trial`.
-
-**Shift + left-drag** moves props and doors. The **EgoX** panel switches cameras,
-pauses/resumes physics, and resets the layout. Edits stay in memory; closing the
-window exits the viewer.

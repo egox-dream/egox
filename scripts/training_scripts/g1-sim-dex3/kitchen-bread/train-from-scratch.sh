@@ -9,7 +9,7 @@ DATA_DIR="${DATA_DIR:-$REPO_ROOT/data}"
 # Usage: ./train-from-scratch.sh [training options]
 
 exec python "$REPO_ROOT/scripts/train.py" \
-    --dataset_dir "$DATA_DIR/g1-sim-dex3/kitchen-cleanup" \
+    --dataset_dir "$DATA_DIR/g1-sim-dex3/kitchen-bread" \
     --main_cam_resolution "(1280,480)" \
     --wrist_cam_resolution "(240,240)" \
     --gpu_id 0 \
@@ -18,7 +18,7 @@ exec python "$REPO_ROOT/scripts/train.py" \
     --wandb_name egox \
     --wandb \
     --auto_resume \
-    --task_name G1-Sim-Dex3_kitchen-cleanup_train-from-scratch \
+    --task_name G1-Sim-Dex3_kitchen-Bread_train-from-scratch \
     --image_sharing none \
     --batch_size 32 \
     --lr_tokenizer 1e-4 \

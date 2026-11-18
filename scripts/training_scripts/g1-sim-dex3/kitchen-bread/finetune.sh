@@ -24,7 +24,7 @@ exec python "$REPO_ROOT/scripts/train.py" \
     --wandb_name egox \
     --wandb \
     --auto_resume \
-    --task_name G1-Sim-Dex3_kitchen-Bread_finetune2 \
+    --task_name G1-Sim-Dex3_kitchen-Bread_finetune \
     --pretrained_path "$pretrained_path" \
     --image_sharing encoder \
     --batch_size 32 \

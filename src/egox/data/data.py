@@ -1,8 +1,5 @@
 """Shared image preparation and episodic datasets for multi-embodiment training.
 
-Each episode file has an `embodiment` attribute; observation/action fields are
-read through KEY_PATH_MAP. A sample holds the current observation, the action
-chunk and, for MED, the observations and availability masks at future `dream_offsets`.
 """
 import os
 
@@ -25,6 +22,19 @@ def resize_image(image, size):
 def blank_image(size):
     """Black frame standing in for an unavailable camera."""
     return np.zeros((*size, 3), dtype=np.uint8)
+
+
+def _segment_ends(root, episode_len):
+    """Validate once and retain only the exclusive ends of continuous segments."""
+    if 'segment_id' not in root:
+        return np.array([episode_len], dtype=np.int64)
+    segments = root['segment_id']
+    if segments.shape != (episode_len,) or segments.dtype.kind not in 'iu':
+        raise ValueError(f'{root.filename}: segment_id must contain one integer per episode row')
+    values = segments[:]
+    if np.any(values < 0) or np.any(values[1:] < values[:-1]):
+        raise ValueError(f'{root.filename}: segment_id must be nonnegative and nondecreasing')
+    return np.r_[np.flatnonzero(values[1:] != values[:-1]) + 1, episode_len]
 
 
 def get_episode_metadata(paths, emb_dict, episode_embodiments=None):
@@ -91,6 +101,8 @@ class EpisodicDataset(torch.utils.data.Dataset):
 
     def __init__(self, paths, episode_ids, episode_len, chunk_size, emb_dict,
                  main_cam_size=None, wrist_cam_size=None, episode_embodiments=None):
+        import h5py
+
         super().__init__()
         self.paths = np.array(paths, dtype=np.bytes_)
         self.episode_ids = episode_ids
@@ -101,6 +113,10 @@ class EpisodicDataset(torch.utils.data.Dataset):
         self.main_cam_size = main_cam_size
         self.wrist_cam_size = wrist_cam_size
         self.episode_embodiments = episode_embodiments
+        self.segment_ends = []
+        for episode_id, length in zip(episode_ids, episode_len):
+            with h5py.File(paths[episode_id], 'r') as root:
+                self.segment_ends.append(_segment_ends(root, length))
 
     def __len__(self):
         return int(self.cumulative_len[-1])
@@ -122,12 +138,14 @@ class EpisodicDataset(torch.utils.data.Dataset):
 
         episode = np.argmax(self.cumulative_len > index)
         start = index - (self.cumulative_len[episode] - self.episode_len[episode])
+        ends = self.segment_ends[episode]
+        segment_end = int(ends[np.searchsorted(ends, start, side='right')])
+        fill = min(segment_end - start, self.chunk_size)
         path = str(self.paths[self.episode_ids[episode]], encoding='utf-8')
         with h5py.File(path, 'r') as root:
             compressed = root.attrs.get('compress', False)
             embodiment = (self.episode_embodiments[path] if self.episode_embodiments is not None
                           else read_episode_embodiment(root))
-            episode_len = self.episode_len[episode]
             obs_keys, action_keys, dream_keys = embodiment_keys(self.emb_dict, embodiment)
 
             def mask_or_default(key, default):
@@ -150,8 +168,7 @@ class EpisodicDataset(torch.utils.data.Dataset):
                     obs[key] = torch.from_numpy(root[KEY_PATH_MAP[key]][start]).float()
                     obs_mask[key] = mask_or_default(key, torch.ones(obs[key].shape[-1], dtype=torch.bool))
             for key in action_keys:
-                chunk = torch.from_numpy(root[KEY_PATH_MAP[key]][start:start + self.chunk_size]).float()
-                fill = min(episode_len - start, self.chunk_size)
+                chunk = torch.from_numpy(root[KEY_PATH_MAP[key]][start:start + fill]).float()
                 action[key] = torch.zeros(self.chunk_size, chunk.shape[-1])
                 action[key][:fill] = chunk[:fill]
                 action_mask[key] = mask_or_default(key, torch.ones(chunk.shape[-1], dtype=torch.bool))
@@ -160,8 +177,8 @@ class EpisodicDataset(torch.utils.data.Dataset):
             if dream_keys:
                 offsets = np.asarray(self.emb_dict[embodiment]['embodiment_dream_head']['dream_offsets'])
                 indices = start + offsets
-                dream_pad = torch.from_numpy(indices >= episode_len)
-                indices = np.minimum(indices, episode_len - 1)
+                dream_pad = torch.from_numpy(indices >= segment_end)
+                indices = np.minimum(indices, segment_end - 1)
                 for key in dream_keys:
                     if 'image' in key and KEY_PATH_MAP[key] not in root:
                         dream[key] = np.stack([self._blank_image(key) for _ in indices])
@@ -176,7 +193,7 @@ class EpisodicDataset(torch.utils.data.Dataset):
                     dream_mask[key] = mask.unsqueeze(0).expand(len(indices), *mask.shape).clone()
 
         is_pad = torch.zeros(self.chunk_size, dtype=torch.bool)
-        is_pad[episode_len - start:] = True
+        is_pad[fill:] = True
         for images in (obs, dream):
             for key in [k for k in images if 'image' in k]:
                 images[key] = torch.from_numpy(images[key]).movedim(-1, -3).contiguous()  # uint8 (..., C, H, W)

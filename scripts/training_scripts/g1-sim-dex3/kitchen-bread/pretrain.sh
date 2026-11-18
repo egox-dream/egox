@@ -29,7 +29,7 @@ exec python "$REPO_ROOT/scripts/train.py" \
     --wandb_name egox \
     --wandb \
     --auto_resume \
-    --task_name G1-Sim-Dex3_kitchen-Bread_pretrain-dream5e-6 \
+    --task_name G1-Sim-Dex3_kitchen-Bread_pretrain \
     --exclude_signals left_wrist_image right_wrist_image \
     --image_sharing encoder \
     --per_emb_batch_size 48 \

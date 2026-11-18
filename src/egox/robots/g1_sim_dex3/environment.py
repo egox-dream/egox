@@ -1,10 +1,4 @@
 """Isaac Lab scene of the G1 with Dex3 hands: robot, optional room USD and the EgoX camera rig.
-
-Physics runs at 200 Hz and the whole-body controller at 50 Hz. RGB rollout advances one
-30 Hz sample per command; state-only collection follows wall time with a light preview.
-A benchmark trial (trial.json, see benchmarks/) fixes the room, its runtime
-overlay, the robot, the camera rig, render settings and the initial state, and adds its task.
-Construct the environment only after the Isaac Sim app has started.
 """
 
 import json

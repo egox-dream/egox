@@ -14,9 +14,26 @@ G1-Dex5, supply their own controllers. Training code is independent.
 | [g1_sim_dex3/controller.py](g1_sim_dex3/controller.py) | IK, hand mapping, WBC and proprioception |
 | [g1_sim_dex3/environment.py](g1_sim_dex3/environment.py) | Robot physics, cameras, timing and state restoration |
 | [g1_sim_dex3/description.py](g1_sim_dex3/description.py) | Joint names and robot asset locations |
+| [g1_sim_dex3/teleop.py](g1_sim_dex3/teleop.py) | G1 head calibration, hand targets and locomotion mapping for collection |
+| [../teleoperator/base.py](../teleoperator/base.py), [pico.py](../teleoperator/pico.py) | Headset interface and PICO tracking adapter |
+| [../teleoperator/data_collecter.py](../teleoperator/data_collecter.py) | Collection lifecycle, state/RGB episode writers and preview worker |
+| [../teleoperator/pico_video.py](../teleoperator/pico_video.py) | Remote Vision control and H.264 stream to the headset |
 
 Scenes, task settings and scoring live in `examples/`. G1's controller runs on
 Isaac's main loop, preserving physics/WBC timing. See the [simulation examples](../../../examples/README.md).
+
+[`scripts/data_collect.py`](../../../scripts/data_collect.py) launches a simulator
+with `sim` or uses an existing controller with `connect`. PICO supplies
+`TeleopFrame` input; `G1Dex3Teleop` maps it into actions for the same `RobotClient`
+used by policy rollout. The asynchronous writer records pre-action state and
+commands, while an independent preview client reads the optional 24 Hz JPEG
+stream. [`render_dataset.py`](../../../examples/kitchen/render_dataset.py) later
+renders full training RGB from the saved states. See the
+[collection guide](../../../scripts/data_collect_scripts/readme.md) for setup and controls.
+
+Only G1-Sim-Dex3 has a collection mapper in this release. New robots supply their
+own mapper and controller; the Apple Vision Pro headset adapter is reserved and
+not implemented.
 
 ## Images and robot state
 

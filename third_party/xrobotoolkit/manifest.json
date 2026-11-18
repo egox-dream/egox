@@ -1,0 +1,28 @@
+{
+  "service": {
+    "version": "1.0.0",
+    "repository": "https://github.com/XR-Robotics/XRoboToolkit-PC-Service",
+    "packages": {
+      "22.04": {
+        "filename": "XRoboToolkit_PC_Service_1.0.0_ubuntu_22.04_amd64.deb",
+        "sha256": "61961067eb4b41f81ed7cae35f4690dbb0ddfefb329a12b24e0b90ebc46ada91"
+      },
+      "24.04": {
+        "filename": "XRoboToolkit_PC_Service_1.0.0_ubuntu_24.04_amd64.deb",
+        "sha256": "bce661f0be0b8a246ceecb2e5f1675a81c26b834648dc7fdf23f8c0bfe2a5d19"
+      }
+    }
+  },
+  "headset": {
+    "version": "1.1.1",
+    "repository": "https://github.com/XR-Robotics/XRoboToolkit-Unity-Client",
+    "filename": "XRoboToolkit-PICO-1.1.1.apk",
+    "package": "com.xrobotoolkit.client",
+    "sha256": "6b2bb282405673d24abcb1980e3478b8f1052e90f7207b1f24cc56a59f8d8261"
+  },
+  "python": {
+    "package": "xrobotoolkit-sdk",
+    "version": "1.1.0",
+    "repository": "https://github.com/XR-Robotics/XRoboToolkit-PC-Service-Pybind"
+  }
+}

@@ -1,8 +1,5 @@
 """Resumable randomness: batch sampling and global RNG state.
 
-Batch `i` is drawn from an RNG seeded by (seed, stream, i), so the sampler's whole
-state is the number of batches the trainer has consumed. Resuming at that cursor
-reproduces the data sequence regardless of how far DataLoader workers prefetched.
 """
 import hashlib
 import json

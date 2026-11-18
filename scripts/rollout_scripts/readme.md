@@ -6,8 +6,8 @@ Policy rollout and benchmark evaluation for G1-Sim-Dex3. Each script calls
 ## Script Structure
 
 ```text
-scripts/rollout_scripts/G1-Sim-Dex3/
-├── kitchen-Bread/          # Kitchen-Bread target task
+scripts/rollout_scripts/g1-sim-dex3/
+├── kitchen-bread/          # Kitchen-Bread target task
 │   ├── interactive.sh     # Visible trial_001 with keyboard control
 │   └── headless.sh        # Automatic evaluation of all 50 trials
 └── kitchen-cleanup/        # Kitchen-Cleanup target task
@@ -19,21 +19,21 @@ scripts/rollout_scripts/G1-Sim-Dex3/
 
 Follow [Installation](../../README.md#installation) with `--sim`, activate that
 environment, and run from the repository root. Set `--model_path` to a
-[training run](../training_scripts/README.md#saved-outputs) containing
+[training run](../training_scripts/readme.md#saved-outputs) containing
 `policy_last.ckpt`, `all_configs.json`, and `dataset_stats.pkl`.
 The [robot simulation model](../../assets/README.md) is included in the repository.
 
 ```bash
 # Interactive rollout; press 2 to start.
-bash scripts/rollout_scripts/G1-Sim-Dex3/kitchen-Bread/interactive.sh \
+bash scripts/rollout_scripts/g1-sim-dex3/kitchen-bread/interactive.sh \
     --model_path /path/to/training/run
 
 # Headless benchmark evaluation.
-bash scripts/rollout_scripts/G1-Sim-Dex3/kitchen-Bread/headless.sh \
+bash scripts/rollout_scripts/g1-sim-dex3/kitchen-bread/headless.sh \
     --model_path /path/to/training/run
 ```
 
-Replace `kitchen-Bread` with `kitchen-cleanup` for Cleanup. Interactive mode
+Replace `kitchen-bread` with `kitchen-cleanup` for Cleanup. Interactive mode
 requires a desktop session: **1** resets, **2** starts/resumes, **3** pauses policy
 commands, and **Q** quits. Each trial waits for **2**.
 
